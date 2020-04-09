@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import { View, ImageBackground, StyleSheet } from "react-native";
 import LoadingModal from "../components/global/LoadingModal";
 import background from "../../assets/images/background.jpg";
-import IndexScreen from "./IndexScreen";
+
+
 export default ({ navigation }) => {
   const [loading, setLoading] = useState(true);
   setTimeout(() => {
-    navigation.navigate("MainNav");
+    console.log('in');
+    navigation.navigate('AuthentcationNav');
   }, 3000);
   return (
     <ImageBackground source={background} style={styles.Background}>

@@ -12,6 +12,7 @@
     "axios": "^0.19.2",
     "expo": "~37.0.3",
     "expo-font": "^8.1.1",
+    "expo-linear-gradient": "~8.1.0",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-37.0.0.tar.gz",
@@ -29,8 +30,8 @@
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
-    "babel-preset-expo": "~8.1.0",
-    "@babel/core": "^7.8.6"
+    "@babel/core": "^7.8.6",
+    "babel-preset-expo": "~8.1.0"
   },
   "private": true
 }
