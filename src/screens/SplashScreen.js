@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { View, ImageBackground, StyleSheet } from "react-native";
+import { ImageBackground, StyleSheet } from "react-native";
 import LoadingModal from "../components/global/LoadingModal";
 import background from "../../assets/images/background.jpg";
-
 
 export default ({ navigation }) => {
   const [loading, setLoading] = useState(true);
   setTimeout(() => {
-    console.log('in');
-    navigation.navigate('AuthentcationNav');
+    navigation.navigate("AuthentcationNav");
   }, 3000);
   return (
     <ImageBackground source={background} style={styles.Background}>
