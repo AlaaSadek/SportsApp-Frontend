@@ -115,6 +115,8 @@ return(
             </View>
             <View style={signUpStyle.activeTextLine}></View>
             </View>
+            <Text style={signUpStyle.errorText}>{fulnameError}</Text>
+            <View style={signUpStyle.errorContainer}> 
         <TextInput
           placeholder="Full Name"
           placeholderTextColor='#8E9092'
@@ -126,7 +128,10 @@ return(
           onChangeText={(text) => setFullName(text)}
         >
         </TextInput>
-        <Text style={signUpStyle.errorText}>{fulnameError}</Text>
+        {fulnameError!=''? <Icon name='exclamation-circle' style={signUpStyle.exclamationmartIcon}></Icon>:null}
+        </View>
+        <Text style={signUpStyle.errorText}>{emailaddressError}</Text>
+        <View style={signUpStyle.errorContainer}>
         <TextInput
           placeholder="Email Address"
           placeholderTextColor='#8E9092'
@@ -137,7 +142,10 @@ return(
           onChangeText={(text) => setEmailAddress(text)}
         >
         </TextInput>
-        <Text style={signUpStyle.errorText}>{emailaddressError}</Text>
+        {emailaddressError!=''? <Icon name='exclamation-circle' style={signUpStyle.exclamationmartIcon}></Icon>:null}   
+        </View>
+        <Text style={signUpStyle.errorText}>{phonenumberError}</Text>
+        <View style={signUpStyle.errorContainer}>
         <TextInput
           placeholder="Phone Number"
           placeholderTextColor='#8E9092'
@@ -148,7 +156,10 @@ return(
           onChangeText={(text) => setPhonenumber(text)}
         >
         </TextInput>
-        <Text style={signUpStyle.errorText}>{phonenumberError}</Text>
+        {phonenumberError!=''? <Icon name='exclamation-circle' style={signUpStyle.exclamationmartIcon}></Icon>:null}
+        </View>
+        <Text style={signUpStyle.errorText}>{passwordError}</Text>
+        <View style={signUpStyle.errorContainer}>
         <TextInput
           placeholder="Password"
           placeholderTextColor='#8E9092'
@@ -160,7 +171,11 @@ return(
           onChangeText={(text) => setPassword(text)}
         >
         </TextInput>
-        <Text style={signUpStyle.errorText}>{passwordError}</Text>
+        {passwordError!=''? <Icon name='exclamation-circle' style={signUpStyle.exclamationmartIcon}></Icon>:null}
+       
+        </View>
+        <Text style={signUpStyle.errorText}>{confirmpasswordError}</Text>
+        <View style={signUpStyle.errorContainer}>
         <TextInput
           placeholder="Confirm Password"
           placeholderTextColor='#8E9092'
@@ -172,7 +187,8 @@ return(
           onChangeText={(text) => setConfirmPassword(text)}
         >
         </TextInput>
-        <Text style={signUpStyle.errorText}>{confirmpasswordError}</Text>
+        {confirmpasswordError!=''? <Icon name='exclamation-circle' style={signUpStyle.exclamationmartIcon}></Icon>:null}
+        </View>   
         <TouchableOpacity onPress={()=>onSubmit()}
          >
             <LinearGradient   colors={['#484EAC','#EF3241']} 

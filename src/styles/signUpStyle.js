@@ -21,7 +21,7 @@ export default StyleSheet.create({
       shadowRadius: 3,
       height:Dimensions.get('window').height>800?Dimensions.get('window').height*0.25:'20%',
       width: Dimensions.get('window').width,
-      marginBottom:Dimensions.get('window').height>800?'15%':'7%',
+      marginBottom:Dimensions.get('window').height>800?'12%':'7%',
     },
     logo:{
         height:93,
@@ -70,10 +70,10 @@ export default StyleSheet.create({
     },
 
     input:{
-        width:'80%',
-        height:Dimensions.get('window').height>800?'6%':'7%',
+        width:'75%',
+        //height:Dimensions.get('window').height>800?'6%':'7%',
         marginBottom:'0%',
-        alignSelf: 'center',
+        alignSelf:'center',
         borderRadius:5,
         backgroundColor:'#FFFFFF',
         fontSize:14,
@@ -88,24 +88,25 @@ export default StyleSheet.create({
             height: 5,
         },
         shadowRadius: 3,
+        marginLeft:'10%'
     },
     signUpButton:{
-        width:'80%',
+        width:'77%',
        // height:100,
         height:50,
         marginBottom:'4%',
         borderRadius:10,
         backgroundColor:'#1D55C5',
-        alignSelf: 'center', 
+        marginLeft:'10%',
         justifyContent:'center' ,
+        marginTop:'4%'
     },
-
     signUpText:{
         fontSize:16,
         fontFamily: 'Montserrat_Medium',
         color:'#FFFFFF',
         marginTop:'3%',
-        marginBottom:'7%',
+        marginBottom:'10%',
         alignSelf: 'center', 
     },
     termsconditionContainer:{
@@ -139,7 +140,8 @@ export default StyleSheet.create({
         justifyContent: 'space-between',
         width: '20%',
         alignSelf: 'center',
-        marginTop:'0%'
+        marginTop:'0%',
+       height:'20%'
     },
     facebookIcon:{
         color:'#2754C0',
@@ -156,13 +158,17 @@ export default StyleSheet.create({
         fontSize:25,
         alignSelf: 'center',
     },
+    errorContainer:{
+        flexDirection: 'row',
+        //alignSelf: 'center',
+    },
     errorText:{
         color: '#b30000',
-        fontSize: 14,
+        fontSize: 12,
         marginRight:'11%',
         marginLeft: '11%',
-        marginTop: '2%',
-        marginBottom:'2%',
+        marginTop: '4%',
+        marginBottom:'0%',
         height:'2%',
         fontFamily: 'Montserrat_Medium',
     },
@@ -171,6 +177,13 @@ export default StyleSheet.create({
         borderColor:'#b30000',
         alignSelf: 'center',
         borderRadius:5,
+    },
+    exclamationmartIcon:{
+        color:'#b30000',
+        fontSize:20,
+        marginLeft:'2%',
+        alignSelf:'center',
+        marginTop:'1%'
     }
     
 })
