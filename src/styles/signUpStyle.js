@@ -4,18 +4,24 @@ export default StyleSheet.create({
 
     whiteBackground:
     {
-        backgroundColor: '#EDF1FA',
+        backgroundColor: '#FFFFFF',
         height: Dimensions.get('window').height,
         width: Dimensions.get('window').width,
         shadowOpacity: 0.27,
     },
     shadowBackground:
     {
-      backgroundColor: '#EDF1FA',
-      shadowColor:'#1F54C3',
+      backgroundColor: '#FFFFFF',
+      shadowOpacity: 0.2,
+      shadowColor:'#5A6274',
+      shadowOffset: {
+          width: 0,
+          height: 5,
+      },
+      shadowRadius: 3,
       height:Dimensions.get('window').height>800?Dimensions.get('window').height*0.25:'20%',
       width: Dimensions.get('window').width,
-     
+      marginBottom:Dimensions.get('window').height>800?'15%':'7%',
     },
     logo:{
         height:93,
@@ -65,7 +71,7 @@ export default StyleSheet.create({
 
     input:{
         width:'80%',
-        height:'7%',
+        height:Dimensions.get('window').height>800?'6%':'7%',
         marginBottom:'0%',
         alignSelf: 'center',
         borderRadius:5,
@@ -75,11 +81,11 @@ export default StyleSheet.create({
         padding:'4%',
         borderWidth:1,
         borderColor:'#FFFFFF',
-        shadowOpacity: 0.2,
-        shadowColor:'#798BB1',
+        shadowOpacity: 0.3,
+        shadowColor:'#1F54C3',
         shadowOffset: {
             width: 0,
-            height: 2,
+            height: 5,
         },
         shadowRadius: 3,
     },
