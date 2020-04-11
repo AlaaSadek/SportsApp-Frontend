@@ -1,5 +1,12 @@
-import React from "react";
-import { Text, View, StyleSheet, TouchableOpacity, Image } from "react-native";
+import React, { useState } from "react";
+import {
+  Text,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  Dimensions,
+} from "react-native";
 import MainButton from "../components/global/MainButton";
 import Input from "../components/global/Input";
 import logo from "../../assets/images/logo.png";
@@ -7,6 +14,43 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 import IonIcon from "react-native-vector-icons/Ionicons";
 
 const SignInScreen = ({ navigation }) => {
+  const [emailAddress, setEmailAddress] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [emailaddressError, setemailaddressError] = useState("");
+  const [passwordError, setpasswordError] = useState("");
+
+  const validate = () => {
+    let error = false;
+
+    if (emailAddress == "") {
+      setemailaddressError("Please Enter Your Email");
+      error = true;
+    } else {
+      const valid = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+      if (valid.test(emailAddress) === true) {
+        setemailaddressError("");
+      } else {
+        setemailaddressError("Invalid Email");
+        error = true;
+      }
+    }
+
+    if (password == "") {
+      setpasswordError("Please Enter Your Password");
+      error = true;
+    } else {
+      setpasswordError("");
+    }
+    return error;
+  };
+
+  const onSubmit = () => {
+    if (!validate()) {
+      alert("Success");
+    }
+  };
+
   return (
     <View>
       <View style={styles.header}>
@@ -26,41 +70,49 @@ const SignInScreen = ({ navigation }) => {
 
         <View style={styles.line}></View>
       </View>
-
       <View>
-        <Input
-          placeholder="Email Address"
-          placeholderTextColor="#8E9092"
-          autoCorrect={false}
-          autoCapitalize="none"
-        />
-        <Input
-          placeholder="Password"
-          placeholderTextColor="#8E9092"
-          autoCorrect={false}
-          autoCapitalize="none"
-        />
-        {/* <IonIcon size={24} color="#CCCCCC" name="md-eye" /> */}
+        <View>
+          <Input
+            errorText={emailaddressError}
+            placeholder="Email Address"
+            placeholderTextColor="#8E9092"
+            autoCorrect={false}
+            autoCapitalize="none"
+            onChangeText={(text) => setEmailAddress(text)}
+          />
 
-        <MainButton
-          firstGradient="#1D55C5"
-          secondGradient="#E93354"
-          style={styles.loginBTN}
-        >
-          LOGIN
-        </MainButton>
-      </View>
-      <View>
-        <Text style={styles.forgotpass}>Forgot Password?</Text>
-      </View>
+          <Input
+            errorText={passwordError}
+            placeholder="Password"
+            placeholderTextColor="#8E9092"
+            autoCorrect={false}
+            autoCapitalize="none"
+            onChangeText={(text) => setPassword(text)}
+            secureTextEntry={true}
+          />
+          {/* <IonIcon styles={styles.passIcon} size={24} color="#CCCCCC" name="md-eye" /> */}
 
-      <View style={styles.smLine}></View>
+          <MainButton
+            firstGradient="#1D55C5"
+            secondGradient="#E93354"
+            style={styles.loginBTN}
+            onPress={() => onSubmit()}
+          >
+            LOGIN
+          </MainButton>
+        </View>
+        <View>
+          <Text style={styles.forgotpass}>Forgot Password?</Text>
+        </View>
 
-      <View style={styles.icons}>
-        <Icon size={24} color="#1D55C5" name="facebook-f" />
+        <View style={styles.smLine}></View>
 
-        <Icon size={24} color="#7D418F" name="twitter" />
-        <IonIcon size={26} color="#CB3765" name="ios-mail" />
+        <View style={styles.icons}>
+          <Icon size={24} color="#1D55C5" name="facebook-f" />
+
+          <Icon size={24} color="#7D418F" name="twitter" />
+          <IonIcon size={26} color="#CB3765" name="ios-mail" />
+        </View>
       </View>
     </View>
   );
@@ -71,6 +123,8 @@ const styles = StyleSheet.create({
   },
   img: {
     resizeMode: "center",
+    width: Dimensions.get("window").height > 600 ? 300 : 200,
+    height: Dimensions.get("window").height > 600 ? 215 : 150,
   },
   logo: {
     backgroundColor: "white",
@@ -123,9 +177,9 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     borderColor: "#D1D1D1",
     width: "75%",
-    marginTop: "15%",
+    marginTop: Dimensions.get("window").height > 600 ? "15%" : "4%",
     marginLeft: "13%",
-    marginBottom: "5%",
+    marginBottom: Dimensions.get("window").height > 600 ? "5%" : "3%",
   },
   icons: {
     flexDirection: "row",
@@ -133,6 +187,16 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     width: "25%",
     alignSelf: "center",
+  },
+  passwordField: {
+    flexDirection: "row",
+  },
+  passIcon: {
+    position: "absolute",
+    top: 0,
+    right: 30,
+    bottom: 0,
+    left: 0,
   },
 });
 
