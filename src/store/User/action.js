@@ -1,4 +1,4 @@
-import {SignUp} from '../../../models/users/UserModel';
+import {SignUp} from '../../models/users/UserModel';
 
 export const Start_Sign_Up = 'Start_Sign_UP';
 export const Success_Sign_Up = 'Success_SIGN_UP';

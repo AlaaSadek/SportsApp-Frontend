@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { View ,TextInput,TouchableOpacity,Text,Image} from "react-native";
 import { useDispatch, useSelector } from 'react-redux';
-import { signUpAction, ClearSignUpStateAction } from '../../store/User/SignUp/action'
+import { signUpAction, ClearSignUpStateAction } from '../../store/User/action'
 import { SignUp } from '../../models/users/UserModel';
 import { LinearGradient } from "expo-linear-gradient";
 import logo from '../../../assets/images/logo.png'
-import signUpStyle from "../../styles/signUpStyle";
+import signUpStyle from "../../styles/SignUpStyle";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import LoadingModal from '../../components/global/LoadingModal';
-import SuccessModel from '../../components/global/SuccessModel';
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import SuccessModel from '../../components/global/ScessModel';
+//import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 const SignUpScreen=()=>{
 
@@ -128,7 +128,7 @@ const SignUpScreen=()=>{
         setSuccess("False")}
       }
 return(
-  <KeyboardAwareScrollView>
+  // <KeyboardAwareScrollView>
         <View style={signUpStyle.whiteBackground}>
             {/* <LoadingModal modalVisible={requestState.pending} /> */}
             {success=='True'?<SuccessModel />:null}
@@ -250,7 +250,7 @@ return(
         </TouchableOpacity>
         </View>
     </View>
-    </KeyboardAwareScrollView>
+    // </KeyboardAwareScrollView>
 )
 
 }
