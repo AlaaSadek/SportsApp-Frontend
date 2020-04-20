@@ -71,6 +71,7 @@ export default StyleSheet.create({
 
     input:{
         width:'75%',
+        
         //height:Dimensions.get('window').height>800?'6%':'7%',
         marginBottom:'0%',
         alignSelf:'center',
