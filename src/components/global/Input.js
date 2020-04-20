@@ -10,7 +10,7 @@ const Input = (props) => {
   return (
     <View style={styles.main}>
       {errorMSG != "" ?  <Text style={styles.errorTXT}>{errorMSG}</Text> : <Text style={styles.errorTXT}> </Text>}
-      <View style={styles.container}>
+      <View style={props.container}>
         <TextInput
           value={props.value}
           onChangeText={props.onChangeText}
@@ -26,14 +26,16 @@ const Input = (props) => {
 };
 const styles = StyleSheet.create({
   errorBorder: {
+        //borderColor:'#b30000',
         borderColor:'#b30000',
-        // alignSelf: 'center',
-        // borderRadius:5,
-        // borderRadius:2,
+        alignSelf: 'center',
+        borderRadius:5,
+        
   },
   container: {
     flexDirection: "row",
-    //height:'7%'
+    //height:'7%',
+    
   },
   input: {
     borderWidth: 1,
@@ -47,6 +49,7 @@ const styles = StyleSheet.create({
     //height:'100%',
     marginLeft: "12%",
     height: 45, //mehtag ytzbt
+ 
     backgroundColor: "white",
     shadowColor: "rgba(31, 84, 195, 0.149)",
     shadowOffset: {
@@ -56,12 +59,15 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.57,
     shadowRadius: 15.19,
     elevation: 23,
+   
   },
   errorTXT: {
     color: "#b30000",
     fontFamily: "Montserrat_Medium",
     fontSize: 12,
-    marginLeft: "13%",
+    marginRight:'13%',
+    marginLeft: '13%',
+    marginTop: '3%',
     marginBottom: "0%",
   },
   
@@ -69,10 +75,10 @@ const styles = StyleSheet.create({
     color: "#b30000",
     fontSize: 20,
     marginLeft: "2%",
-    alignSelf: "center",
+     alignSelf: "center",
   },
   main:{
-    marginTop: Dimensions.get("window").height < 540 ? '1%' :'3%'
+    //marginTop: Dimensions.get("window").height < 540 ? '1%' :'3%'
   }
 });
 

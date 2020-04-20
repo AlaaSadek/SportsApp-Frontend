@@ -35,8 +35,13 @@ export default StyleSheet.create({
         marginBottom:'2%',
         marginTop:'6%'
     },
-    
-    
+    container:{
+        flexDirection:'row',
+        
+    },
+    input:{
+       // height:'100%'
+    }
 })
 
 

@@ -7,6 +7,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import logo from '../../../assets/images/logo.png'
 import signUpStyle from "../../styles/SignUpStyle";
 import authenticationstyle from '../../styles/AuthentcationStyle'
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import IonIcon from "react-native-vector-icons/Ionicons";
 import LoadingModal from '../../components/global/LoadingModal';
@@ -136,7 +137,7 @@ const SignUpScreen=()=>{
         setSuccess("False")}
       }
 return(
-  // <KeyboardAwareScrollView>
+  <KeyboardAwareScrollView>
         <View style={authenticationstyle.whiteBackground}>
             {/* <LoadingModal modalVisible={requestState.pending} /> */}
             {success=='True'?<SuccessModel />:null}
@@ -154,7 +155,9 @@ return(
             </View>
             <View style={signUpStyle.activeTextLine}></View>
             </View>
+            
         <Input
+          
           placeholder="Full Name"
           placeholderTextColor='#8E9092'
           autoCorrect={false}
@@ -162,9 +165,10 @@ return(
           value={fullName}
           onChangeText={(text) => setFullName(text)}
           errorText={fulnameError}
+          
+          container={signUpStyle.container}
         />
-      
-        
+       
         <Input
           placeholder="Email Address"
           placeholderTextColor='#8E9092'
@@ -173,6 +177,8 @@ return(
           value={emailAddress}
           onChangeText={(text) => setEmailAddress(text)}
           errorText={phonenumberError}
+          container={signUpStyle.container}
+
         />
         <Input
           placeholder="Phone Number"
@@ -182,6 +188,7 @@ return(
           value={phoneNumber}
           onChangeText={(text) => setPhonenumber(text)}
           errorText={passwordError}
+          container={signUpStyle.container}
         />
         <View style={authenticationstyle.passwordField}>
         <View style={{ zIndex: 0 }}>
@@ -190,10 +197,12 @@ return(
           placeholderTextColor='#8E9092'
           autoCorrect={false}
           autoCapitalize="none"
-          secureTextEntry={true}
+          secureTextEntry={isPassword}
           value={password}
           onChangeText={(text) => setPassword(text)}
           errorText={passwordError}
+          container={signUpStyle.container}
+          style={signUpStyle.input}
         />
            </View>
            <View style={authenticationstyle.passIcon}>
@@ -216,6 +225,7 @@ return(
           value={confirmPassword}
           onChangeText={(text) => setConfirmPassword(text)}
           errorText={confirmpasswordError}
+          container={signUpStyle.container}
         />
         </View>
            <View style={authenticationstyle.passIcon}>
@@ -257,7 +267,7 @@ return(
         </TouchableOpacity>
         </View>
     </View>
-    // </KeyboardAwareScrollView>
+     </KeyboardAwareScrollView>
 )
 
 }
