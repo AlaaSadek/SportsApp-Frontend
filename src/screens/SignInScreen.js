@@ -7,18 +7,43 @@ import {
   Image,
   Dimensions,
 } from "react-native";
+import {
+  signInAction,
+  clearSignInStateAction,
+} from "../store/User/SignIn/actions";
+import { SignIn } from "../models/users/UserModel";
+import { useDispatch, useSelector } from "react-redux";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import MainButton from "../components/global/MainButton";
 import Input from "../components/global/Input";
 import logo from "../../assets/images/logo.png";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import IonIcon from "react-native-vector-icons/Ionicons";
+import ErrorModal from "../components/global/ErrorModal";
+import LoadingModal from "../components/global/LoadingModal";
+import { BarPasswordStrengthDisplay } from "react-native-password-strength-meter";
 
 const SignInScreen = ({ navigation }) => {
+  const disptach = useDispatch();
+
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
 
   const [emailaddressError, setemailaddressError] = useState("");
   const [passwordError, setpasswordError] = useState("");
+
+  const [isPassword, setisPassword] = useState(true);
+  const changePwdType = () => {
+    setisPassword(!isPassword);
+  };
+  const requestState = useSelector((state) => {
+    return {
+      success: state.signInReducer.success,
+      error: state.signInReducer.error,
+      pending: state.signInReducer.signInStarted,
+      errorMessage: state.signInReducer.errorMessage,
+    };
+  });
 
   const validate = () => {
     let error = false;
@@ -47,12 +72,31 @@ const SignInScreen = ({ navigation }) => {
 
   const onSubmit = () => {
     if (!validate()) {
-      alert("Success");
+      console.log("in onsubmit");
+      disptach(signInAction(new SignIn(emailAddress, password)));
     }
   };
 
   return (
-    <View>
+    <KeyboardAwareScrollView
+      keyboardShouldPersistTaps={"always"}
+      style={{ flex: 1 }}
+      showsVerticalScrollIndicat
+      or={false}
+    >
+      <ErrorModal
+        modalVisible={requestState.error}
+        closeModal={() => {
+          disptach(clearSignInStateAction());
+        }}
+        message={
+          requestState.errorMessage
+            ? requestState.errorMessage
+            : "Wrong Email or Password"
+        }
+      />
+      <LoadingModal modalVisible={requestState.pending} />
+
       <View style={styles.header}>
         <View style={styles.logo}>
           <Image source={logo} style={styles.img} />
@@ -80,17 +124,31 @@ const SignInScreen = ({ navigation }) => {
             autoCapitalize="none"
             onChangeText={(text) => setEmailAddress(text)}
           />
+          <View style={styles.passwordField}>
+            <View style={{ zIndex: 0 }}>
+              <Input
+                errorText={passwordError}
+                placeholder="Password"
+                placeholderTextColor="#8E9092"
+                autoCorrect={false}
+                autoCapitalize="none"
+                onChangeText={(text) => setPassword(text)}
+                secureTextEntry={isPassword}
+              />
+            </View>
 
-          <Input
-            errorText={passwordError}
-            placeholder="Password"
-            placeholderTextColor="#8E9092"
-            autoCorrect={false}
-            autoCapitalize="none"
-            onChangeText={(text) => setPassword(text)}
-            secureTextEntry={true}
-          />
-          {/* <IonIcon styles={styles.passIcon} size={24} color="#CCCCCC" name="md-eye" /> */}
+            <View style={styles.passIcon}>
+              <IonIcon
+                size={24}
+                onPress={() => changePwdType()}
+                color="#CCCCCC"
+                name="md-eye"
+              />
+            </View>
+            <View style={styles.passwordLength}>
+              <BarPasswordStrengthDisplay password={password} width={Dimensions.get("window").width*.7}  />
+            </View>
+          </View>
 
           <MainButton
             firstGradient="#1D55C5"
@@ -114,12 +172,12 @@ const SignInScreen = ({ navigation }) => {
           <IonIcon size={26} color="#CB3765" name="ios-mail" />
         </View>
       </View>
-    </View>
+    </KeyboardAwareScrollView>
   );
 };
 const styles = StyleSheet.create({
   loginBTN: {
-    marginTop: "8%",
+    marginTop: "7%",
   },
   img: {
     resizeMode: "center",
@@ -191,12 +249,19 @@ const styles = StyleSheet.create({
   passwordField: {
     flexDirection: "row",
   },
+  passwordField: {
+    flexDirection: "column",
+  },
   passIcon: {
+    zIndex: 1,
     position: "absolute",
-    top: 0,
-    right: 30,
-    bottom: 0,
-    left: 0,
+    marginTop: Dimensions.get("window").height > 600 ? "9.6%" : "11.1%",
+    marginLeft: "75%",
+  },
+  passwordLength: {
+    width: "70%",
+    marginTop:'2%',
+    marginLeft: '11.5%'
   },
 });
 

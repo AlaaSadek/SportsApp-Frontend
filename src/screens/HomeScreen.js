@@ -4,7 +4,6 @@ import {
   View,
   StyleSheet,
   ImageBackground,
-  TouchableOpacity,
 } from "react-native";
 import MainButton from "../components/global/MainButton";
 import background from "../../assets/images/background.jpg";
