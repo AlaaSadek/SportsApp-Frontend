@@ -28,7 +28,7 @@ export default StyleSheet.create({
         width:175,
         alignSelf: 'center',
         marginTop:Dimensions.get('window').height>800?'20%':'3%',
-        marginBottom:'0%'
+        marginBottom:'1%'
     },
     signInUpContainer: {
         flexDirection: 'row',
