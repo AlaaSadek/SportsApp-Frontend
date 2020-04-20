@@ -1,11 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { View ,TextInput,TouchableOpacity,Text,Image} from "react-native";
+import { useDispatch, useSelector } from 'react-redux';
+import { signUpAction, ClearSignUpStateAction } from '../../store/User/SignUp/action'
+import { SignUp } from '../../models/users/UserModel';
 import { LinearGradient } from "expo-linear-gradient";
-
 import logo from '../../../assets/images/logo.png'
 import signUpStyle from "../../styles/signUpStyle";
 import Icon from 'react-native-vector-icons/FontAwesome';
-const SignUp=()=>{
+import LoadingModal from '../../components/global/LoadingModal';
+import SuccessModel from '../../components/global/SuccessModel';
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+
+const SignUpScreen=()=>{
+
+  const disptach = useDispatch();
+
+  const requestState = useSelector(
+    (state) => {
+      return {
+        pending: state.SignUpReducer.sendingSignUpRequest,
+        error: state.SignUpReducer.errorSignUpRequest,
+        success: state.SignUpReducer.successSignUpRequest,
+        errorMessage: state.SignUpReducer.errorMessage
+      }
+    })
     const [fullName, setFullName] = useState('');
     const [emailAddress, setEmailAddress] = useState('');
     const [phoneNumber, setPhonenumber] = useState('');
@@ -17,6 +35,9 @@ const SignUp=()=>{
     const [phonenumberError, setphonenumberError] = useState('');
     const [passwordError, setpasswordError] = useState('');
     const [confirmpasswordError, setconfirmpasswordError] = useState('');
+
+
+    const [success, setSuccess] = useState('');
 
     const validate = () => {
         let error = true;
@@ -95,16 +116,26 @@ const SignUp=()=>{
       }
     
       const onSubmit = () => {
+
         if (validate()) {
-          console.log("Success")
-          //disptach(signUpAction(new SignUpUser(fullName,emailAddress, phoneNumber, password)))
+          //console.log("Success")
+         // disptach(signUpAction(new SignUp(fullName,emailAddress, phoneNumber, password)))
+         setSuccess("True")
+         console.log(success)
         }
-        else console.log("Failed")
+        else {
+          console.log("Failed") 
+        setSuccess("False")}
       }
 return(
-    <View style={signUpStyle.whiteBackground}>
-        <View style={signUpStyle.shadowBackground}>
-           <Image source={logo} style={signUpStyle.logo}></Image>
+  <KeyboardAwareScrollView>
+        <View style={signUpStyle.whiteBackground}>
+            {/* <LoadingModal modalVisible={requestState.pending} /> */}
+            {success=='True'?<SuccessModel />:null}
+          <View style={signUpStyle.shadowBackground}>
+            <View style={signUpStyle.logoContainer}>
+             <Image source={logo} style={signUpStyle.logo} />
+             </View>
             <View style={signUpStyle.signInUpContainer}>
                 <TouchableOpacity>
                     <Text style={signUpStyle.inActiveText}>Login</Text>
@@ -205,8 +236,11 @@ return(
         </View>
         <View style={signUpStyle.line}></View>
         <View style={signUpStyle.iconContainer}>
+         
        <TouchableOpacity>
+      
         <Icon name="facebook" style={signUpStyle.facebookIcon}/>
+        
         </TouchableOpacity>
         <TouchableOpacity>
         <Icon name="twitter" style={signUpStyle.twitterIcon}/>
@@ -216,7 +250,8 @@ return(
         </TouchableOpacity>
         </View>
     </View>
+    </KeyboardAwareScrollView>
 )
 
 }
-export default SignUp;
+export default SignUpScreen;

@@ -1,4 +1,4 @@
 import { combineReducers } from 'redux'
 import postsReducer from './Posts/reducer'
-
-export default rootReducer = combineReducers({ postsReducer })
+import SignUpReducer from '../store/User/reducer'
+export default rootReducer = combineReducers({ SignUpReducer })
