@@ -6,9 +6,13 @@ import { SignUp } from '../../models/users/UserModel';
 import { LinearGradient } from "expo-linear-gradient";
 import logo from '../../../assets/images/logo.png'
 import signUpStyle from "../../styles/SignUpStyle";
+import authenticationstyle from '../../styles/AuthentcationStyle'
 import Icon from 'react-native-vector-icons/FontAwesome';
+import IonIcon from "react-native-vector-icons/Ionicons";
 import LoadingModal from '../../components/global/LoadingModal';
 import SuccessModel from '../../components/global/ScessModel';
+import Input from "../../components/global/Input";
+import MainButton from '../../components/global/MainButton';
 //import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 const SignUpScreen=()=>{
@@ -36,6 +40,10 @@ const SignUpScreen=()=>{
     const [passwordError, setpasswordError] = useState('');
     const [confirmpasswordError, setconfirmpasswordError] = useState('');
 
+    const [isPassword, setisPassword] = useState(true);
+    const changePwdType = () => {
+      setisPassword(!isPassword);
+    };
 
     const [success, setSuccess] = useState('');
 
@@ -129,105 +137,104 @@ const SignUpScreen=()=>{
       }
 return(
   // <KeyboardAwareScrollView>
-        <View style={signUpStyle.whiteBackground}>
+        <View style={authenticationstyle.whiteBackground}>
             {/* <LoadingModal modalVisible={requestState.pending} /> */}
             {success=='True'?<SuccessModel />:null}
-          <View style={signUpStyle.shadowBackground}>
-            <View style={signUpStyle.logoContainer}>
-             <Image source={logo} style={signUpStyle.logo} />
+          <View style={authenticationstyle.shadowBackground}>
+            <View style={authenticationstyle.logoContainer}>
+             <Image source={logo} style={authenticationstyle.logo} />
              </View>
-            <View style={signUpStyle.signInUpContainer}>
+            <View style={authenticationstyle.signInUpContainer}>
                 <TouchableOpacity>
-                    <Text style={signUpStyle.inActiveText}>Login</Text>
+                    <Text style={authenticationstyle.inActiveText}>Login</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={signUpStyle.activeButton}>
-                    <Text style={signUpStyle.activeText}>Signup</Text>
+                <TouchableOpacity style={authenticationstyle.activeButton}>
+                    <Text style={authenticationstyle.activeText}>Signup</Text>
                 </TouchableOpacity>
             </View>
             <View style={signUpStyle.activeTextLine}></View>
             </View>
-            <Text style={signUpStyle.errorText}>{fulnameError}</Text>
-            <View style={signUpStyle.errorContainer}> 
-        <TextInput
+        <Input
           placeholder="Full Name"
           placeholderTextColor='#8E9092'
           autoCorrect={false}
           autoCapitalize="none"
-          style={[signUpStyle.input,!fulnameError==''?signUpStyle.error:null]}
-          //style={signUpStyle.input}
           value={fullName}
           onChangeText={(text) => setFullName(text)}
-        >
-        </TextInput>
-        {fulnameError!=''? <Icon name='exclamation-circle' style={signUpStyle.exclamationmartIcon}></Icon>:null}
-        </View>
-        <Text style={signUpStyle.errorText}>{emailaddressError}</Text>
-        <View style={signUpStyle.errorContainer}>
-        <TextInput
+          errorText={fulnameError}
+        />
+      
+        
+        <Input
           placeholder="Email Address"
           placeholderTextColor='#8E9092'
           autoCorrect={false}
           autoCapitalize="none"
-          style={[signUpStyle.input,!emailaddressError==''?signUpStyle.error:null]}
           value={emailAddress}
           onChangeText={(text) => setEmailAddress(text)}
-        >
-        </TextInput>
-        {emailaddressError!=''? <Icon name='exclamation-circle' style={signUpStyle.exclamationmartIcon}></Icon>:null}   
-        </View>
-        <Text style={signUpStyle.errorText}>{phonenumberError}</Text>
-        <View style={signUpStyle.errorContainer}>
-        <TextInput
+          errorText={phonenumberError}
+        />
+        <Input
           placeholder="Phone Number"
           placeholderTextColor='#8E9092'
           autoCorrect={false}
           autoCapitalize="none"
-          style={[signUpStyle.input,!phonenumberError==''?signUpStyle.error:null]}
           value={phoneNumber}
           onChangeText={(text) => setPhonenumber(text)}
-        >
-        </TextInput>
-        {phonenumberError!=''? <Icon name='exclamation-circle' style={signUpStyle.exclamationmartIcon}></Icon>:null}
-        </View>
-        <Text style={signUpStyle.errorText}>{passwordError}</Text>
-        <View style={signUpStyle.errorContainer}>
-        <TextInput
+          errorText={passwordError}
+        />
+        <View style={authenticationstyle.passwordField}>
+        <View style={{ zIndex: 0 }}>
+        <Input
           placeholder="Password"
           placeholderTextColor='#8E9092'
           autoCorrect={false}
           autoCapitalize="none"
           secureTextEntry={true}
-          style={[signUpStyle.input,!passwordError==''?signUpStyle.error:null]}
           value={password}
           onChangeText={(text) => setPassword(text)}
-        >
-        </TextInput>
-        {passwordError!=''? <Icon name='exclamation-circle' style={signUpStyle.exclamationmartIcon}></Icon>:null}
-       
-        </View>
-        <Text style={signUpStyle.errorText}>{confirmpasswordError}</Text>
-        <View style={signUpStyle.errorContainer}>
-        <TextInput
+          errorText={passwordError}
+        />
+           </View>
+           <View style={authenticationstyle.passIcon}>
+              <IonIcon
+                size={24}
+                onPress={() => changePwdType()}
+                color="#CCCCCC"
+                name="md-eye"
+              />
+            </View>
+          </View>
+          <View style={authenticationstyle.passwordField}>
+        <View style={{ zIndex: 0 }}>
+        <Input
           placeholder="Confirm Password"
           placeholderTextColor='#8E9092'
           autoCorrect={false}
           autoCapitalize="none"
           secureTextEntry={true}
-          style={[signUpStyle.input,!confirmpasswordError==''?signUpStyle.error:null]}
           value={confirmPassword}
           onChangeText={(text) => setConfirmPassword(text)}
-        >
-        </TextInput>
-        {confirmpasswordError!=''? <Icon name='exclamation-circle' style={signUpStyle.exclamationmartIcon}></Icon>:null}
-        </View>   
-        <TouchableOpacity onPress={()=>onSubmit()}
-         >
-            <LinearGradient   colors={['#484EAC','#EF3241']} 
-            start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={signUpStyle.signUpButton}
-            >
-            <Text style={signUpStyle.signUpText}>REGISTER</Text>
-            </LinearGradient>
-        </TouchableOpacity>
+          errorText={confirmpasswordError}
+        />
+        </View>
+           <View style={authenticationstyle.passIcon}>
+              <IonIcon
+                size={24}
+                onPress={() => changePwdType()}
+                color="#CCCCCC"
+                name="md-eye"
+              />
+            </View>
+          </View>
+        <MainButton
+            firstGradient="#1D55C5"
+            secondGradient="#E93354"
+            style={signUpStyle.signUpButton}
+            onPress={() => onSubmit()}
+          >
+            REGISTER
+          </MainButton>
         <View style={signUpStyle.termsconditionContainer}>
         <Text style={signUpStyle.youaggreedText}>By signing up, you agree with our </Text>
         <TouchableOpacity>
@@ -235,18 +242,18 @@ return(
         </TouchableOpacity>
         </View>
         <View style={signUpStyle.line}></View>
-        <View style={signUpStyle.iconContainer}>
+        <View style={authenticationstyle.iconContainer}>
          
        <TouchableOpacity>
       
-        <Icon name="facebook" style={signUpStyle.facebookIcon}/>
+        <Icon name="facebook" style={authenticationstyle.facebookIcon}/>
         
         </TouchableOpacity>
         <TouchableOpacity>
-        <Icon name="twitter" style={signUpStyle.twitterIcon}/>
+        <Icon name="twitter" style={authenticationstyle.twitterIcon}/>
         </TouchableOpacity>
         <TouchableOpacity>
-        <Icon name="envelope" style={signUpStyle.envelopIcon}/>
+        <IonIcon name="ios-mail" style={authenticationstyle.envelopIcon}/>
         </TouchableOpacity>
         </View>
     </View>
