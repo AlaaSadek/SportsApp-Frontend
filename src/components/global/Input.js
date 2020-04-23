@@ -48,8 +48,8 @@ const styles = StyleSheet.create({
     width: "72.8%", 
     //height:'100%',
     marginLeft: "12%",
-    height: 45, //mehtag ytzbt
- 
+    //height: 45, //mehtag ytzbt
+    height:Dimensions.get('window').height>800?50:Dimensions.get('window').height<660?33:43,
     backgroundColor: "white",
     shadowColor: "rgba(31, 84, 195, 0.149)",
     shadowOffset: {
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     marginRight:'13%',
     marginLeft: '13%',
-    marginTop: '3%',
+    marginTop: Dimensions.get('window').height<660?'2%':'3%',
     marginBottom: "0%",
   },
   
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
      alignSelf: "center",
   },
   main:{
-    //marginTop: Dimensions.get("window").height < 540 ? '1%' :'3%'
+   // marginTop: Dimensions.get("window").height < 540 ? '1%' :'3%'
   }
 });
 

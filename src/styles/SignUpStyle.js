@@ -33,7 +33,7 @@ export default StyleSheet.create({
     },
     signUpButton:{
         marginBottom:'2%',
-        marginTop:'6%'
+        marginTop:'5%'
     },
     container:{
         flexDirection:'row',
