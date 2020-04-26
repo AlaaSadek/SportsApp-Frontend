@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
+import React from 'react';
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import Modal from 'react-native-modal';
-import Icon from 'react-native-vector-icons/FontAwesome5';
+import Icon from "react-native-vector-icons/FontAwesome5";
 
 const SuccessModal = ({ modalVisible, closeModal, message }) => {
     if(!modalVisible)
@@ -10,17 +10,16 @@ const SuccessModal = ({ modalVisible, closeModal, message }) => {
         <Modal isVisible={modalVisible} >
             <View style={styles.container}>
                 <View style={styles.Header}>
-                    <Ionicons
-                        size={20}
-                        name="check-circle"
-                        color='#92FF51'
+                  <View style={styles.iconcontainer}>
+                    <Icon
+                        size={24}
+                        name="check"
+                        color='#65C43B'
                     />
-                </View>
-                <View style={styles.Body}>
-                    <Text style={styles.errorText}>Success</Text>
+                    <Text style={styles.successText}>Success</Text>
+                    </View>  
                     <Text style={styles.messageText}>{message ? message.replace(/, /g, '\n') : 'There is some error'}</Text>
                 </View>
-
                 <View style={styles.Footer}>
                     <TouchableOpacity style={styles.button} onPress={() => { closeModal() }}>
                         <View >
@@ -36,56 +35,64 @@ const SuccessModal = ({ modalVisible, closeModal, message }) => {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: 'white',
-        margin: 22,
+        margin:22,
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 75,
-        borderColor: 'rgba(0, 0, 0, 0.1)',
-        minHeight: '30%',
-        maxHeight: '50%',
+        borderRadius: 10,
+        borderColor: "rgba(0, 0, 0, 0.1)",
+        minHeight: '20%',
+        maxHeight: '25%',
         overflow: 'hidden'
-    },
-    Header: {
-        height: '25%',
-        width: '100%',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'rgba(60, 200, 30, 0.70)',
 
     },
-    Footer: {
-        height: '25%',
+    iconcontainer:{
+        flexDirection: "row",
+        marginTop: "4%",
+    },
+    successText: {
+        fontSize: 22,
+        marginBottom: 18,
+        fontFamily: "Montserrat_Medium",
+        color: "#65C43B",
+      },
+    Header: {
+        height: '50%',
         width: '100%',
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    Footer: {
+        height: '55%',
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        fontFamily: "Montserrat_Medium",
     },
     Body: {
         height: '50%',
         width: '100%',
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 10,
-
     },
     button: {
-        height: '70%',
-        width: '40%',
-        borderRadius: 75,
-        backgroundColor: 'rgba(60, 200, 30, 0.6)',
+        height: '65%',
+        width: '100%',
+        backgroundColor: '#65C43B',
         justifyContent: 'center',
         alignItems: 'center',
-        borderWidth: 3,
-        borderColor: 'rgba(0,255,0,0.3)'
+        borderColor: "#65C43B",
+        marginTop: "13%",
     },
     buttonText: {
-        fontSize: 25,
-        color: 'white'
-    },
-    errorText: {
-        fontSize: 25, marginBottom: 10
+        fontSize: 18,
+        color: 'white',
+        fontFamily: "Montserrat_SemiBold",
+        marginBottom: "13%",
     },
     messageText: {
+        marginTop:15,
         fontSize: 15,
+        fontFamily: "Montserrat_Medium",
     }
 })
 export default SuccessModal;
