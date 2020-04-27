@@ -1,19 +1,19 @@
 export class SignIn {
-  constructor(emailAddress, password) {
-    this.emailAddress = emailAddress;
+  constructor(email, password) {
+    this.email = email;
     this.password = password;
   }
 }
 export class SignUp {
   constructor(
     fullName = "",
-    emailAddress = "",
+    email = "",
     phoneNumber = "",
     password = "",
     confirmPassword = ""
   ) {
     this.fullName = fullName;
-    this.emailAddress = emailAddress;
+    this.email = email;
     this.phoneNumber = phoneNumber;
     this.password = password;
     this.confirmPassword = confirmPassword;

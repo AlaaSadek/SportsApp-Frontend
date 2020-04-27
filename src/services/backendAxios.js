@@ -3,15 +3,15 @@ import { setAuthToken, getAuthToken } from "../utils/LocalStorage";
 const copy = axios.create({});
 
 copy.interceptors.request.use(async (config) => {
-  config.baseURL = ""; //waiting for backend
+  config.baseURL = "https://sports-app-api.herokuapp.com/api/";
   let token = await getAuthToken();
   if (token) config.headers["Authorization"] = "Bearer " + token;
   config.headers["Content-Type"] = "application/json";
   return config;
 });
 copy.interceptors.response.use(async (response) => {
-  if (response.headers["token"]) {
-    let res = await setAuthToken(response.headers["token"]);
+  if (response.data && response.data.payload && response.data.payload.token) {
+    let res = await setAuthToken(response.data.payload.token);
   }
   return response;
 });

@@ -8,10 +8,11 @@ export const Failed_Sign_In = "Failed_SIGN_IN";
 export const Clear_Sign_In_State = "Clear_Sign_In_State";
 
 export const signInAction = (user = new SignIn()) => {
+  console.log(user)
   return (dispatch) => {
     dispatch({ type: Start_Sign_In });
     backendAxios
-      .post("Account/login", { //depends on backend endpoint
+      .post("Account/Login", { 
         email: user.email,
         password: user.password,
       })
@@ -19,6 +20,7 @@ export const signInAction = (user = new SignIn()) => {
         dispatch({ type: Success_Sign_In });
       })
       .catch((err) => {
+        console.log(err)
         dispatch({ type: Failed_Sign_In });
       });
   };

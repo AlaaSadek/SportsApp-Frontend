@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Text,
   View,
@@ -26,10 +26,10 @@ import { BarPasswordStrengthDisplay } from "react-native-password-strength-meter
 const SignInScreen = ({ navigation }) => {
   const disptach = useDispatch();
 
-  const [emailAddress, setEmailAddress] = useState("");
+  const [email, setemail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [emailaddressError, setemailaddressError] = useState("");
+  const [emailError, setemailError] = useState("");
   const [passwordError, setpasswordError] = useState("");
 
   const [isPassword, setisPassword] = useState(true);
@@ -45,18 +45,24 @@ const SignInScreen = ({ navigation }) => {
     };
   });
 
+  useEffect(() => {
+    if (requestState.success) {
+      navigation.navigate("ApplicationNav");
+    }
+  });
+
   const validate = () => {
     let error = false;
 
-    if (emailAddress == "") {
-      setemailaddressError("Please Enter Your Email");
+    if (email == "") {
+      setemailError("Please Enter Your Email");
       error = true;
     } else {
       const valid = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
-      if (valid.test(emailAddress) === true) {
-        setemailaddressError("");
+      if (valid.test(email) === true) {
+        setemailError("");
       } else {
-        setemailaddressError("Invalid Email");
+        setemailError("Invalid Email");
         error = true;
       }
     }
@@ -72,8 +78,7 @@ const SignInScreen = ({ navigation }) => {
 
   const onSubmit = () => {
     if (!validate()) {
-      console.log("in onsubmit");
-      disptach(signInAction(new SignIn(emailAddress, password)));
+      disptach(signInAction(new SignIn(email, password)));
     }
   };
 
@@ -117,12 +122,12 @@ const SignInScreen = ({ navigation }) => {
       <View>
         <View>
           <Input
-            errorText={emailaddressError}
+            errorText={emailError}
             placeholder="Email Address"
             placeholderTextColor="#8E9092"
             autoCorrect={false}
             autoCapitalize="none"
-            onChangeText={(text) => setEmailAddress(text)}
+            onChangeText={(text) => setemail(text)}
           />
           <View style={styles.passwordField}>
             <View style={{ zIndex: 0 }}>
@@ -146,7 +151,10 @@ const SignInScreen = ({ navigation }) => {
               />
             </View>
             <View style={styles.passwordLength}>
-              <BarPasswordStrengthDisplay password={password} width={Dimensions.get("window").width*.7}  />
+              <BarPasswordStrengthDisplay
+                password={password}
+                width={Dimensions.get("window").width * 0.7}
+              />
             </View>
           </View>
 
@@ -260,8 +268,8 @@ const styles = StyleSheet.create({
   },
   passwordLength: {
     width: "70%",
-    marginTop:'2%',
-    marginLeft: '11.5%'
+    marginTop: "2%",
+    marginLeft: "11.5%",
   },
 });
 
