@@ -41,9 +41,14 @@ const SignUpScreen=({navigation})=>{
     const [confirmpasswordError, setconfirmpasswordError] = useState('');
 
     const [isPassword, setisPassword] = useState(true);
+    const [isConfirmPassword, setisConfirmPassword] = useState(true);
+
     const changePwdType = () => {
       setisPassword(!isPassword);
     };
+    const changeConfirmPassword=()=>{
+      setisConfirmPassword(!isConfirmPassword)
+    }
 
     const [success, setSuccess] = useState('');
 
@@ -86,7 +91,7 @@ const SignUpScreen=({navigation})=>{
             {
                 if (phoneNumber.length < 6 || phoneNumber.length > 15) {
                     setphonenumberError("Phone number must be between 6-15 digits")
-                      error = true;
+                      error = false;
                 }
                 else  setphonenumberError("")
             }
@@ -132,7 +137,7 @@ const SignUpScreen=({navigation})=>{
         }
         else {
           console.log("Failed") 
-        setSuccess("False")}
+          setSuccess("False")}
       }
 return(
   <KeyboardAwareScrollView>
@@ -217,7 +222,7 @@ return(
           placeholderTextColor='#8E9092'
           autoCorrect={false}
           autoCapitalize="none"
-          secureTextEntry={true}
+          secureTextEntry={isConfirmPassword}
           value={confirmPassword}
           onChangeText={(text) => setConfirmPassword(text)}
           errorText={confirmpasswordError}
@@ -225,9 +230,8 @@ return(
         />
         </View>
            <View style={authenticationstyle.passIcon}>
-              <IonIcon
-                size={24}
-                onPress={() => changePwdType()}
+              <IonIcon size={24}
+                onPress={() => changeConfirmPassword()}
                 color="#CCCCCC"
                 name="md-eye"
               />

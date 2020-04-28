@@ -10,7 +10,7 @@ const SuccessModal = ({ modalVisible, closeModal, message }) => {
         <Modal isVisible={modalVisible} >
             <View style={styles.container}>
                 <View style={styles.Header}>
-                  <View style={styles.iconcontainer}>
+                  <View style={styles.successcontainer}>
                     <Icon
                         size={24}
                         name="check"
@@ -45,9 +45,13 @@ const styles = StyleSheet.create({
         overflow: 'hidden'
 
     },
-    iconcontainer:{
-        flexDirection: "row",
-        marginTop: "4%",
+    successcontainer:{
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: '40%',
+        alignSelf: 'center',
+        marginTop:'4%'
+        
     },
     successText: {
         fontSize: 22,
@@ -57,9 +61,9 @@ const styles = StyleSheet.create({
       },
     Header: {
         height: '50%',
-        width: '100%',
         justifyContent: 'center',
         alignItems: 'center',
+        marginTop:'4%'
     },
     Footer: {
         height: '55%',
@@ -81,16 +85,16 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderColor: "#65C43B",
-        marginTop: "13%",
+        marginTop: "10%",
     },
     buttonText: {
         fontSize: 18,
         color: 'white',
         fontFamily: "Montserrat_SemiBold",
-        marginBottom: "13%",
+        marginBottom: "10%",
     },
     messageText: {
-        marginTop:15,
+        marginTop:'3%',
         fontSize: 15,
         fontFamily: "Montserrat_Medium",
     }
