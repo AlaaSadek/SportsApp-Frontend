@@ -59,14 +59,7 @@ const SignUpScreen=({navigation})=>{
           error = false;
         }
         else {
-          var letters = /^[A-Za-z]+$/;
-          if (letters.test(fullName) === true) {
             setfullnameError("")
-          }
-          else {
-            setfullnameError("Can't Enter Numbers")
-            error = false
-          }
         }
         if (emailAddress == '') {
             setemailaddressError("Please Enter Your Email")
@@ -170,7 +163,6 @@ return(
           errorText={fulnameError}
           container={signUpStyle.container}
         />
-       
         <Input
           placeholder="Email Address"
           placeholderTextColor='#8E9092'
@@ -192,7 +184,6 @@ return(
           container={signUpStyle.container}
         />
         <View style={authenticationstyle.passwordField}>
-        <View style={{ zIndex: 0 }}>
         <Input
           placeholder="Password"
           placeholderTextColor='#8E9092'
@@ -205,18 +196,14 @@ return(
           container={signUpStyle.container}
           style={signUpStyle.input}
         />
-           </View>
            <View style={authenticationstyle.passIcon}>
-              <IonIcon
-                size={24}
+              <IonIcon name="md-eye" style={authenticationstyle.eyeIcon}
                 onPress={() => changePwdType()}
-                color="#CCCCCC"
-                name="md-eye"
               />
             </View>
           </View>
           <View style={authenticationstyle.passwordField}>
-        <View style={{ zIndex: 0 }}>
+      
         <Input
           placeholder="Confirm Password"
           placeholderTextColor='#8E9092'
@@ -228,12 +215,10 @@ return(
           errorText={confirmpasswordError}
           container={signUpStyle.container}
         />
-        </View>
+      
            <View style={authenticationstyle.passIcon}>
-              <IonIcon size={24}
+              <IonIcon name="md-eye" style={authenticationstyle.eyeIcon}
                 onPress={() => changeConfirmPassword()}
-                color="#CCCCCC"
-                name="md-eye"
               />
             </View>
           </View>
@@ -252,12 +237,10 @@ return(
         </TouchableOpacity>
         </View>
         <View style={signUpStyle.line}></View>
+
         <View style={authenticationstyle.iconContainer}>
-         
        <TouchableOpacity>
-      
         <Icon name="facebook" style={authenticationstyle.facebookIcon}/>
-        
         </TouchableOpacity>
         <TouchableOpacity>
         <Icon name="twitter" style={authenticationstyle.twitterIcon}/>

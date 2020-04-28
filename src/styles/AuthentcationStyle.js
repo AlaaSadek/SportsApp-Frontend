@@ -68,6 +68,10 @@ export default StyleSheet.create({
         fontSize:26,
         alignSelf: 'center',
     },
+    eyeIcon:{
+      color:"#CCCCCC",
+      fontSize:24
+    },
     passwordField: {
         flexDirection: "row",
       },
@@ -81,10 +85,6 @@ export default StyleSheet.create({
         marginLeft: "75%",
         
       },
-      passwordLength: {
-        width: "70%",
-        marginTop:'2%',
-        marginLeft: '11.5%'
-      },
+     
 })
 
