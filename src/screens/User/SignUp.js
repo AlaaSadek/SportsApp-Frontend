@@ -10,7 +10,7 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import Icon from 'react-native-vector-icons/FontAwesome';
 import IonIcon from "react-native-vector-icons/Ionicons";
 import LoadingModal from '../../components/global/LoadingModal';
-import SuccessModel from '../../components/global/SccessModel';
+import SuccessModel from '../../components/global/SuccessModel';
 import ErrorModel from '../../components/global/ErrorModal';
 import Input from "../../components/global/Input";
 import MainButton from '../../components/global/MainButton';

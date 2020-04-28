@@ -29,11 +29,14 @@ export const signUpAction=(user = new SignUp() )=>
     )
         .catch(
             (err) => {
+                setTimeout(
                     ()=>{
                         console.log(err)
-                        dispatch({ type: Error_Sign_Up  })
+                        dispatch({ type: Error_Sign_Up, payload: err.response.data.message  })
                        
-                    }
+                    },200
+                )
+                
             }
         )
        
@@ -45,3 +48,4 @@ export const ClearSignUpStateAction = () => {
 
     return { type: Clear_Sign_Up_State }
 }
+
