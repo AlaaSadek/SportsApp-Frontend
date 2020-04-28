@@ -1,6 +1,7 @@
 import { createStackNavigator } from "react-navigation-stack";
 import MainScreen from "../screens/MainScreen";
-export default createStackNavigator(
+
+export default ApplicationNav = createStackNavigator(
   {
     MainScreen,
   },

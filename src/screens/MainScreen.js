@@ -1,15 +1,23 @@
 import React from "react";
-import {
-  Text,
-} from "react-native";
+import { Text, View } from "react-native";
+import { clearToken } from "../utils/LocalStorage";
+import MainButton from "../components/global/MainButton";
 
 const MainScreen = ({ navigation }) => {
-    return (
-      
-       <Text>
-           Main Screen
-       </Text>
-    );
-  };
+  return (
+    <View>
+      <Text>Main Screen</Text>
 
-  export default MainScreen;
+      <MainButton
+        onPress={() => {
+          clearToken();
+          navigation.navigate("SplashScreen");
+        }}
+      >
+        LogOut
+      </MainButton>
+    </View>
+  );
+};
+
+export default MainScreen;
