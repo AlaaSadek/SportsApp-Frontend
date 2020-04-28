@@ -10,7 +10,7 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import Icon from 'react-native-vector-icons/FontAwesome';
 import IonIcon from "react-native-vector-icons/Ionicons";
 import LoadingModal from '../../components/global/LoadingModal';
-import SuccessModel from '../../components/global/ScessModel';
+import SuccessModel from '../../components/global/SccessModel';
 import ErrorModel from '../../components/global/ErrorModal';
 import Input from "../../components/global/Input";
 import MainButton from '../../components/global/MainButton';
@@ -184,6 +184,7 @@ return(
           container={signUpStyle.container}
         />
         <View style={authenticationstyle.passwordField}>
+        <View style={{ zIndex: 0 }}>
         <Input
           placeholder="Password"
           placeholderTextColor='#8E9092'
@@ -196,6 +197,7 @@ return(
           container={signUpStyle.container}
           style={signUpStyle.input}
         />
+         </View>
            <View style={authenticationstyle.passIcon}>
               <IonIcon name="md-eye" style={authenticationstyle.eyeIcon}
                 onPress={() => changePwdType()}
@@ -203,7 +205,7 @@ return(
             </View>
           </View>
           <View style={authenticationstyle.passwordField}>
-      
+          <View style={{ zIndex: 0 }}>
         <Input
           placeholder="Confirm Password"
           placeholderTextColor='#8E9092'
@@ -215,7 +217,7 @@ return(
           errorText={confirmpasswordError}
           container={signUpStyle.container}
         />
-      
+      </View>
            <View style={authenticationstyle.passIcon}>
               <IonIcon name="md-eye" style={authenticationstyle.eyeIcon}
                 onPress={() => changeConfirmPassword()}

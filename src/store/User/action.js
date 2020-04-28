@@ -29,14 +29,11 @@ export const signUpAction=(user = new SignUp() )=>
     )
         .catch(
             (err) => {
-                setTimeout(
                     ()=>{
                         console.log(err)
-                        dispatch({ type: Error_Sign_Up, payload: err.response.data.message  })
+                        dispatch({ type: Error_Sign_Up  })
                        
-                    },200
-                )
-                
+                    }
             }
         )
        

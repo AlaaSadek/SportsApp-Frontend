@@ -1,6 +1,7 @@
 import { createSwitchNavigator } from "react-navigation";
 
-import Index from "../screens/IndexScreen";
+import SignUp from '../screens/User/SignUp'
+
 export default AuthNavigator = createSwitchNavigator({
-  Index,
+  SignUp,
 });

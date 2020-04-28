@@ -1,13 +1,13 @@
 import { createSwitchNavigator } from "react-navigation";
 
 import SplashScreen from "../screens/SplashScreen";
-import SignUp from "../screens/User/SignUp"
+import AuthentcationNav from './AuthentcationNav'
 export default MainNavigator = createSwitchNavigator(
   {
-    //SplashScreen,
-    SignUp
+    SplashScreen,
+    AuthentcationNav,
   },
   {
-    initialRouteName: "SignUp",
+    initialRouteName: "AuthentcationNav",
   }
 );
