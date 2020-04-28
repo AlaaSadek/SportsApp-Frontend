@@ -1,32 +1,31 @@
 import React, { useState } from "react";
-import { View ,TextInput,TouchableOpacity,Text,Image} from "react-native";
+import { View ,TouchableOpacity,Text,Image} from "react-native";
 import { useDispatch, useSelector } from 'react-redux';
 import { signUpAction, ClearSignUpStateAction } from '../../store/User/action'
 import { SignUp } from '../../models/users/UserModel';
-import { LinearGradient } from "expo-linear-gradient";
-import logo from '../../../assets/images/logo.png'
+import logo from '../../../assets/images/logo.png';
 import signUpStyle from "../../styles/SignUpStyle";
-import authenticationstyle from '../../styles/AuthentcationStyle'
+import authenticationstyle from '../../styles/AuthentcationStyle';
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import IonIcon from "react-native-vector-icons/Ionicons";
 import LoadingModal from '../../components/global/LoadingModal';
 import SuccessModel from '../../components/global/ScessModel';
+import ErrorModel from '../../components/global/ErrorModal';
 import Input from "../../components/global/Input";
 import MainButton from '../../components/global/MainButton';
-//import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
-const SignUpScreen=()=>{
+const SignUpScreen=({navigation})=>{
 
   const disptach = useDispatch();
 
   const requestState = useSelector(
-    (state) => {
+    (store) => {
       return {
-        pending: state.SignUpReducer.sendingSignUpRequest,
-        error: state.SignUpReducer.errorSignUpRequest,
-        success: state.SignUpReducer.successSignUpRequest,
-        errorMessage: state.SignUpReducer.errorMessage
+        pending: store.SignUpReducer.sendingSignUpRequest,
+        error: store.SignUpReducer.errorSignUpRequest,
+        success: store.SignUpReducer.successSignUpRequest,
+        errorMessage: store.SignUpReducer.errorMessage
       }
     })
     const [fullName, setFullName] = useState('');
@@ -127,8 +126,7 @@ const SignUpScreen=()=>{
       const onSubmit = () => {
 
         if (validate()) {
-          //console.log("Success")
-         // disptach(signUpAction(new SignUp(fullName,emailAddress, phoneNumber, password)))
+         disptach(signUpAction(new SignUp(fullName,emailAddress, phoneNumber, password)))
          setSuccess("True")
          console.log(success)
         }
@@ -138,9 +136,10 @@ const SignUpScreen=()=>{
       }
 return(
   <KeyboardAwareScrollView>
+        <SuccessModel modalVisible={requestState.success} closeModal={() => { disptach(ClearSignUpStateAction())}} message="You are successfully Registered"/>
+        <ErrorModel modalVisible={requestState.error} closeModal={() => { disptach(ClearSignUpStateAction()) }} message={requestState.errorMessage } />
+        {/* <LoadingModal modalVisible={requestState.pending} /> */}
         <View style={authenticationstyle.whiteBackground}>
-            {/* <LoadingModal modalVisible={requestState.pending} /> */}
-            {success=='True'?<SuccessModel />:null}
           <View style={authenticationstyle.shadowBackground}>
             <View style={authenticationstyle.logoContainer}>
              <Image source={logo} style={authenticationstyle.logo} />
@@ -157,7 +156,6 @@ return(
             </View>
             
         <Input
-          
           placeholder="Full Name"
           placeholderTextColor='#8E9092'
           autoCorrect={false}
@@ -165,7 +163,6 @@ return(
           value={fullName}
           onChangeText={(text) => setFullName(text)}
           errorText={fulnameError}
-          
           container={signUpStyle.container}
         />
        
@@ -176,9 +173,8 @@ return(
           autoCapitalize="none"
           value={emailAddress}
           onChangeText={(text) => setEmailAddress(text)}
-          errorText={phonenumberError}
+          errorText={emailaddressError}
           container={signUpStyle.container}
-
         />
         <Input
           placeholder="Phone Number"
@@ -187,7 +183,7 @@ return(
           autoCapitalize="none"
           value={phoneNumber}
           onChangeText={(text) => setPhonenumber(text)}
-          errorText={passwordError}
+          errorText={phonenumberError}
           container={signUpStyle.container}
         />
         <View style={authenticationstyle.passwordField}>

@@ -1,4 +1,6 @@
 import {SignUp} from '../../models/users/UserModel';
+import backendAxios from '../../services/backendAxios'
+
 
 export const Start_Sign_Up = 'Start_Sign_UP';
 export const Success_Sign_Up = 'Success_SIGN_UP';
@@ -11,17 +13,18 @@ export const signUpAction=(user = new SignUp() )=>
     return (dispatch) => {
 
     dispatch({ type: Start_Sign_Up })
-    backendAxios.post('',
-
+    backendAxios.post('api/Account/Register',
     {  
-    //    fullname:user.fullName,
-    //    email:user.emailAddress,
-    //    phoneNumber:user.phoneNumber,
-    //    password:user.password,    
+        fullName: user.fullName,
+        mobile: user.phoneNumber,
+        email: user.emailAddress,
+        password:user.password  ,
+       
     }
     ).then(
         (res) => {
             dispatch({ type: Success_Sign_Up })
+            console.log(user.fullName,user.phoneNumber,user.emailAddress,user.password)
         }
     )
         .catch(
@@ -30,6 +33,7 @@ export const signUpAction=(user = new SignUp() )=>
                     ()=>{
                         console.log(err)
                         dispatch({ type: Error_Sign_Up, payload: err.response.data.message  })
+                       
                     },200
                 )
                 
