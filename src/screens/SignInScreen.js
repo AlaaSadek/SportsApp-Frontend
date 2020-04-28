@@ -103,7 +103,7 @@ const SignInScreen = ({ navigation }) => {
       <LoadingModal modalVisible={requestState.pending} />
 
       <View style={styles.header}>
-        <View style={styles.logo}>
+        <View style={styles.logoContainer}>
           <Image source={logo} style={styles.img} />
         </View>
 
@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get("window").height > 600 ? 300 : 200,
     height: Dimensions.get("window").height > 600 ? 215 : 150,
   },
-  logo: {
+  logoContainer: {
     backgroundColor: "white",
     alignItems: "center",
   },
@@ -253,9 +253,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     width: "25%",
     alignSelf: "center",
-  },
-  passwordField: {
-    flexDirection: "row",
   },
   passwordField: {
     flexDirection: "column",
