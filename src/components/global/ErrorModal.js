@@ -1,5 +1,6 @@
 import React from "react";
-import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import { Text, View, StyleSheet, TouchableOpacity,  Dimensions, Platform,
+} from "react-native";
 import Modal from "react-native-modal";
 import Icon from "react-native-vector-icons/FontAwesome5";
 const ErrorModal = ({ modalVisible, closeModal, message }) => {
@@ -42,12 +43,12 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: "rgba(0, 0, 0, 0.1)",
     minHeight: "20%",
-    maxHeight: "25%",
+    maxHeight:Dimensions.get("window").height > 600 ? "25%" : "30%",
     overflow: "hidden",
   },
   icon: {
     flexDirection: "row",
-    marginTop: "4%",
+    marginTop: "5%",
   },
 
   modalFooter: {
@@ -80,9 +81,11 @@ const styles = StyleSheet.create({
   },
   errorText: {
     fontSize: 22,
-    marginBottom: 18,
+    marginBottom: 17,
     fontFamily: "Montserrat_Medium",
     color: "#d00100",
+    marginTop: Platform.OS === 'ios' ? "0.5%" : "-1%",
+
   },
   messageText: {
     fontSize: 15,
