@@ -10,12 +10,10 @@ export class SignUp {
     email = "",
     phoneNumber = "",
     password = "",
-    confirmPassword = ""
   ) {
     this.fullName = fullName;
     this.email = email;
     this.phoneNumber = phoneNumber;
     this.password = password;
-    this.confirmPassword = confirmPassword;
   }
 }

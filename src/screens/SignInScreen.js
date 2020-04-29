@@ -109,11 +109,11 @@ const SignInScreen = ({ navigation }) => {
         </View>
 
         <View style={styles.signInUpContainer}>
-          <TouchableOpacity>
+          <TouchableOpacity >
             <Text style={styles.loginTXT}>Login</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => { navigation.navigate('SignUp') }}>
             <Text style={styles.signupTXT}>Signup</Text>
           </TouchableOpacity>
         </View>

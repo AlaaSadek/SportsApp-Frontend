@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     color: "#d00100",
   },
   errIcon: {
-    marginTop:"1%",
+    marginTop: "1%",
   },
   modalFooter: {
     height: "55%",
