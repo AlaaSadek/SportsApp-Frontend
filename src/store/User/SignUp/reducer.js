@@ -1,5 +1,5 @@
-import { Start_Sign_Up,Error_Sign_Up,Success_Sign_Up,Clear_Sign_Up_State } from '../User/action'
-import { SignUp } from '../../models/users/UserModel'
+import { Start_Sign_Up,Error_Sign_Up,Success_Sign_Up,Clear_Sign_Up_State } from './action'
+
 
 const initialState = {
     

@@ -1,3 +1,3 @@
 import { combineReducers } from 'redux'
-import SignUpReducer from '../store/User/reducer'
+import SignUpReducer from '../store/User/SignUp/reducer'
 export default rootReducer = combineReducers({ SignUpReducer })

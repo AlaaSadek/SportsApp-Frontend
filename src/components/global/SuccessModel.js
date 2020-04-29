@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 import Modal from 'react-native-modal';
 import Icon from "react-native-vector-icons/FontAwesome5";
 
@@ -40,8 +40,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 10,
         borderColor: "rgba(0, 0, 0, 0.1)",
-        minHeight: '20%',
-        maxHeight: '25%',
+        height: Dimensions.get("window").height > 660 ? '25%':'30%', //130 instead of 150
         overflow: 'hidden'
 
     },
@@ -63,7 +62,7 @@ const styles = StyleSheet.create({
         height: '50%',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop:'4%'
+        marginTop:Dimensions.get("window").height > 660 ? '4%':'6%'
     },
     Footer: {
         height: '55%',

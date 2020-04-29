@@ -1,5 +1,5 @@
-import {SignUp} from '../../models/users/UserModel';
-import backendAxios from '../../services/backendAxios'
+import {SignUp} from '../../../models/users/UserModel';
+import backendAxios from '../../../services/backendAxios'
 
 
 export const Start_Sign_Up = 'Start_Sign_UP';
@@ -22,7 +22,7 @@ export const signUpAction=(user = new SignUp() )=>
        
     }
     ).then(
-        (res) => {
+        () => {
             dispatch({ type: Success_Sign_Up })
             console.log(user.fullName,user.phoneNumber,user.emailAddress,user.password)
         }

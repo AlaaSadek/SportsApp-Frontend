@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View ,TouchableOpacity,Text,Image} from "react-native";
 import { useDispatch, useSelector } from 'react-redux';
-import { signUpAction, ClearSignUpStateAction } from '../../store/User/action'
+import { signUpAction, ClearSignUpStateAction } from '../../store/User/SignUp/action'
 import { SignUp } from '../../models/users/UserModel';
 import logo from '../../../assets/images/logo.png';
 import signUpStyle from "../../styles/SignUpStyle";
@@ -136,7 +136,7 @@ return(
   <KeyboardAwareScrollView>
         <SuccessModel modalVisible={requestState.success} closeModal={() => { disptach(ClearSignUpStateAction())}} message="You are successfully Registered"/>
         <ErrorModel modalVisible={requestState.error} closeModal={() => { disptach(ClearSignUpStateAction()) }} message={requestState.errorMessage } />
-        {/* <LoadingModal modalVisible={requestState.pending} /> */}
+        <LoadingModal modalVisible={requestState.pending} />
         <View style={authenticationstyle.whiteBackground}>
           <View style={authenticationstyle.shadowBackground}>
             <View style={authenticationstyle.logoContainer}>
