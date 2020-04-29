@@ -3,6 +3,8 @@ import { createAppContainer } from "react-navigation";
 import { AppLoading } from "expo";
 import * as Font from "expo-font";
 import MainNav from "./src/navigation/MainNav";
+import store from './src/store/index';
+import { Provider } from "react-redux";
 
 const App = createAppContainer(MainNav);
 
@@ -27,5 +29,9 @@ export default () => {
       />
     );
   }
-  return <App />;
+  return(
+  <Provider store={store}>
+   <App />
+   </Provider>
+  );
 };
