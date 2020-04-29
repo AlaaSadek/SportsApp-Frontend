@@ -1,6 +1,6 @@
 import {SignUp} from '../../../models/users/UserModel';
-import backendAxios from '../../../services/backendAxios'
 
+import axios from 'axios';
 
 export const Start_Sign_Up = 'Start_Sign_UP';
 export const Success_Sign_Up = 'Success_SIGN_UP';
@@ -13,7 +13,7 @@ export const signUpAction=(user = new SignUp() )=>
     return (dispatch) => {
 
     dispatch({ type: Start_Sign_Up })
-    backendAxios.post('api/Account/Register',
+    axios.post('https://sports-app-api.herokuapp.com/api/Account/Register',
     {  
         fullName: user.fullName,
         mobile: user.phoneNumber,
@@ -24,16 +24,15 @@ export const signUpAction=(user = new SignUp() )=>
     ).then(
         () => {
             dispatch({ type: Success_Sign_Up })
-            console.log(user.fullName,user.phoneNumber,user.emailAddress,user.password)
+            
         }
     )
         .catch(
             (err) => {
                 setTimeout(
                     ()=>{
-                        console.log(err)
+                        
                         dispatch({ type: Error_Sign_Up, payload: err.response.data.message  })
-                       
                     },200
                 )
                 

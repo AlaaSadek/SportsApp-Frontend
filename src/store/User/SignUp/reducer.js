@@ -2,8 +2,6 @@ import { Start_Sign_Up,Error_Sign_Up,Success_Sign_Up,Clear_Sign_Up_State } from 
 
 
 const initialState = {
-    
-
     sendingSignUpRequest: false,
     errorSignUpRequest: false,
     successSignUpRequest: false,

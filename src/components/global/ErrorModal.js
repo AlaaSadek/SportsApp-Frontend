@@ -1,5 +1,11 @@
 import React from "react";
-import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Dimensions,
+} from "react-native";
 import Modal from "react-native-modal";
 import Icon from "react-native-vector-icons/FontAwesome5";
 const ErrorModal = ({ modalVisible, closeModal, message }) => {
@@ -8,8 +14,13 @@ const ErrorModal = ({ modalVisible, closeModal, message }) => {
     <Modal isVisible={modalVisible}>
       <View style={styles.container}>
         <View style={styles.modalBody}>
-          <View style={styles.icon}>
-            <Icon size={20} color="#d00100" name="exclamation-triangle" />
+          <View style={styles.header}>
+            <Icon
+              style={styles.errIcon}
+              size={20}
+              color="#d00100"
+              name="exclamation-triangle"
+            />
             <Text style={styles.errorText}> ERROR </Text>
           </View>
           <Text style={styles.messageText}>
@@ -42,14 +53,22 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: "rgba(0, 0, 0, 0.1)",
     minHeight: "20%",
-    maxHeight: "25%",
+    maxHeight: Dimensions.get("window").height > 600 ? "25%" : "30%",
     overflow: "hidden",
   },
-  icon: {
+  header: {
     flexDirection: "row",
-    marginTop: "4%",
+    marginTop: "5%",
+    marginBottom: "7%",
   },
-
+  errorText: {
+    fontSize: 22,
+    fontFamily: "Montserrat_Medium",
+    color: "#d00100",
+  },
+  errIcon: {
+    marginTop:"1%",
+  },
   modalFooter: {
     height: "55%",
     width: "100%",
@@ -77,12 +96,6 @@ const styles = StyleSheet.create({
     color: "white",
     fontFamily: "Montserrat_SemiBold",
     marginBottom: "13%",
-  },
-  errorText: {
-    fontSize: 22,
-    marginBottom: 18,
-    fontFamily: "Montserrat_Medium",
-    color: "#d00100",
   },
   messageText: {
     fontSize: 15,

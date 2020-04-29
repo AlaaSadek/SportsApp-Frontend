@@ -126,10 +126,9 @@ const SignUpScreen=({navigation})=>{
         if (validate()) {
          disptach(signUpAction(new SignUp(fullName,emailAddress, phoneNumber, password)))
          setSuccess("True")
-         console.log(success)
         }
         else {
-          console.log("Failed") 
+          
           setSuccess("False")}
       }
 return(
