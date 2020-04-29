@@ -47,6 +47,7 @@ const SignInScreen = ({ navigation }) => {
 
   useEffect(() => {
     if (requestState.success) {
+      disptach(clearSignInStateAction());
       navigation.navigate("ApplicationNav");
     }
   });

@@ -13,7 +13,7 @@ export default ({ navigation }) => {
       if (validToken == false) navigation.navigate("AuthentcationNav");
       else navigation.navigate("ApplicationNav");
     } catch (error) {
-      return err;
+      return error;
     }
   };
   useEffect(() => {

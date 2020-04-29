@@ -9,7 +9,6 @@ import {
 import Modal from "react-native-modal";
 import Icon from "react-native-vector-icons/FontAwesome5";
 const ErrorModal = ({ modalVisible, closeModal, message }) => {
-  console.log(Dimensions.get("window").height);
   if (!modalVisible) return null;
   return (
     <Modal isVisible={modalVisible}>

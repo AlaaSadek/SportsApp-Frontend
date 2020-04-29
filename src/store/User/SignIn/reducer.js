@@ -7,7 +7,6 @@ const initialState = {
 }
 
 export default (state = initialState, action) => {
-    console.log(action)
     switch (action.type) {
         case Clear_Sign_In_State:
             return { ...initialState }
