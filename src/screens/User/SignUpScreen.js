@@ -61,7 +61,7 @@ const SignUpScreen = ({ navigation }) => {
     }
     else {
       var letters = /^[A-Za-z ]+$/;
-     
+      
       if (letters.test(fullName) === true ) {
         setfullnameError("")
       }
@@ -166,7 +166,7 @@ const SignUpScreen = ({ navigation }) => {
           placeholder="Full Name"
           placeholderTextColor='#8E9092'
           autoCorrect={false}
-          autoCapitalize="none"
+          AutoCapitalize="words"
           value={fullName}
           onChangeText={(text) => setFullName(text)}
           errorText={fulnameError}
