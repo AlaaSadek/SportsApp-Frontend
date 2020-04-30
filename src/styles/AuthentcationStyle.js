@@ -27,10 +27,10 @@ export default StyleSheet.create({
   },
   logo: {
     resizeMode: 'center',
-   
     width: Dimensions.get("window").height > 600 ? 300 : 200,
-   height: Dimensions.get("window").height > 740 ? 200 : Dimensions.get("window").height < 660 ? 95 : 140,
-   // height: Dimensions.get("window").height > 740 ? 215 : Dimensions.get("window").height < 660 ? 95 : 140,
+     // height: Dimensions.get("window").height > 740 ? 215 : Dimensions.get("window").height < 660 ? 95 : 140,
+    height: Dimensions.get("window").height > 740 ? 200 : Dimensions.get("window").height < 660 ? 95 : 140,
+  
   },
   signInUpContainer: {
     flexDirection: 'row',

@@ -46,7 +46,6 @@ const styles = StyleSheet.create({
     color: "#1D2226",
     paddingHorizontal: "5%",
     width: "72.8%",
-    
     marginLeft: "12%",
     //height: 50, //mehtag ytzbt
     height: Dimensions.get('window').height > 730 ? 50 :Dimensions.get('window').height < 550 ? 38: Dimensions.get('window').height < 600 ? 40 : 45,
@@ -77,7 +76,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   main: {
-    
+
    marginTop: Dimensions.get('window').height < 550 ? '0%' : '3%',
   }
 });
