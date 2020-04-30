@@ -207,12 +207,14 @@ const SignUpScreen = ({ navigation }) => {
               onPress={() => changePwdType()}
             />
           </View>
+
           <View style={authenticationstyle.passwordLength}>
               <BarPasswordStrengthDisplay
                 password={password}
                 width={Dimensions.get("window").width * 0.7}
               />
             </View>
+            
         </View>
         <View style={authenticationstyle.passwordField}>
           <View style={{ zIndex: 0 }}>

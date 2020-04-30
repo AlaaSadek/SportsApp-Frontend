@@ -40,6 +40,7 @@ export default StyleSheet.create({
 
     },
     input: {
+        
         //height: Dimensions.get('window').height > 800 ? 50 : Dimensions.get('window').height < 660 ? 33 : 45,
     }
 })
