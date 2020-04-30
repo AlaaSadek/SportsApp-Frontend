@@ -166,7 +166,7 @@ const SignUpScreen = ({ navigation }) => {
           placeholder="Full Name"
           placeholderTextColor='#8E9092'
           autoCorrect={false}
-          AutoCapitalize="words"
+          autoCapitalize="words"
           value={fullName}
           onChangeText={(text) => setFullName(text)}
           errorText={fulnameError}
