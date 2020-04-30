@@ -60,7 +60,15 @@ const SignUpScreen = ({ navigation }) => {
       error = false;
     }
     else {
-      setfullnameError("")
+      var letters = /^[A-Za-z ]+$/;
+     
+      if (letters.test(fullName) === true ) {
+        setfullnameError("")
+      }
+      else {
+        setfullnameError("Can't Enter Numbers")
+        error = false
+      }
     }
     if (emailAddress == '') {
       setemailaddressError("Please Enter Your Email")
