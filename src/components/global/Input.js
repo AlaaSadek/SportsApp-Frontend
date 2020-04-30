@@ -28,7 +28,6 @@ const Input = (props) => {
 };
 const styles = StyleSheet.create({
   errorBorder: {
-    //borderColor:'#b30000',
     borderColor: '#b30000',
     alignSelf: 'center',
     borderRadius: 5,
@@ -37,7 +36,6 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     //height:'7%',
-
   },
   input: {
     borderWidth: 1,
@@ -48,10 +46,10 @@ const styles = StyleSheet.create({
     color: "#1D2226",
     paddingHorizontal: "5%",
     width: "72.8%",
-    //height:'100%',
+    
     marginLeft: "12%",
-    //height: 45, //mehtag ytzbt
-    height: Dimensions.get('window').height > 800 ? 50 : Dimensions.get('window').height < 660 ? 33 : 43,
+    height: Dimensions.get('window').height > 730 ? 50 :Dimensions.get('window').height < 550 ? 38: Dimensions.get('window').height < 600 ? 40 : 45,
+    //height: 50, //mehtag ytzbt
     backgroundColor: "white",
     shadowColor: "rgba(31, 84, 195, 0.149)",
     shadowOffset: {
@@ -68,7 +66,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     marginRight: '13%',
     marginLeft: '13%',
-    marginTop: Dimensions.get('window').height < 660 ? '2%' : '3%',
+    //marginTop: Dimensions.get('window').height < 660 ? '2%' : '3%',
     marginBottom: "0%",
   },
 
@@ -79,7 +77,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   main: {
-    marginTop: '3%',
+   marginTop: Dimensions.get('window').height < 550 ? '0%' : '3%',
   }
 });
 

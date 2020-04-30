@@ -19,16 +19,18 @@ export default StyleSheet.create({
     },
     shadowRadius: 15.19,
     elevation: 23,
-    marginBottom: Dimensions.get('window').height > 850 ? '6%' : Dimensions.get("window").height < 660 ? '3%' : '6%'
+    marginBottom: Dimensions.get('window').height > 850 ? '12%' : Dimensions.get("window").height < 660 ? '3%':  '4%'
   },
   logoContainer: {
     alignItems: 'center',
+    backgroundColor: "white",
   },
   logo: {
     resizeMode: 'center',
     // marginTop:Dimensions.get('window').height>850?'7%':'30%',
-    width: Dimensions.get("window").height > 850 ? 300 : 200,
-    height: Dimensions.get("window").height > 800 ? 200 : Dimensions.get("window").height < 660 ? 100 : 130, //130 instead of 150
+    width: Dimensions.get("window").height > 600 ? 300 : 200,
+   // height: Dimensions.get("window").height > 740 ? 215 : Dimensions.get("window").height < 660 ? 95 : 140,
+   height: Dimensions.get("window").height > 740 ? 200 : Dimensions.get("window").height < 660 ? 95 : 140,
   },
   signInUpContainer: {
     flexDirection: 'row',
@@ -81,10 +83,15 @@ export default StyleSheet.create({
   passIcon: {
     zIndex: 1,
     position: "absolute",
-    marginTop: Dimensions.get("window").height > 600 ? "9.6%" : Dimensions.get("window").height < 660 ? '8%' : "11.1%",
+    marginTop: Dimensions.get("window").height > 740 ? '10%' : Dimensions.get("window").height < 550 ?  '7%' :Dimensions.get("window").height < 600 ? '9%' : '10%', 
     marginLeft: "75%",
-
   },
-
+  passwordLength: {
+    width: "70%",
+    height:'1%',
+    marginTop: "1%",
+    marginLeft: "11.5%",
+    marginBottom:'0%'
+  },
 })
 

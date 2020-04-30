@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet,Dimensions } from 'react-native';
 
 export default StyleSheet.create({
     activeTextLine: {
@@ -40,7 +40,7 @@ export default StyleSheet.create({
 
     },
     input: {
-        // height:'100%'
+        //height: Dimensions.get('window').height > 800 ? 50 : Dimensions.get('window').height < 660 ? 33 : 45,
     }
 })
 

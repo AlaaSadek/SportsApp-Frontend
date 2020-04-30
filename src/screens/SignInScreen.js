@@ -191,7 +191,8 @@ const styles = StyleSheet.create({
   img: {
     resizeMode: "center",
     width: Dimensions.get("window").height > 600 ? 300 : 200,
-    height: Dimensions.get("window").height > 600 ? 215 : 150,
+    //height: Dimensions.get("window").height > 600 ? 215 : 150,
+    height: Dimensions.get("window").height > 740 ? 200 : Dimensions.get("window").height < 660 ? 95 : 140,
   },
   logoContainer: {
     backgroundColor: "white",
@@ -208,7 +209,8 @@ const styles = StyleSheet.create({
 
     elevation: 23,
     backgroundColor: "white",
-    marginBottom: "6%",
+    // marginBottom: "6%",
+    marginBottom: Dimensions.get('window').height > 850 ? '12%' : Dimensions.get("window").height < 660 ? '3%':  '4%'
   },
 
   signInUpContainer: {
@@ -261,7 +263,8 @@ const styles = StyleSheet.create({
   passIcon: {
     zIndex: 1,
     position: "absolute",
-    marginTop: Dimensions.get("window").height > 600 ? "9.6%" : "11.1%",
+    //marginTop: Dimensions.get("window").height > 600 ? "9.6%" : "11.1%",
+    marginTop: Dimensions.get("window").height > 740 ? '10%' :Dimensions.get("window").height < 550 ?  '7%': Dimensions.get("window").height < 600 ? '9%' : '10%', 
     marginLeft: "75%",
   },
   passwordLength: {

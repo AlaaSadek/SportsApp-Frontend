@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, TouchableOpacity, Text, Image } from "react-native";
+import { View, TouchableOpacity, Text, Image,Dimensions } from "react-native";
 import { useDispatch, useSelector } from 'react-redux';
 import { signUpAction, ClearSignUpStateAction } from '../../store/User/SignUp/action'
 import { SignUp } from '../../models/users/UserModel';
@@ -14,6 +14,7 @@ import SuccessModel from '../../components/global/SuccessModel';
 import ErrorModel from '../../components/global/ErrorModal';
 import Input from "../../components/global/Input";
 import MainButton from '../../components/global/MainButton';
+import { BarPasswordStrengthDisplay } from "react-native-password-strength-meter";
 
 const SignUpScreen = ({ navigation }) => {
 
@@ -152,7 +153,7 @@ const SignUpScreen = ({ navigation }) => {
           </View>
           <View style={signUpStyle.activeTextLine}></View>
         </View>
-
+        
         <Input
           placeholder="Full Name"
           placeholderTextColor='#8E9092'
@@ -162,6 +163,7 @@ const SignUpScreen = ({ navigation }) => {
           onChangeText={(text) => setFullName(text)}
           errorText={fulnameError}
           container={signUpStyle.container}
+          style={signUpStyle.input}
         />
         <Input
           placeholder="Email Address"
@@ -172,6 +174,7 @@ const SignUpScreen = ({ navigation }) => {
           onChangeText={(text) => setEmailAddress(text)}
           errorText={emailaddressError}
           container={signUpStyle.container}
+          style={signUpStyle.input}
         />
         <Input
           placeholder="Phone Number"
@@ -182,6 +185,7 @@ const SignUpScreen = ({ navigation }) => {
           onChangeText={(text) => setPhonenumber(text)}
           errorText={phonenumberError}
           container={signUpStyle.container}
+          style={signUpStyle.input}
         />
         <View style={authenticationstyle.passwordField}>
           <View style={{ zIndex: 0 }}>
@@ -203,6 +207,12 @@ const SignUpScreen = ({ navigation }) => {
               onPress={() => changePwdType()}
             />
           </View>
+          <View style={authenticationstyle.passwordLength}>
+              <BarPasswordStrengthDisplay
+                password={password}
+                width={Dimensions.get("window").width * 0.7}
+              />
+            </View>
         </View>
         <View style={authenticationstyle.passwordField}>
           <View style={{ zIndex: 0 }}>
@@ -216,6 +226,7 @@ const SignUpScreen = ({ navigation }) => {
               onChangeText={(text) => setConfirmPassword(text)}
               errorText={confirmpasswordError}
               container={signUpStyle.container}
+              style={signUpStyle.input}
             />
           </View>
           <View style={authenticationstyle.passIcon}>
@@ -224,6 +235,7 @@ const SignUpScreen = ({ navigation }) => {
             />
           </View>
         </View>
+       
         <MainButton
           firstGradient="#1D55C5"
           secondGradient="#E93354"
@@ -251,8 +263,8 @@ const SignUpScreen = ({ navigation }) => {
             <IonIcon name="ios-mail" style={authenticationstyle.envelopIcon} />
           </TouchableOpacity>
         </View>
-      </View>
-    </KeyboardAwareScrollView>
+        </View>
+        </KeyboardAwareScrollView>
   )
 
 }
