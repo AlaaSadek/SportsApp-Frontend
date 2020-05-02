@@ -151,12 +151,7 @@ const SignInScreen = ({ navigation }) => {
                 name="md-eye"
               />
             </View>
-            <View style={styles.passwordLength}>
-              <BarPasswordStrengthDisplay
-                password={password}
-                width={Dimensions.get("window").width * 0.7}
-              />
-            </View>
+            
           </View>
 
           <MainButton
