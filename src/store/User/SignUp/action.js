@@ -1,6 +1,5 @@
 import { SignUp } from '../../../models/users/UserModel';
-
-import axios from 'axios';
+import backendAxios from "../../../services/backendAxios";
 
 export const Start_Sign_Up = 'Start_Sign_UP';
 export const Success_Sign_Up = 'Success_SIGN_UP';
@@ -12,7 +11,7 @@ export const signUpAction = (user = new SignUp()) => {
     return (dispatch) => {
         console.log(user)
         dispatch({ type: Start_Sign_Up })
-        axios.post('https://sports-app-api.herokuapp.com/api/Account/Register',
+        backendAxios .post('/Account/Register',
             {
                 fullName: user.fullName,
                 mobile: user.phoneNumber,

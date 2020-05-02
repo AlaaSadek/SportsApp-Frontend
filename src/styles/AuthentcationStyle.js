@@ -87,11 +87,13 @@ export default StyleSheet.create({
     marginLeft: "75%",
   },
   passwordLength: {
-    width: "70%",
+    
     height:'1%',
-    marginTop: "0%",
+    marginTop: "1%",
     marginLeft: "11.5%",
     marginBottom:'3%'
   },
+ 
+  
 })
 

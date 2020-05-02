@@ -15,7 +15,12 @@ import ErrorModel from '../../components/global/ErrorModal';
 import Input from "../../components/global/Input";
 import MainButton from '../../components/global/MainButton';
 import { BarPasswordStrengthDisplay } from "react-native-password-strength-meter";
-
+import PassMeter from "react-native-passmeter";
+import RNPasswordStrengthMeter from 'react-native-password-strength-meter';
+const MAX_LEN = 15,
+  MIN_LEN = 6,
+  PASS_LABELS = ["Too Short", "Weak", "Normal", "Strong", "Secure"];
+  
 const SignUpScreen = ({ navigation }) => {
 
   const disptach = useDispatch();
@@ -88,7 +93,7 @@ const SignUpScreen = ({ navigation }) => {
       setphonenumberError("Please Enter Your Phone Number ")
     }
     else {
-      var numbers = /^[0-9\b]+$/;
+      var numbers = /^[0-9+\b]+$/;
       if (numbers.test(phoneNumber) === true) {
         {
           if (phoneNumber.length < 6 || phoneNumber.length > 15) {
@@ -221,6 +226,7 @@ const SignUpScreen = ({ navigation }) => {
                 width={Dimensions.get("window").width * 0.7}
               />
             </View>
+            
         </View>
         <View style={authenticationstyle.passwordField}>
           <View style={{ zIndex: 0 }}>
