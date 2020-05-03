@@ -48,8 +48,9 @@ const PasswordstrengthBar = (props) => {
 const styles = StyleSheet.create({
     passwordLength: {
         width: "70%",
-        marginTop: "2%",
         marginLeft: "11.5%",
+        marginTop:'0%',
+        marginBottom:'0%'
       },
 });
 

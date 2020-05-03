@@ -77,7 +77,10 @@ const SignUpScreen = ({ navigation }) => {
     else {
       const valid = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
       if (valid.test(emailAddress) === true) {
+        let lowercaseEmail=emailAddress.toLowerCase();
+        setEmailAddress(lowercaseEmail)
         setemailaddressError("")
+
       }
       else {
         setemailaddressError("Invalid Email")
@@ -100,7 +103,7 @@ const SignUpScreen = ({ navigation }) => {
 
       }
       else {
-        setphonenumberError("Can't Enter Letters")
+        setphonenumberError("Can't Enter Letters or symobols")
         error = false
       }
     }
@@ -180,7 +183,7 @@ const SignUpScreen = ({ navigation }) => {
           autoCorrect={false}
           autoCapitalize="none"
           value={emailAddress}
-          onChangeText={(text) => setEmailAddress(text)}
+          onChangeText={(text) => setEmailAddress(text.toLowerCase())}
           errorText={emailaddressError}
           container={signUpStyle.container}
           style={signUpStyle.input}
@@ -208,7 +211,7 @@ const SignUpScreen = ({ navigation }) => {
               onChangeText={(text) => setPassword(text)}
               errorText={passwordError}
               container={signUpStyle.container}
-              style={signUpStyle.input}
+              
             />
           </View>
           <View style={authenticationstyle.passIcon}>
@@ -232,8 +235,7 @@ const SignUpScreen = ({ navigation }) => {
               value={confirmPassword}
               onChangeText={(text) => setConfirmPassword(text)}
               errorText={confirmpasswordError}
-              container={signUpStyle.container}
-              style={signUpStyle.input}
+              container={signUpStyle.container}     
             />
           </View>
           <View style={authenticationstyle.passIcon}>

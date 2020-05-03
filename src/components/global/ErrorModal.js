@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   },
   header: {
     flexDirection: "row",
-    marginTop: "5%",
+    marginTop: "10%",
     marginBottom: "7%",
   },
   errorText: {
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
   messageText: {
     fontSize: 15,
     fontFamily: "Montserrat_Medium",
-    marginTop: "4%",
+    marginTop: "2%",
   },
 });
 export default ErrorModal;
