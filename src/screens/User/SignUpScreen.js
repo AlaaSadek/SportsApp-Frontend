@@ -14,13 +14,8 @@ import SuccessModel from '../../components/global/SuccessModel';
 import ErrorModel from '../../components/global/ErrorModal';
 import Input from "../../components/global/Input";
 import MainButton from '../../components/global/MainButton';
-import { BarPasswordStrengthDisplay } from "react-native-password-strength-meter";
-import PassMeter from "react-native-passmeter";
-import RNPasswordStrengthMeter from 'react-native-password-strength-meter';
-const MAX_LEN = 15,
-  MIN_LEN = 6,
-  PASS_LABELS = ["Too Short", "Weak", "Normal", "Strong", "Secure"];
-  
+
+import PasswordStrength from "../../components/global/PasswordstrengthBar";
 const SignUpScreen = ({ navigation }) => {
 
   const disptach = useDispatch();
@@ -167,6 +162,7 @@ const SignUpScreen = ({ navigation }) => {
           <View style={signUpStyle.activeTextLine}></View>
         </View>
         
+       
         <Input
           placeholder="Full Name"
           placeholderTextColor='#8E9092'
@@ -220,13 +216,10 @@ const SignUpScreen = ({ navigation }) => {
               onPress={() => changePwdType()}
             />
           </View>
-          <View style={authenticationstyle.passwordLength}>
-              <BarPasswordStrengthDisplay
-                password={password}
-                width={Dimensions.get("window").width * 0.7}
-              />
-            </View>
-            
+          <PasswordStrength 
+               password={password}
+              
+        />
         </View>
         <View style={authenticationstyle.passwordField}>
           <View style={{ zIndex: 0 }}>

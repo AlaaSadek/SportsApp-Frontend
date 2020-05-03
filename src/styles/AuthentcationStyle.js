@@ -29,7 +29,7 @@ export default StyleSheet.create({
     resizeMode: 'center',
     width: Dimensions.get("window").height > 600 ? 300 : 200,
      // height: Dimensions.get("window").height > 740 ? 215 : Dimensions.get("window").height < 660 ? 95 : 140,
-    height: Dimensions.get("window").height > 740 ? 170 : Dimensions.get("window").height < 660 ? 95 : 130,
+    height: Dimensions.get("window").height > 740 ? 170 : Dimensions.get("window").height < 660 ? 95 : 125,
   
   },
   signInUpContainer: {
@@ -86,11 +86,7 @@ export default StyleSheet.create({
     marginTop: Dimensions.get("window").height > 740 ? '10%' : Dimensions.get("window").height < 550 ?  '7%' :Dimensions.get("window").height < 600 ? '9%' : '10%', 
     marginLeft: "75%",
   },
-  passwordLength: {
-    width: "70%",
-    marginTop: "2%",
-    marginLeft: "11.5%",
-  },
+  
  
   
 })

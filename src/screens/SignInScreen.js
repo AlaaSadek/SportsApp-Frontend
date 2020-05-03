@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
     resizeMode: "center",
     width: Dimensions.get("window").height > 600 ? 300 : 200,
       //height: Dimensions.get("window").height > 600 ? 215 : 150,
-    height: Dimensions.get("window").height > 740 ? 170 : Dimensions.get("window").height < 660 ? 95 : 130,
+    height: Dimensions.get("window").height > 740 ? 170 : Dimensions.get("window").height < 660 ? 95 : 125,
   
   },
   logoContainer: {
