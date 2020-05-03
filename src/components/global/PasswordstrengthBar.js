@@ -50,7 +50,8 @@ const styles = StyleSheet.create({
         width: "70%",
         marginLeft: "11.5%",
         marginTop:'0%',
-        marginBottom:'0%'
+        marginBottom:'0%',
+        height:'2%'
       },
 });
 

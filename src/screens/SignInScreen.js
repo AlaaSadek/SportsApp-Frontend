@@ -129,6 +129,7 @@ const SignInScreen = ({ navigation }) => {
             autoCorrect={false}
             autoCapitalize="none"
             onChangeText={(text) => setemail(text)}
+            style={styles.input}
           />
           <View style={styles.passwordField}>
             <View style={{ zIndex: 0 }}>
@@ -260,7 +261,7 @@ const styles = StyleSheet.create({
     zIndex: 1,
     position: "absolute",
     //marginTop: Dimensions.get("window").height > 600 ? "9.6%" : "11.1%",
-    marginTop: Dimensions.get("window").height > 740 ? '10%' :Dimensions.get('window').height < 560? '6.5%': Dimensions.get("window").height < 570 ?'7%':Dimensions.get("window").height < 600 ?  '8.5%' : '10%', 
+    marginTop: Dimensions.get("window").height > 740 ? '10%' :Dimensions.get('window').height < 560? '6.5%': Dimensions.get("window").height < 570 ?'7%':Dimensions.get("window").height < 600 ?  '8.5%' : '7%', 
     marginLeft: "75%",
   },
   passwordLength: {
@@ -268,6 +269,10 @@ const styles = StyleSheet.create({
     marginTop: "2%",
     marginLeft: "11.5%",
   },
+  input: {
+    marginBottom:'1.5%'
+   
+}
 });
 
 export default SignInScreen;

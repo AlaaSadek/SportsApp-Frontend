@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     width: "72.8%",
     marginLeft: "12%",
     //height: 50, //mehtag ytzbt
-    height: Dimensions.get('window').height > 730 ? 45 :Dimensions.get('window').height < 560 ? 33 :Dimensions.get('window').height < 600 ? 35 : 44,
+    height: Dimensions.get('window').height > 730 ? 45 :Dimensions.get('window').height < 560 ? 33 :Dimensions.get('window').height < 600 ? 35 : 39,
     backgroundColor: "white",
     shadowColor: "rgba(31, 84, 195, 0.149)",
     shadowOffset: {
