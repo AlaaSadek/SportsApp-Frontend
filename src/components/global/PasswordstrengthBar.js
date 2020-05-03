@@ -39,7 +39,7 @@ const PasswordstrengthBar = (props) => {
            password={props.password}
            meterType= 'bar'
            levels={levels}
-           minLength= '1'
+           minLength= {1}
            width={Dimensions.get("window").width * 0.7}
           />
         </View>
