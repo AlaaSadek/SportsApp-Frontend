@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
     resizeMode: "center",
     width: Dimensions.get("window").height > 600 ? 300 : 200,
       //height: Dimensions.get("window").height > 600 ? 215 : 150,
-    height: Dimensions.get("window").height > 740 ? 165 : Dimensions.get("window").height < 660 ? 95 : 125,
+    height: Dimensions.get("window").height > 740 ? 165 : Dimensions.get("window").height < 660 ? 95 : 123,
   
   },
   logoContainer: {
@@ -260,7 +260,7 @@ const styles = StyleSheet.create({
     zIndex: 1,
     position: "absolute",
     //marginTop: Dimensions.get("window").height > 600 ? "9.6%" : "11.1%",
-    marginTop: Dimensions.get("window").height > 740 ? '10%' : Dimensions.get("window").height < 570 ?'7%':Dimensions.get("window").height < 600 ?  '8.5%' : '10%', 
+    marginTop: Dimensions.get("window").height > 740 ? '10%' :Dimensions.get('window').height < 560? '6.5%': Dimensions.get("window").height < 570 ?'7%':Dimensions.get("window").height < 600 ?  '8.5%' : '10%', 
     marginLeft: "75%",
   },
   passwordLength: {
