@@ -30,7 +30,7 @@ export default StyleSheet.create({
     resizeMode: 'center',
     width: Dimensions.get("window").height > 600 ? 300 : 200,
  // height: Dimensions.get("window").height > 740 ? 215 : Dimensions.get("window").height < 660 ? 95 : 140,
-    height: Dimensions.get("window").height > 800 ? 165 :Dimensions.get("window").height > 740? 120: Dimensions.get("window").height < 660 ? 65 : 100,
+    height: Dimensions.get("window").height > 800 ? 165 :Dimensions.get("window").height > 740? 120: Dimensions.get("window").height < 660 ? 60 : 100,
   
   },
   signInUpContainer: {
@@ -84,7 +84,7 @@ export default StyleSheet.create({
   passIcon: {
     zIndex: 1,
     position: "absolute",
-    marginTop: Dimensions.get("window").height > 740 ? '10%' :Dimensions.get('window').height < 560? '6.5%': Dimensions.get("window").height < 570 ?'7%':Dimensions.get("window").height < 600 ?  '8.5%' : '10%', 
+    marginTop: Dimensions.get("window").height > 740 ? '9%' :Dimensions.get('window').height < 560? '7.5%': Dimensions.get("window").height < 570 ?'7%':Dimensions.get("window").height < 600 ?  '8.5%' : '9%', 
     marginLeft: "75%",
   },
   

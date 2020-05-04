@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
   },
   main: {
 
-   marginTop: Dimensions.get('window').height < 560? '0%':Dimensions.get('window').height < 600 ? '2%' : '3%',
+   marginTop: Dimensions.get('window').height < 560? '1%':Dimensions.get('window').height < 600 ? '2%' : '3%',
   }
 });
 
