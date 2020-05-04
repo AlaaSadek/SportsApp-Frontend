@@ -188,7 +188,7 @@ const styles = StyleSheet.create({
     resizeMode: "center",
     width: Dimensions.get("window").height > 600 ? 300 : 200,
       //height: Dimensions.get("window").height > 600 ? 215 : 150,
-    height: Dimensions.get("window").height > 740 ? 165 : Dimensions.get("window").height < 660 ? 95 : 123,
+      height: Dimensions.get("window").height > 800 ? 165 :Dimensions.get("window").height > 740? 120: Dimensions.get("window").height < 660 ? 70 : 100,
   
   },
   logoContainer: {
@@ -207,7 +207,8 @@ const styles = StyleSheet.create({
     elevation: 23,
     backgroundColor: "white",
     // marginBottom: "6%",
-    marginBottom: Dimensions.get('window').height > 850 ? '12%' : Dimensions.get("window").height < 660 ? '3%':  '4%'
+    marginBottom: Dimensions.get('window').height > 850 ? '12%' : Dimensions.get("window").height < 660 ? '3%':  '4%',
+    marginTop:Dimensions.get("window").height > 740 ?'8%' :'6%'
   },
 
   signInUpContainer: {

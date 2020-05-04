@@ -19,7 +19,8 @@ export default StyleSheet.create({
     },
     shadowRadius: 15.19,
     elevation: 23,
-    marginBottom: Dimensions.get('window').height > 850 ? '12%' : Dimensions.get("window").height < 660 ? '3%':  '4%'
+    marginBottom: Dimensions.get('window').height > 850 ? '12%' : Dimensions.get("window").height < 660 ? '3%':  '4%',
+    marginTop:Dimensions.get("window").height > 740 ?'8%' :'6%'
   },
   logoContainer: {
     alignItems: 'center',
@@ -29,7 +30,7 @@ export default StyleSheet.create({
     resizeMode: 'center',
     width: Dimensions.get("window").height > 600 ? 300 : 200,
  // height: Dimensions.get("window").height > 740 ? 215 : Dimensions.get("window").height < 660 ? 95 : 140,
-    height: Dimensions.get("window").height > 740 ? 165 : Dimensions.get("window").height < 660 ? 95 : 123,
+    height: Dimensions.get("window").height > 800 ? 165 :Dimensions.get("window").height > 740? 120: Dimensions.get("window").height < 660 ? 70 : 100,
   
   },
   signInUpContainer: {
