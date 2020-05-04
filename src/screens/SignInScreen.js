@@ -21,7 +21,7 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 import IonIcon from "react-native-vector-icons/Ionicons";
 import ErrorModal from "../components/global/ErrorModal";
 import LoadingModal from "../components/global/LoadingModal";
-import { BarPasswordStrengthDisplay } from "react-native-password-strength-meter";
+
 
 const SignInScreen = ({ navigation }) => {
   const disptach = useDispatch();
@@ -109,11 +109,11 @@ const SignInScreen = ({ navigation }) => {
         </View>
 
         <View style={styles.signInUpContainer}>
-          <TouchableOpacity>
+          <TouchableOpacity >
             <Text style={styles.loginTXT}>Login</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => { navigation.navigate('SignUp') }}>
             <Text style={styles.signupTXT}>Signup</Text>
           </TouchableOpacity>
         </View>
@@ -129,6 +129,7 @@ const SignInScreen = ({ navigation }) => {
             autoCorrect={false}
             autoCapitalize="none"
             onChangeText={(text) => setemail(text)}
+            style={styles.input}
           />
           <View style={styles.passwordField}>
             <View style={{ zIndex: 0 }}>
@@ -151,12 +152,7 @@ const SignInScreen = ({ navigation }) => {
                 name="md-eye"
               />
             </View>
-            <View style={styles.passwordLength}>
-              <BarPasswordStrengthDisplay
-                password={password}
-                width={Dimensions.get("window").width * 0.7}
-              />
-            </View>
+            
           </View>
 
           <MainButton
@@ -191,7 +187,9 @@ const styles = StyleSheet.create({
   img: {
     resizeMode: "center",
     width: Dimensions.get("window").height > 600 ? 300 : 200,
-    height: Dimensions.get("window").height > 600 ? 215 : 150,
+      //height: Dimensions.get("window").height > 600 ? 215 : 150,
+      height: Dimensions.get("window").height > 800 ? 165 :Dimensions.get("window").height > 740? 120: Dimensions.get("window").height < 660 ? 60 : 100,
+  
   },
   logoContainer: {
     backgroundColor: "white",
@@ -208,7 +206,9 @@ const styles = StyleSheet.create({
 
     elevation: 23,
     backgroundColor: "white",
-    marginBottom: "6%",
+    // marginBottom: "6%",
+    marginBottom: Dimensions.get('window').height > 850 ? '12%' : Dimensions.get("window").height < 660 ? '3%':  '4%',
+    marginTop:Dimensions.get("window").height > 740 ?'8%' :'6%'
   },
 
   signInUpContainer: {
@@ -261,7 +261,8 @@ const styles = StyleSheet.create({
   passIcon: {
     zIndex: 1,
     position: "absolute",
-    marginTop: Dimensions.get("window").height > 600 ? "9.6%" : "11.1%",
+    //marginTop: Dimensions.get("window").height > 600 ? "9.6%" : "11.1%",
+    marginTop: Dimensions.get("window").height > 740 ? '9%' :Dimensions.get('window').height < 560? '7.5%': Dimensions.get("window").height < 570 ?'7%':Dimensions.get("window").height < 600 ?  '8.5%' : '9%', 
     marginLeft: "75%",
   },
   passwordLength: {
@@ -269,6 +270,10 @@ const styles = StyleSheet.create({
     marginTop: "2%",
     marginLeft: "11.5%",
   },
+  input: {
+    marginBottom:'1.5%'
+   
+}
 });
 
 export default SignInScreen;

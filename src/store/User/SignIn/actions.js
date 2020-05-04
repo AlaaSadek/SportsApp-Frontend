@@ -11,7 +11,7 @@ export const signInAction = (user = new SignIn()) => {
   return (dispatch) => {
     dispatch({ type: Start_Sign_In });
     backendAxios
-      .post("Account/Login", { 
+      .post("Account/Login", {
         email: user.email,
         password: user.password,
       })

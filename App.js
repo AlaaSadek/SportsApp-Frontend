@@ -3,8 +3,8 @@ import { createAppContainer } from "react-navigation";
 import { AppLoading } from "expo";
 import * as Font from "expo-font";
 import MainNav from "./src/navigation/MainNav";
+import { Provider } from 'react-redux';
 import store from './src/store/index';
-import { Provider } from "react-redux";
 
 const App = createAppContainer(MainNav);
 
@@ -25,13 +25,14 @@ export default () => {
         onFinish={() => {
           setDataLoaded(true);
         }}
-        onError={(err) => {}}
+        onError={(err) => { }}
       />
     );
   }
-  return(
-  <Provider store={store}>
-   <App />
-   </Provider>
+  return (
+    <Provider store={store}>
+      <App />
+    </Provider>
   );
+
 };

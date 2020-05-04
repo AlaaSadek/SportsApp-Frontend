@@ -3,7 +3,9 @@ import { View, StyleSheet, Dimensions, ActivityIndicator } from "react-native";
 import Modal from "react-native-modal";
 
 const LoadingModal = ({ modalVisible }) => {
-  if (!modalVisible) return null;
+
+  if (!modalVisible)
+    return null;
 
   return (
     <Modal isVisible={modalVisible}>

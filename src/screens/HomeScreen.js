@@ -25,7 +25,7 @@ const HomeScreen = ({ navigation }) => {
         firstGradient="#1755D0"
         secondGradient="#B36FD6"
         style={styles.registerBTN}
-        onPress={() => navigation.navigate("SignUpScreen")}
+        onPress={() => navigation.navigate("SignUp")}
       >
         REGISTER
       </MainButton>
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     fontFamily: "Montserrat_Bold",
     marginTop: "-2%",
   },
- 
+
   description1TXT: {
     color: "#FFFFFF",
     fontSize: 12,

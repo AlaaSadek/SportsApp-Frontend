@@ -4,6 +4,7 @@ import LoadingModal from "../components/global/LoadingModal";
 import background from "../../assets/images/background.jpg";
 import { validateToken } from "../utils/ValidateToken";
 
+
 export default ({ navigation }) => {
   const [loading, setLoading] = useState(true);
 

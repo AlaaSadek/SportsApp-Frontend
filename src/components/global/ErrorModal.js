@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   },
   header: {
     flexDirection: "row",
-    marginTop: "5%",
+    marginTop: "10%",
     marginBottom: "7%",
   },
   errorText: {
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     color: "#d00100",
   },
   errIcon: {
-    marginTop:"1%",
+    marginTop: "1%",
   },
   modalFooter: {
     height: "55%",
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
   messageText: {
     fontSize: 15,
     fontFamily: "Montserrat_Medium",
-    marginTop: "4%",
+    marginTop: "2%",
   },
 });
 export default ErrorModal;
