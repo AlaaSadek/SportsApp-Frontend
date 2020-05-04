@@ -30,7 +30,7 @@ export default StyleSheet.create({
     resizeMode: 'center',
     width: Dimensions.get("window").height > 600 ? 300 : 200,
  // height: Dimensions.get("window").height > 740 ? 215 : Dimensions.get("window").height < 660 ? 95 : 140,
-    height: Dimensions.get("window").height > 800 ? 165 :Dimensions.get("window").height > 740? 120: Dimensions.get("window").height < 660 ? 70 : 100,
+    height: Dimensions.get("window").height > 800 ? 165 :Dimensions.get("window").height > 740? 120: Dimensions.get("window").height < 660 ? 65 : 100,
   
   },
   signInUpContainer: {
