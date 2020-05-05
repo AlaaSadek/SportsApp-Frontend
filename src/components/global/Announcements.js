@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react'
-import { View, StyleSheet, Dimensions, FlatList, Animated,SafeAreaView } from 'react-native'
+import React from 'react'
+import { View, Dimensions, FlatList } from 'react-native'
 import AnnouncementItem from './announcementItem'
 import Carousel from 'react-native-snap-carousel';
 
-const { width, heigth } = Dimensions.get('window')
-
+const { width } = Dimensions.get('window')
 
 const Announcements = () => {
     // const Announcements = ({ data })
@@ -63,15 +62,11 @@ const Announcements = () => {
                     </View>
                     )
                 }}
-                 
                 />
-                
-
             </View>
            
         )
     }
-
     console.log('Please provide Images')
     return null
 }

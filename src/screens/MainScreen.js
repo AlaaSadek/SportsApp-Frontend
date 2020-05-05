@@ -9,7 +9,6 @@ const MainScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text>Main Screen</Text>
-       
       <MainButton
         onPress={() => {
           clearToken();
@@ -28,7 +27,6 @@ const MainScreen = ({ navigation }) => {
     </View>
      {/* <Announcements data={announcementData}/> */}
      <Announcements />
-    
 </View>
 </View>
 

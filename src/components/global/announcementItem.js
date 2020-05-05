@@ -1,10 +1,12 @@
 import React from 'react'
+
 import { View, StyleSheet, Text, Dimensions,ImageBackground,TouchableOpacity } from 'react-native'
 
 const AnnouncementlItem = ({ item },props) => {
     let containerStyle = styles.container;
     if (props.style) containerStyle = { ...containerStyle, ...props.style };
     return (
+
         <View style={containerStyle}>
             <TouchableOpacity>
             <ImageBackground style={styles.image} source={{ uri: item.url }} >
@@ -25,7 +27,6 @@ const styles = StyleSheet.create({
         backgroundColor:'#050000',
         flexGrow:1
     },
-   
     textView: {
         position: 'absolute',
         bottom: 10,
