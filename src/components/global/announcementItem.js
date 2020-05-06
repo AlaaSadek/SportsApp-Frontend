@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
         color:'#FFFFFF',
         fontFamily:'Montserrat_Bold',
         textAlign:'center',
-        marginTop:'40%'
+        marginTop:100
     },
     offer:
     {
