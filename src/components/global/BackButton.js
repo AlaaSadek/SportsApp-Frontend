@@ -4,11 +4,11 @@ import { MaterialIcons } from "@expo/vector-icons";
 
 
 
-const BackButton = (navigation) => {
+const BackButton = (props) => {
 
     return (
         <View style={styles.container}>
-            <TouchableOpacity onPress={() => { }} >
+            <TouchableOpacity onPress={() => { props.backButtonPress()}} >
                 <MaterialIcons name='arrow-back' size={27} color='black' />
             </TouchableOpacity>
         </View>
@@ -17,7 +17,7 @@ const BackButton = (navigation) => {
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
-        marginTop: '10%',
+        marginTop: '5%',
         marginLeft: '5%',
     }
 })

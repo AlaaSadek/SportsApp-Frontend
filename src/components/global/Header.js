@@ -13,7 +13,7 @@ const Header = (props) => {
         <View style={styles.Container}>
            <BackButton></BackButton>
             <Right>
-                <TouchableOpacity onPress={() => { }} >
+                <TouchableOpacity onPress={() => {props.searchButtonPress() }} >
                     <View style={styles.searchContainer}>
                         <Text style={styles.searchText}>Search</Text>
                         <Ionicons name='ios-search' size={27} color='black' />

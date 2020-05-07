@@ -6,7 +6,7 @@ import { Left, Right} from 'native-base';
 
 
   
-const HeaderNavigation = (navigation) => {
+const HeaderNavigation = (props) => {
     
     // const openMenu=()=>{
     //     navigation.openDrawer();
@@ -15,15 +15,15 @@ const HeaderNavigation = (navigation) => {
 
         <View style={styles.container}>
             <Left>
-                <TouchableOpacity onPress={()=>{}} style={{ width: 60 }}>
+                <TouchableOpacity onPress={()=>{props.menuButtonPress()}} style={{ width: 60 }}>
                     <Ionicons name='ios-menu' size={30} color='black' />
                 </TouchableOpacity>
             </Left>
-            <TouchableOpacity style={styles.chooseClassButton} onPress={() => {}} >
+            <TouchableOpacity style={styles.chooseClassButton} onPress={() => {props.chooseClassPress()}} >
                 <Text style={styles.chooseClassText}>Choose your class</Text>
             </TouchableOpacity>
             <Right>
-                <TouchableOpacity onPress={() => {}} >
+                <TouchableOpacity onPress={() => {props.searchButtonPress()}} >
                     <Ionicons name='ios-search' size={27} color='black' />
                 </TouchableOpacity>
             </Right>
