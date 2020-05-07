@@ -51,9 +51,9 @@ const styles = StyleSheet.create({
         height: Dimensions.get('window').height >800? '42%':'47%',
         borderTopLeftRadius: 45,
         borderTopRightRadius: 45,
-        borderBottomLeftRadius: 45,
-        borderBottomRightRadius: 45,
-        marginTop: Dimensions.get('window').height>800?'125%':'100%'
+        borderBottomLeftRadius: 35,
+        borderBottomRightRadius: 35,
+        marginTop: Dimensions.get('window').height>800?'125%':'93.5%'
 
     },
     Background: {
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
         fontSize: 14,
         fontFamily: 'Montserrat',
         marginTop: Dimensions.get('window').height * 0.02,
-        marginBottom: Dimensions.get('window').height * 0.05
+        marginBottom: Dimensions.get('window').height * 0.03
 
 
     },
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
         fontSize: 12,
         fontFamily: 'Montserrat_SemiBold',
         color: '#333333',
-        marginBottom: Dimensions.get('window').height * 0.03
+        marginBottom: Dimensions.get('window').height * 0.04
     },
     chooseClassButton: {
         //  marginTop: Dimensions.get('window').height*0.01,
