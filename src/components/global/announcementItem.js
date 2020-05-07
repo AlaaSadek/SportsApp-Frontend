@@ -9,7 +9,7 @@ const AnnouncementlItem = ({ item },props) => {
 
         <View style={containerStyle}>
             <TouchableOpacity>
-            <ImageBackground style={styles.image} source={{ uri: item.url }} >
+            <ImageBackground style={styles.image}  imageStyle={{ opacity: 0.59 }} source={{ uri: item.url }} >
                 <Text style={styles.date}> {item.date}</Text>
                 <Text style={styles.offer}>{item.offer}</Text>
           </ImageBackground>
@@ -39,14 +39,15 @@ const styles = StyleSheet.create({
         height:'100%',
         borderRadius:10,
         overflow: 'hidden',
-        opacity: 0.59,
+        //opacity: 0.59,
     },
     date:{
         fontSize:15,
         color:'#FFFFFF',
         fontFamily:'Montserrat_Bold',
         textAlign:'center',
-        marginTop:100
+        marginTop:100,
+        marginBottom:'1%'
     },
     offer:
     {
