@@ -7,7 +7,7 @@ import Header from '../components/global/Header';
 const MainScreen = ({ navigation }) => {
   return (
     <View>
-      {/* <HomeHeaderNavigation></HomeHeaderNavigation> */}
+      <HomeHeaderNavigation></HomeHeaderNavigation>
       <Header></Header>
       <Text style={{marginTop:'5%'}}>Main Screen</Text>
 
