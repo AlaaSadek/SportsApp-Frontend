@@ -2,7 +2,7 @@
 import React from "react";
 import { View, StyleSheet, FlatList, Text, Dimensions ,ImageBackground} from "react-native";
 import MainButton from "./MainButton";
-const Details = ( props ) => {
+const DetailsCard = ( props ) => {
     
     return (
 
@@ -90,4 +90,4 @@ const styles = StyleSheet.create({
 
     }
 });
-export default Details;
+export default DetailsCard;
