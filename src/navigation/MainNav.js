@@ -4,12 +4,13 @@ import SplashScreen from "../screens/SplashScreen";
 
 import AuthentcationNav from "./AuthentcationNav";
 import ApplicationNav from "./ApplicationNav";
-
+import AnnouncementDetail from "../screens/AnnouncementDetail"
 export default MainNavigator = createSwitchNavigator(
   {
     SplashScreen,
     AuthentcationNav,
     ApplicationNav,
+    AnnouncementDetail
   },
   {
     initialRouteName: "AuthentcationNav",
