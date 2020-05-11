@@ -37,12 +37,12 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: '#FFFFFF',
         width: '100%',
-        height:Dimensions.get('window').height>740? Dimensions.get('window').height*0.40:Dimensions.get('screen').height*0.45,
+        height:Dimensions.get('window').height>740? Dimensions.get('window').height*0.40:Dimensions.get('window').height*0.45,
         borderTopLeftRadius: 45,
         borderTopRightRadius: 45,
-        borderBottomLeftRadius: 35,
-        borderBottomRightRadius: 35,
-        marginTop: Dimensions.get('window').height>740?Dimensions.get('window').height*0.60:Dimensions.get('screen').height*0.55
+        borderBottomLeftRadius: Dimensions.get('window').height>840?50:Dimensions.get('window').height>740?30:20,
+        borderBottomRightRadius:  Dimensions.get('window').height>840?50:Dimensions.get('window').height>740?30:20,
+        marginTop: Dimensions.get('window').height>740?Dimensions.get('window').height*0.60:Dimensions.get('window').height*0.55
 
     },
   
@@ -63,25 +63,25 @@ const styles = StyleSheet.create({
     },
     Description: {
         color: '#AAAAAA',
-        fontSize: 14,
+        fontSize: Dimensions.get('window').height>600? 14:12,
         fontFamily: 'Montserrat',
-        marginTop: Dimensions.get('window').height * 0.02,
+        marginTop: Dimensions.get('window').height * 0.03,
         marginBottom:Dimensions.get('window').height>740? Dimensions.get('window').height * 0.07:Dimensions.get('window').height * 0.09,
 
 
     },
     duedate: {
-        fontSize: 12,
+        fontSize:Dimensions.get('window').height>600? 12:10,
         fontFamily: 'Montserrat_SemiBold',
         color: 'black',
-        marginTop:Dimensions.get('window').height>740? Dimensions.get('window').height * 0.16:Dimensions.get('window').height * 0.18,
+        marginTop:Dimensions.get('window').height>740? Dimensions.get('window').height * 0.14:Dimensions.get('window').height * 0.18,
         position:'absolute',
     },
     termsAndCondition:{
-        fontSize: 12,
+        fontSize: Dimensions.get('window').height>600? 12:10,
         fontFamily: 'Montserrat_SemiBold',
         color: 'black',
-        marginTop:Dimensions.get('window').height>740? Dimensions.get('window').height * 0.18:Dimensions.get('window').height * 0.23,
+        marginTop:Dimensions.get('window').height>740? Dimensions.get('window').height * 0.16:Dimensions.get('window').height * 0.21,
         position:'absolute'
     },
     chooseClassButton: {
