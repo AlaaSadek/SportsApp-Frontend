@@ -40,8 +40,8 @@ const styles = StyleSheet.create({
         height:Dimensions.get('window').height>740? Dimensions.get('window').height*0.40:Dimensions.get('window').height*0.45,
         borderTopLeftRadius: 45,
         borderTopRightRadius: 45,
-        borderBottomLeftRadius: Dimensions.get('window').height>840?50:Dimensions.get('window').height>740?30:20,
-        borderBottomRightRadius:  Dimensions.get('window').height>840?50:Dimensions.get('window').height>740?30:20,
+        borderBottomLeftRadius: Dimensions.get('window').height>800?50:Dimensions.get('window').height>740?30:20,
+        borderBottomRightRadius:  Dimensions.get('window').height>800?50:Dimensions.get('window').height>740?30:20,
         marginTop: Dimensions.get('window').height>740?Dimensions.get('window').height*0.60:Dimensions.get('window').height*0.55
 
     },
