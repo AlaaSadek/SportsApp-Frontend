@@ -12,6 +12,6 @@ export default MainNavigator = createSwitchNavigator(
     ApplicationNav,
   },
   {
-    initialRouteName: "AuthentcationNav",
+    initialRouteName: "SplashScreen",
   }
 );
