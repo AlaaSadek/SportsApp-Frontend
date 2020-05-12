@@ -16,6 +16,15 @@ const MainScreen = ({ navigation }) => {
       >
         LogOut
       </MainButton>
+
+      <MainButton
+        onPress={() => {
+          console.log('hena');
+          navigation.navigate("AboutUs");
+        }}
+      >
+        AboutUs
+      </MainButton>
     </View>
   );
 };
