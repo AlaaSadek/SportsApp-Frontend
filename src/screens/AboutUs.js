@@ -2,10 +2,18 @@ import React from "react";
 import { Text, View, StyleSheet, Dimensions,
 } from "react-native";
 import ScreenHeaderText from "../components/global/ScreenHeaderText";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 const AboutUs = ({ navigation }) => {
   return (
-    <View>
+
+<KeyboardAwareScrollView
+      keyboardShouldPersistTaps={"always"}
+      style={{ flex: 1 }}
+      showsVerticalScrollIndicat
+      or={false}
+    >
+            <View>
       <View style={styles.header}>
         <ScreenHeaderText headerText={"About Us"}></ScreenHeaderText>
       </View>
@@ -32,6 +40,7 @@ const AboutUs = ({ navigation }) => {
       </Text>
     </View>
     </View>
+    </KeyboardAwareScrollView>
   );
 };
 const styles = StyleSheet.create({
@@ -44,7 +53,7 @@ const styles = StyleSheet.create({
     marginLeft: "7%",
   },
   subheader: {
-    fontSize: 25,
+    fontSize: 22,
     fontFamily: "Montserrat_Bold",
     color: "#D8365D",
     marginTop: "4%",
