@@ -5,7 +5,6 @@ import Hearto from '../../../../../assets/images/svg/classIcons/hearto.svg'
 import Plus from '../../../../../assets/images/svg/classIcons/plus.svg'
 
 const DefaultClassButton = ({ classItem }) => {
-    console.log(classItem)
     return (
         <View style={styles.svgContainer}>
             <TouchableOpacity onPress={() => { console.log(`navigate to this ${classItem.name}`) }}>

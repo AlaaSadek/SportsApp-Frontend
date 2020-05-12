@@ -1,12 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import CancelClassModal from './CancelClassModal';
 
 const CancelClassButton = ({ classItem }) => {
+    const [modalVisibility, setModalVisibility] = useState(false);
 
     return (
-
         <View style={styles.container}>
-            <TouchableOpacity onPress={() => console.log('will rate ' + classItem._id)}>
+            {
+                modalVisibility ? <CancelClassModal id={classItem._id} close={() => setModalVisibility(false)} /> : null
+            }
+            <TouchableOpacity onPress={() => {
+                console.log('will rate ' + classItem._id);
+                setModalVisibility(true);
+            }}>
 
                 <Text style={styles.text}>Cancel</Text>
             </TouchableOpacity>
