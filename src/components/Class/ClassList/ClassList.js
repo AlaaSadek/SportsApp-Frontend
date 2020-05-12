@@ -2,18 +2,22 @@ import React from 'react'
 import { View, FlatList, StyleSheet, Text } from 'react-native'
 import ClassListItem from './ClassListItem'
 
-const ClassList = ({ classes, header , displayDetails }) => {
+const ClassList = ({ classes, header, displayDetails, children }) => {
     return (
         <View style={styles.container}>
             {header ? <Text style={styles.header}>{header}</Text> : null}
             <View style={styles.listContainer}>
 
                 <FlatList
-                    
+
                     data={classes}
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={({ item }) => {
-                        return <ClassListItem displayDetails classItem={item} />
+                        return (
+                            <ClassListItem displayDetails classItem={item} >
+                                {children}
+                            </ClassListItem>
+                        );
                     }}
                 />
             </View>
