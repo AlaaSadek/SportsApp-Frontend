@@ -13,9 +13,9 @@ const AnnouncementCard = (props) => {
     <Text style={styles.dateTime}>{props.dateTime}</Text>
     <TouchableOpacity onPress={props.onPress}>
       <ImageBackground
-        source={props.image} //error
+        source={props.image}
         style={styles.backgroundImage}
-        imageStyle={{ borderRadius: 20 }}
+        imageStyle={{ borderRadius: 20, opacity:0.59 }}
       >
         <Text style={styles.innerText}>
             {props.sentence}
@@ -38,6 +38,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     resizeMode: "stretch",
     borderRadius: 20,
+    backgroundColor: "#000000",
+    
   },
   dateTime: {
     color: "#000000",
