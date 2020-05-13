@@ -19,6 +19,7 @@ const MainScreen = ({ navigation }) => {
       </MainButton>
   
     <View >
+      
     <View style={styles.headerText}>
     <ScreenHeaderText headerText={'Home'}/>
     </View>
