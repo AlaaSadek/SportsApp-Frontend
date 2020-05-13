@@ -8,9 +8,7 @@ const MainScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.headerText}>
-    <ScreenHeaderText headerText={'Home'}/>
-    </View>
+      <Text>Main Screen</Text>
       <MainButton
         onPress={() => {
           clearToken();
@@ -21,7 +19,9 @@ const MainScreen = ({ navigation }) => {
       </MainButton>
   
     <View >
-    <Text style={styles.homeText}>Home</Text>
+    <View style={styles.headerText}>
+    <ScreenHeaderText headerText={'Home'}/>
+    </View>
     <View style={styles.announcement_viewallcontainer}>
         <Text style={styles.announcementText}>Announcements</Text>
         <TouchableOpacity><Text style={styles.viewallTest}>View All</Text></TouchableOpacity>
@@ -39,9 +39,12 @@ const styles = StyleSheet.create({
         flex:1,
         backgroundColor:'#FFFFFF'
     },
-    headerText:{
-      marginLeft:'7%'
-    },
+    headerText:
+  {
+      
+      marginLeft:'5%',
+     
+  },
   card:{
       // justifyContent:'center',
       // alignItems:'center'

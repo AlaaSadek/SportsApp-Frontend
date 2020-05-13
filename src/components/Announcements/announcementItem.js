@@ -9,7 +9,7 @@ const AnnouncementlItem = ({ item },props) => {
        "July", "August", "September", "October", "November", "December"
      ];
     const month_names_short= ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-   if(item.publishedDateTime.includes(monthNames))
+   //if(item.publishedDateTime.includes(monthNames))
    
 
     return (
