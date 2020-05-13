@@ -16,6 +16,20 @@ const MainScreen = ({ navigation }) => {
       >
         LogOut
       </MainButton>
+      <MainButton
+        onPress={() => {
+          navigation.navigate("CategoriesScreen");
+        }}
+      >
+        Categories
+      </MainButton>
+      <MainButton
+        onPress={() => {
+          navigation.navigate("SearchScreen");
+        }}
+      >
+        Search Screen
+      </MainButton>
     </View>
   );
 };
