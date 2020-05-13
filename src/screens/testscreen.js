@@ -47,6 +47,8 @@ testscreen.navigationOptions = (props) => {
         },
         headerStyle: {
             shadowColor: 'transparent',
+            elevation:0
+
         },
       
     }

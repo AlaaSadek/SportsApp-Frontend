@@ -66,6 +66,7 @@ MainScreen.navigationOptions = (props) => {
     headerStyle: {
       backgroundColor: 'white',
       shadowColor: 'transparent',
+      elevation:0
     },
     headerTintColor: '#020202',
 
