@@ -3,40 +3,15 @@ import { Text, View,StyleSheet,Dimensions } from "react-native";
 import CategoriesList from '../components/Checkbox/CategoriesList';
 import ScreenHeaderText from '../components/global/ScreenHeaderText';
 import MainButton from '../components/global/MainButton';
-import {getAllClassTypes,getAllClassLevels,getAllBranches} from '../services/getCategoriesLists';
+import {ClassLevels,ClassTypes} from '../services/getCategoriesLists';
 import resultsArray from '../components/Checkbox/CheckboxItem'
 const {height}=Dimensions.get('window')
 const CategoriesScreen = ({ navigation }) => {
   
-
+  const [allClasses,getAllClassTypes]=ClassTypes()
+  const [allLevel,getAllClassLevels]=ClassLevels()
   //getLists
-  const [allClasses, setAllClasses] = useState([]);
-  const [allLevel, setAllLevels] = useState([]);
-  const [allBranches, setAllBranches] = useState([]);
- 
-  useEffect(() => {
-    getAllClassTypes().then((result) => {
-      // Object.entries(result);
-      setAllClasses(result);
-      console.log(allClasses)
-    });
-  }, []);
   
-  useEffect(() => {
-    getAllClassLevels().then((result) => {
-      // Object.entries(result);
-      setAllLevels(result);
-      console.log(allLevel)
-    });
-  }, []);
-  
-  useEffect(() => {
-    getAllBranches().then((result) => {
-      // Object.entries(result);
-      setAllBranches(result);
-      console.log(allBranches)
-    });
-  }, []);
 
   const classestitlesList =
   [ 
