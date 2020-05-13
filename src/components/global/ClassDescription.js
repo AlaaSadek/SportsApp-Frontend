@@ -60,10 +60,6 @@ const styles = StyleSheet.create({
         : Dimensions.get("window").height * 0.45,
     borderTopLeftRadius: 45,
     borderTopRightRadius: 45,
-    // marginTop:
-    //   Dimensions.get("window").height > 740
-    //     ? Dimensions.get("window").height * 0.6
-    //     : Dimensions.get("window").height * 0.46,
   },
 
   TextContainer: {

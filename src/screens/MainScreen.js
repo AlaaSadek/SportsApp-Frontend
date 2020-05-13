@@ -22,7 +22,7 @@ const MainScreen = ({ navigation }) => {
           navigation.navigate("ClassDescriptionScreen");
         }}
       >
-        LogOut
+        Class Description
       </MainButton>
     </View>
   );
