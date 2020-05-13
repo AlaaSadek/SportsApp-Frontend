@@ -3,7 +3,8 @@ import { View, Text, FlatList,StyleSheet } from 'react-native'
 import CheckboxItem from './CheckboxItem'
 
 const List = ({Title,list,style}) => {
-   
+         if(list)
+         {
         return (
             
             <View >
@@ -15,8 +16,8 @@ const List = ({Title,list,style}) => {
                   renderItem={({ item ,index}) => {
                     return (
                        <CheckboxItem 
-                       title={item.name}
-                       place={item.place}
+                       title={item.name?item.name:item.place}
+                       
                        id={item._id}
                        />
                     )
@@ -25,6 +26,7 @@ const List = ({Title,list,style}) => {
             </View>
            
         )
+            } else console.log('enter')
     
     
 }

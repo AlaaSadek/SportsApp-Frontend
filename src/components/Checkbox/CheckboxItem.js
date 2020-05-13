@@ -1,10 +1,10 @@
 import React,{useState} from 'react'
 import { View, StyleSheet, FlatList } from 'react-native'
-// import CheckboxOutline from '../../../assets/images/svg/CheckboxIcons/checkbox.svg'
-// import CheckedComponent from '../../../assets/images/svg/CheckboxIcons/checkedBox.svg'
+import CheckboxOutline from '../../../assets/images/svg/CheckboxIcons/checkbox.svg'
+import CheckedComponent from '../../../assets/images/svg/CheckboxIcons/checkedComponents.svg'
 import CheckBox from 'react-native-check-box'
 
-const CheckboxItem = ({ title,place,id }) => {
+const CheckboxItem = ({ title,id }) => {
      
     const [isChecked, setChecked] = useState(false);
     const [results,setResults] =useState([])
@@ -24,10 +24,9 @@ const CheckboxItem = ({ title,place,id }) => {
     console.log(results)
     return (
         <View style={styles.mainContainer}>
+             
             <CheckBox
                 onClick={()=>{
-                    
-               
                  setChecked(!isChecked)
                  if(isChecked==false)
                  {
@@ -35,6 +34,7 @@ const CheckboxItem = ({ title,place,id }) => {
                  }
                  
                }}
+               
             isChecked={isChecked}
             // checkedImage={  <CheckedComponent height={30} width={50} />}
             // unCheckedImage={ <CheckboxOutline height={30} width={50} /> }

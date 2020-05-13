@@ -5,6 +5,7 @@ import SearchBar from '../components/Search/SearchBar';
 import DefaultClassList from '../components/Class/ClassList/DefaultClassList'
 import {getAllClassTypes} from '../services/getCategoriesLists';
 import {Search} from '../services/search';
+
 const SearchScreen = ({ navigation }) => {
   const [allClasses, setAllClasses] = useState([]);
   const [term,setTerm]=useState('')
@@ -29,6 +30,7 @@ const SearchScreen = ({ navigation }) => {
     if(findIDByName(term)!='undefined')
     {
       id=findIDByName(term)
+      console.log(id)
       useEffect(() => {
         Search(id).then((result) => {
           // Object.entries(result);
@@ -37,7 +39,7 @@ const SearchScreen = ({ navigation }) => {
         });
       }, []);
     }
-    console.log(id)
+   
     return (
       <View style={styles.mainContainer}>
          <SearchBar 
