@@ -9,6 +9,7 @@ import MainButton from "./MainButton";
 import Heart from "../../../assets/images/svg/heart.svg";
 
 const ClassDescription = (props) => {
+
   let isodate = new Date(props.dateTime);
   let dateTime = "- " + isodate.toDateString();
   dateTime = dateTime.substring(0, dateTime.length - 5) + ", " + isodate.getHours() + ":" + isodate.getMinutes();
@@ -37,9 +38,9 @@ const ClassDescription = (props) => {
           firstGradient="#1D55C5"
           secondGradient="#E93354"
           style={styles.chooseClassButton}
-          onPress={() => {
-            console.log("Choose class");
-          }}
+          onPress={() => 
+            props.onPress
+          }
         >
           Reserve
         </MainButton>
