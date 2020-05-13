@@ -1,12 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import RateClassModal from './RateClassModal';
 
 const CancelClassButton = ({ classItem }) => {
+    const [modalVisibility, setModalVisibility] = useState(false);
 
     return (
 
         <View style={styles.container}>
-            <TouchableOpacity onPress={() => console.log('will rate ' + classItem._id)}>
+            {
+                modalVisibility ? <RateClassModal id={classItem._id} close={() => setModalVisibility(false)} /> : null
+            }
+            <TouchableOpacity onPress={() => {
+                console.log('will rate ' + classItem._id)
+                setModalVisibility(true);
+            }}>
 
                 <Text style={styles.text}>Rate</Text>
             </TouchableOpacity>
@@ -22,7 +30,8 @@ const styles = StyleSheet.create({
     text: {
         color: '#E93354',
         fontFamily: "Montserrat_Bold",
-        textAlign: 'center'
+        textAlign: 'center',
+        fontSize:16
     }
 });
 

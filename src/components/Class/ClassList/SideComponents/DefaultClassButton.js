@@ -1,8 +1,8 @@
 import React from 'react'
 import { View, StyleSheet, TouchableOpacity } from 'react-native'
-import Heart from '../../../../../assets/images/svg/classIcons/heart.svg'
-import Hearto from '../../../../../assets/images/svg/classIcons/hearto.svg'
-import Plus from '../../../../../assets/images/svg/classIcons/plus.svg'
+import Heart from '../../../../../assets/images/svg/heart.svg'
+import Hearto from '../../../../../assets/images/svg/hearto.svg'
+import Plus from '../../../../../assets/images/svg/plus.svg'
 
 const DefaultClassButton = ({ classItem }) => {
     return (

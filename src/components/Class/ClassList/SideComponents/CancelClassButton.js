@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
     text: {
         color: '#E93354',
         fontFamily: "Montserrat_Bold",
+        fontSize:16
     }
 });
 

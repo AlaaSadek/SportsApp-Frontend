@@ -4,8 +4,10 @@ import Modal from 'react-native-modal';
 import Close from '../../../../../assets/images/svg/close.svg'
 import MainButton from '../../../global/MainButton'
 import LoadingModal from '../../../global/LoadingModal'
-const CancelClassModal = ({ id, close, }) => {
+import RatingComponent from '../../../global/RatingComponent';
+const RateClassModal = ({ id, close, }) => {
     const [loading, setLoading] = useState(false);
+    const [rating, setRating] = useState(3);
     const onSubmit = () => {
         setLoading(true);
         setTimeout(() => {
@@ -24,10 +26,13 @@ const CancelClassModal = ({ id, close, }) => {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.textContainer}>
-                    <Text style={styles.text}>Are you sure you want to cancel?</Text>
+                    <Text style={styles.text}>Rate Your Class</Text>
+                </View>
+                <View style={styles.ratingContainer}>
+                    <RatingComponent maxRating={5} setValue={setRating} value={rating} />
                 </View>
                 <View style={styles.textInputContainer}>
-                    <TextInput placeholder="Tell us the reason if it is related to us" multiline style={styles.textInput} />
+                    <TextInput placeholder="Your feedback" multiline style={styles.textInput} />
                 </View>
                 <View style={styles.buttonContainer}>
 
@@ -36,7 +41,7 @@ const CancelClassModal = ({ id, close, }) => {
                         secondGradient="#E93354"
                         onPress={() => onSubmit()}
                     >
-                        Cancel
+                        Rate Class
                     </MainButton>
                 </View>
             </View>
@@ -53,6 +58,7 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 40,
         borderBottomLeftRadius: 20,
         borderBottomRightRadius: 20,
+        justifyContent: 'center',
         alignItems: 'center'
     },
     closeContainer: {
@@ -61,25 +67,27 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'flex-end',
         paddingHorizontal: '8%',
-        paddingVertical: '3%',
+        paddingTop: '3%'
     },
     svg: {
-        width: 15,
-        height: 15,
+        width: 15 * (Math.min((Dimensions.get('window').height / 800.0), (Dimensions.get('window').width / 375.0))),
+        height: 15 * (Math.min((Dimensions.get('window').height / 800.0), (Dimensions.get('window').width / 375.0))),
+    },
+    ratingContainer: {
+        width: '50%'
     },
     textContainer: {
         alignItems: 'center',
-        marginBottom: '5%'
+        marginBottom: '3%'
     },
     text: {
         fontFamily: "Montserrat_Bold",
-        fontSize: 16
+        fontSize: 25 * (Math.min((Dimensions.get('window').height / 800.0), (Dimensions.get('window').width / 375.0)))
     },
     textInputContainer: {
-
-        width: '55%',
-        marginBottom: '5%',
-        height: '35%'
+        width: '50%',
+        marginVertical: '5%',
+        height: '30%'
     },
     textInput: {
         borderRadius: 12,
@@ -89,7 +97,7 @@ const styles = StyleSheet.create({
         textAlignVertical: 'top',
         padding: 10,
         fontFamily: "Montserrat_SemiBold",
-        fontSize: 12,
+        fontSize: 13,
         borderColor: '#707070'
     },
     buttonContainer: {
@@ -97,4 +105,4 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     }
 })
-export default CancelClassModal;
+export default RateClassModal;

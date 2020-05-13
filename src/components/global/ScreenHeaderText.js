@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     },
     text: {
         color: '#494EAD',
-        fontSize: 35 * (Math.min((Dimensions.get('window').height / 800.0),(Dimensions.get('window').width / 375.0))),
+        fontSize: 35 * (Math.min((Dimensions.get('window').height / 800.0), (Dimensions.get('window').width / 375.0))),
         fontFamily: "Montserrat_Bold",
     },
 });
