@@ -10,10 +10,10 @@ const DetailsCard = ( props ) => {
             <View style={styles.container}>
                 <View style={styles.TextContainer}>
                     
-                            <Text style={styles.Title}>{props.Title}</Text>
-                            <Text style={styles.Description} >{props.Description}</Text>
+                            <Text style={styles.Title}>{props.title}</Text>
+                            <Text style={styles.Description} >{props.description}</Text>
                             <Text style={styles.duedate}>{props.dueDate}</Text>
-                            <Text style={styles.termsAndCondition}>{props.termsAndConditions}</Text>
+                            <Text style={styles.termsAndCondition}>{props.termsConditions}</Text>
 
                             <MainButton
                                 firstGradient="#1D55C5"
