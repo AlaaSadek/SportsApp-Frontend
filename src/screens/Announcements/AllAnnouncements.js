@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { View, StyleSheet, FlatList, Text } from "react-native";
 import AnnouncementCard from "../../components/global/AnnouncementCard";
 import getAnnouncements from "../../utils/Announcements";
-import ScreenHeaderText from "../../components/global/ScreenHeaderText"
+import ScreenHeaderText from "../../components/global/ScreenHeaderText";
 
 const AllAnouncmenets = ({ navigation }) => {
   const [dataset, setDataset] = useState([]);
@@ -14,19 +14,21 @@ const AllAnouncmenets = ({ navigation }) => {
   }, []);
 
   return (
-      
     <View style={styles.container}>
       <View style={styles.header}>
-    <ScreenHeaderText headerText={'Announcements'} >
-    Announcements
-    </ScreenHeaderText>
-    </View>
+        <ScreenHeaderText headerText={"Announcements"}>
+          Announcements
+        </ScreenHeaderText>
+      </View>
 
       <FlatList
         data={dataset}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => (
           <AnnouncementCard
+            onPress={() => {
+              navigation.navigate("MainScreen",{itemID: item._id});
+            }}
             dateTime={item.publishedDateTime}
             image={{ uri: item.imageLocation }}
             sentence={item.title}
@@ -47,9 +49,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-   header: {
+  header: {
     marginRight: "18%",
-     marginTop: "12%",
-   },
+    marginTop: "12%",
+  },
 });
 export default AllAnouncmenets;
