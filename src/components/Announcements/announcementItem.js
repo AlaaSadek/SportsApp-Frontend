@@ -5,13 +5,20 @@ import { View, StyleSheet, Text, Dimensions,ImageBackground,TouchableOpacity } f
 const AnnouncementlItem = ({ item },props) => {
     let containerStyle = styles.container;
     if (props.style) containerStyle = { ...containerStyle, ...props.style };
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+       "July", "August", "September", "October", "November", "December"
+     ];
+    const month_names_short= ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+   if(item.publishedDateTime.includes(monthNames))
+   
+
     return (
 
         <View style={containerStyle}>
             <TouchableOpacity>
-            <ImageBackground style={styles.image}  imageStyle={{ opacity: 0.59 }} source={{ uri: item.url }} >
-                <Text style={styles.date}> {item.date}</Text>
-                <Text style={styles.offer}>{item.offer}</Text>
+            <ImageBackground style={styles.image}  imageStyle={{ opacity: 0.59 }} source={{ uri: item.imageLocation }} >
+                <Text style={styles.date}> {item.publishedDateTime}</Text>
+                <Text style={styles.offer}>{item.title}</Text>
           </ImageBackground>
           </TouchableOpacity>
         </View>
@@ -51,7 +58,7 @@ const styles = StyleSheet.create({
     },
     offer:
     {
-        fontSize:20,
+        fontSize:18,
         color:'#D8365D',
         fontFamily:'Montserrat_Bold',
         textAlign:'center',

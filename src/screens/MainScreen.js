@@ -2,13 +2,15 @@ import React from "react";
 import { Text, View,StyleSheet,TouchableOpacity } from "react-native";
 import { clearToken } from "../utils/LocalStorage";
 import MainButton from "../components/global/MainButton";
-import Announcements from "../components/global/Announcements";
-
+import Announcements from "../components/Announcements/Announcements";
+import ScreenHeaderText from '../components/global/ScreenHeaderText'
 const MainScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text>Main Screen</Text>
+      <View style={styles.headerText}>
+    <ScreenHeaderText headerText={'Home'}/>
+    </View>
       <MainButton
         onPress={() => {
           clearToken();
@@ -37,14 +39,9 @@ const styles = StyleSheet.create({
         flex:1,
         backgroundColor:'#FFFFFF'
     },
-  homeText:
-  {
-      fontSize:35,
-      fontFamily:'Montserrat_Bold',
-      color:'#494EAD',
-      marginLeft:'5%',
-      marginBottom:'5%'
-  },
+    headerText:{
+      marginLeft:'7%'
+    },
   card:{
       // justifyContent:'center',
       // alignItems:'center'
