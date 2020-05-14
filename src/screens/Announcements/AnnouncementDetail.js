@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, ImageBackground } from "react-native";
-import getAnnouncementDetail from '../../../utils/AnnouncementDetails'
-import DetailsCard from "../../../components/global/DetailsCard";
+import getAnnouncementDetail from '../../utils/AnnouncementDetails'
+import DetailsCard from "../../components/global/DetailsCard";
 
 const AnnouncementDetail = ({ navigation }) => {
 
@@ -16,7 +16,7 @@ const AnnouncementDetail = ({ navigation }) => {
 
 
         <ImageBackground
-            source={{ uri: dataset.announcementImage }}
+            source={{ uri: dataset.imageLocation }}
             style={styles.Background}
             imageStyle={{ opacity: 0.6 }}
 
@@ -24,7 +24,6 @@ const AnnouncementDetail = ({ navigation }) => {
             <DetailsCard
                 title={dataset.title}
                 description={dataset.description}
-                // dueDate={dataset.dueDate}
                 termsConditions={dataset.termsConditions}
             ></DetailsCard>
         </ImageBackground>
