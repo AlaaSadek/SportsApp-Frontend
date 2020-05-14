@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     color: "#333333",
     fontSize: 15,
     fontFamily: "Montserrat",
-    marginTop: "1%",
+    marginTop: "2%",
   },
   description: {
     marginTop: '2%',

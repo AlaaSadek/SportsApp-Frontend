@@ -18,6 +18,7 @@ export const reserveClass = async (classID) => {
       id: classID,
     })
     .then((res) => {
+
       return res.data.message;
     })
     .catch((error) => {
@@ -25,3 +26,29 @@ export const reserveClass = async (classID) => {
     });
   return res;
 };
+
+export const getClassType = async (typeID) => {
+  let res = await backendAxios
+    .get(`Class/Type/${typeID}`)
+    .then((res) => {
+      return res.data.payload.name;
+    })
+    .catch((error) => {
+      console.log('type')
+      return error;
+    });
+  return res;
+};
+export const getClassBranch = async (branchID) => {
+  let res = await backendAxios
+    .get(`Branch/${branchID}`)
+    .then((res) => {
+      return res.data.payload.place;
+    })
+    .catch((error) => {
+      console.log('branch')
+      return error;
+    });
+  return res;
+};
+

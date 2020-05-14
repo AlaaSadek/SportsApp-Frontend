@@ -3,20 +3,34 @@ import { StyleSheet, ImageBackground } from "react-native";
 
 import ClassDescription from "../../components/global/ClassDescription";
 import ClassReservation from "../../components/global/ClassReservation";
-import { getClassDetails, reserveClass } from "../../utils/ClassDescription";
+import { getClassDetails, reserveClass, getClassType, getClassBranch } from "../../utils/ClassDescription";
 
 const ClassDescriptionScreen = ({ navigation }) => {
   const [dataset, setDataset] = useState([]);
   const [reserve, setReserve] = useState("");
-// console.log(navigation.state.params);
+  const [type, setType] = useState("");
+  const [branch, setBranch] = useState("");
+
+  // console.log(navigation.state.params);
+
   useEffect(() => {
     // navigation.state.params.
-    getClassDetails("5ebc9f6a5609490025765ed9").then((result) => {
+    getClassDetails("5ebccaf7ad92da0025ee0ea4").then((result) => {
       setDataset(result);
-    });
+
+      getClassType(result.type).then((result) => {
+        setType(result);
+      });
+
+      getClassBranch(result.branch).then((result) => {
+        setBranch(result);
+      });
+
+    })
+
   }, []);
   const onClickReserve = () => {
-    reserveClass("5ebc9f6a5609490025765ed9").then((result) => {
+    reserveClass("5ebccaf7ad92da0025ee0ea4").then((result) => {
       setReserve("Reserved");
     })
   }
@@ -27,15 +41,15 @@ const ClassDescriptionScreen = ({ navigation }) => {
       imageStyle={{ opacity: 0.59 }}
     >
       {reserve != "" ? (
-        <ClassReservation 
-        onPress={() => navigation.navigate("MainScreen")}
+        <ClassReservation
+          onPress={() => navigation.navigate("MainScreen")}
         />
       ) : (
           <ClassDescription
             name={dataset.name}
-            type={dataset.type}
+            type={type}
             description={dataset.description}
-            place={dataset.place}
+            place={branch}
             dateTime={dataset.date}
             numberOfLikes={dataset.numberOfLikes}
             onPress={() => onClickReserve()}
