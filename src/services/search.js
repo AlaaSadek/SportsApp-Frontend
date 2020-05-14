@@ -3,6 +3,7 @@ import React,{useState,useEffect} from "react";
 
 export const useResult=()=>{
   const [results,setResults]=useState([]);
+  
   const getResult = async (id) => {
     const response = await backendAxios.get(`Class/${id}`)
     .then(response => {

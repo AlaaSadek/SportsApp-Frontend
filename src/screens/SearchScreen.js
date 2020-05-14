@@ -13,28 +13,37 @@ const SearchScreen = ({ navigation }) => {
   const [term,setTerm]=useState('')
   const [allClasses,getAllClassTypes]=ClassTypes()
   const [getResult,results]=useResult()
-  const Search=(name)=>{
-  
+
+  const FindIdbyName=(name)=>
+  {
     for (const item of allClasses) {
       if (item.name === name) {
         return item._id;
       }
       else return null
     }
+  }
+
+  const Search=()=>{
+
+    let res=FindIdbyName(term)
+    console.log(res)
+    // setId(res)
+    getResult(res)
+    console.log(results)
+    
    
  }
-     let id=Search(term)
 
-     console.log(id)
-     getResult(id)
-     console.log(results)
+    
+    
     return (
       <View style={styles.mainContainer}>
          <SearchBar 
           term={term} 
-          onTermChange={setTerm}
+          onTermChange={newTerm=>setTerm(newTerm)}
           // onTermSubmit={()=>console.log(submitted)}
-          onTermSubmit={Search}
+          onTermSubmit={()=>Search()}
          />
          <ScreenHeaderText headerText={'Results'}/>
        <Text>{term}</Text>
