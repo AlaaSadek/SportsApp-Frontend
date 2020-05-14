@@ -1,39 +1,37 @@
 import React,{useState} from 'react'
 import { View, StyleSheet, FlatList } from 'react-native'
 import CheckboxOutline from '../../../assets/images/svg/CheckboxIcons/checkbox.svg'
-import CheckedComponent from '../../../assets/images/svg/CheckboxIcons/checkedComponents.svg'
+import CheckedComponent from '../../../assets/images/svg/CheckboxIcons/checkcomp.svg'
 import CheckBox from 'react-native-check-box'
+import { connect } from 'react-redux'
+import { addAction, deleteAction } from '../../store/categoriesArray/reducer'
 
-export default CheckboxItem = ({ title,id }) => {
+const mapStateToProps = state => ({
+    counter: state
+  })
+  
+  const mapDispatchToProps = {
+    addAction,
+    deleteAction
+  }
+
+const CheckboxItem = ({ title,id,props }) => {
      
     const [isChecked, setChecked] = useState(false);
     const [results,setResults] =useState([])
-    //To send to result Screen
-    
    
-    const addItem=(title)=>
-    {
-        // setResults(title)
-        setResults( [...results,{ 
-            id:id,
-            title }
-        ]);
+   
+    // const addItem=(title)=>
+    // {
+    //     // setResults(title)
+    //     setResults( [...results,{ 
+    //         id:id,
+    //         title }
+    //     ]);
        
-    }
+    // }
 
-    // const removeItem=(item)=>
-    // {
-    //     const item = getItem(results, item.id) 
-    //     const newlist = [].concat(results)
-    //     newlist.splice(item.index, 1);
-    //     setResults(newlist)
-        
-    // }
-    // const onSubmit=()=>
-    // {
-    //     console.log(results)
-    //     return results
-    // }
+ 
     console.log(results)
     return (
         <View style={styles.mainContainer}>
@@ -42,10 +40,11 @@ export default CheckboxItem = ({ title,id }) => {
                 onClick={()=>{
                     isChecked ? setChecked(false) :  setChecked(true) 
                     
-                 if(isChecked==false)
-                 {
-                    addItem(title);
-                 }
+                //  if(isChecked==false)
+                //  {
+                //     props.onAddItem
+                //  }
+                //  else props.DeleteItem
                 //  else removeItem(title)
                  
                }}
@@ -76,3 +75,4 @@ const styles = StyleSheet.create({
     }
    
 });
+export default connect(mapStateToProps, mapDispatchToProps)(CheckboxItem)

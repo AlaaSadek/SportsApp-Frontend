@@ -1,23 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View, StyleSheet, TouchableOpacity } from 'react-native'
-// import Heart from '../../../../../assets/images/svg/classIcons/heart.svg'
-// import Hearto from '../../../../../assets/images/svg/classIcons/hearto.svg'
-// import Plus from '../../../../../assets/images/svg/classIcons/plus.svg'
-
-const DefaultClassButton = ({ classItem }) => {
+import Heart from '../../../../../assets/images/svg/heart.svg'
+import Hearto from '../../../../../assets/images/svg/hearto.svg'
+import Plus from '../../../../../assets/images/svg/plus.svg'
+import LoadingModal from '../../../global/LoadingModal'
+import { toggleLikeState } from '../../../../utils/ClassUtils'
+const DefaultClassButton = ({ classItem, refresh }) => {
+    const [loading, setLoading] = useState(false);
+    const handleLikePressed = async () => {
+        setLoading(true);
+        await toggleLikeState(classItem._id, classItem.isLiked).then(
+            () => {
+                refresh();
+            }
+        )
+        setLoading(false)
+    }
     return (
         <View style={styles.svgContainer}>
+            <LoadingModal modalVisible={loading} />
             <TouchableOpacity onPress={() => { console.log(`navigate to this ${classItem.name}`) }}>
 
-                {/* <Plus height={styles.svg.height} width={styles.svg.width} /> */}
+                <Plus height={styles.svg.height} width={styles.svg.width} />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => {
-                console.log(`change like state of ${classItem.name}`)
+                handleLikePressed();
             }}>
                 {
-                    // classItem.isLiked ?
-                    //     <Heart height={styles.svg.height} width={styles.svg.width} />
-                    //     : <Hearto height={styles.svg.height} width={styles.svg.width} />
+                    classItem.isLiked ?
+                        <Heart height={styles.svg.height} width={styles.svg.width} />
+                        : <Hearto height={styles.svg.height} width={styles.svg.width} />
                 }
             </TouchableOpacity>
         </View>

@@ -6,7 +6,6 @@ const List = ({Title,list,style}) => {
          if(list)
          {
         return (
-            
             <View >
                 <Text style={styles.classesText}>{Title}</Text>
                 <FlatList
@@ -17,7 +16,6 @@ const List = ({Title,list,style}) => {
                     return (
                        <CheckboxItem 
                        title={item.name?item.name:item.place}
-                       
                        id={item._id}
                        />
                     )

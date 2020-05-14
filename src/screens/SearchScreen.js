@@ -3,52 +3,45 @@ import { Text, View,StyleSheet } from "react-native";
 import ScreenHeaderText from '../components/global/ScreenHeaderText'
 import SearchBar from '../components/Search/SearchBar';
 import DefaultClassList from '../components/Class/ClassList/DefaultClassList'
-import {ClassTypes} from '../services/getCategoriesLists';
-import {useResult} from '../services/search';
-import CategoriesList from '../components/CheckList/CategoriesList';
+// import {ClassTypes} from '../services/getCategoriesLists';
+// import {useResult} from '../services/search';
+// import CategoriesList from '../components/CheckList/CategoriesList';
+import BackendAxios from '../services/backendAxios'
 
 const SearchScreen = ({ navigation }) => {
 
+  const [allClasses, setClasses] = useState([])
+  const Search = async (term) => {
+    await BackendAxios.get(`Class/AllClassesByName/${term}`)
+      .then(response => {
+         console.log(response)  
+         setClasses(response.data.payload); })
+  }
+  
+  useEffect(
+    () => {
+      Search('Yoga').then((result) => {
+        setClasses(result);
+      })
+    }, []
+  )
   
   const [term,setTerm]=useState('')
-  const [allClasses,getAllClassTypes]=ClassTypes()
-  const [getResult,results]=useResult()
-
-  const FindIdbyName=(name)=>
-  {
-    for (const item of allClasses) {
-      if (item.name === name) {
-        return item._id;
-      }
-      else return null
-    }
-  }
-
-  const Search=()=>{
-
-    let res=FindIdbyName(term)
-    console.log(res)
-    // setId(res)
-    getResult(res)
-    console.log(results)
- }
+  console.log(term)
+ 
     return (
       <View style={styles.mainContainer}>
          <SearchBar 
           term={term} 
           onTermChange={newTerm=>setTerm(newTerm)}
           // onTermSubmit={()=>console.log(submitted)}
-          onTermSubmit={()=>Search()}
+          onTermSubmit={(term)=>Search(term)}
          />
          <ScreenHeaderText headerText={'Results'}/>
        <Text>{term}</Text>
-       <Text>{results}</Text>
-       {/* <CategoriesList
-       Title={'Places'}
-       list={results}
-       //style={{height:height<600?'12%':'12%'}}
-     /> */}
-       <DefaultClassList classes={results} header="Popular Classes" />
+      <View style={{ flex: 1 }}>
+        <DefaultClassList  displayDetails={false} classes={allClasses} header="" />
+      </View>
     </View>
   );
 };

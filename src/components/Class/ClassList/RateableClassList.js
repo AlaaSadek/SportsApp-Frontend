@@ -7,7 +7,7 @@ const RateableClassList = (props) => {
 
     return (
         <ClassList {...props} >
-            <RateClassButton />
+            <RateClassButton refresh={props.refresh}/>
         </ClassList>
     )
 }
