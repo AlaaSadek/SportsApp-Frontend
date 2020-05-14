@@ -16,6 +16,13 @@ const MainScreen = ({ navigation }) => {
       >
         LogOut
       </MainButton>
+      <MainButton
+        onPress={() => {
+          navigation.navigate("BranchesScreen");
+        }}
+      >
+        Branches
+      </MainButton>
     </View>
   );
 };
