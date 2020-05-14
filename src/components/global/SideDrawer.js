@@ -1,36 +1,31 @@
-import React from "react";
-import { View, Text, Image, StyleSheet, FlatList, TouchableOpacity } from 'react-native'
+import React, { useEffect, useState } from "react";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
 import { DrawerItems } from 'react-navigation-drawer'
 import { Ionicons } from '@expo/vector-icons';
+import getProfileData from '../../utils/ProfileData';
 
 const SideDrawer = (props) => {
-    const test = [
-        {
-            name: "Sophie Garnier",
-            img: "https://images.unsplash.com/photo-1549576490-b0b4831ef60a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
-            number: "01022739279",
 
-        }
-    ];
+    const [userData, setUserData] = useState([]);
+
+    useEffect(() => {
+        getProfileData().then((result) => {
+            setUserData(result);
+        });
+    }, []);
+
     return (
         <View>
             <View style={styles.ProfileContainer}>
-                <FlatList
-                    data={test}
-                    keyExtractor={(item, index) => index.toString()}
-                    renderItem={({ item }) => <View>
-                        <View style={{ flexDirection: 'row' }}>
-                            <Image source={{ uri: item.img }} style={styles.img}>
-                            </Image>
-                            <View style={styles.TextContainer}>
-                                <Text style={styles.nameText}>{item.name}</Text>
-                                <Text style={styles.numberText}>{item.number}</Text>
-                            </View>
+                <View>
+                    <View style={{ flexDirection: 'row' }}>
+                        <Image source={{ uri: userData.profilePicture }} style={styles.img}></Image>
+                        <View style={styles.TextContainer}>
+                            <Text style={styles.nameText}>{userData.fullName}</Text>
+                            <Text style={styles.numberText}>{userData.mobile}</Text>
                         </View>
-                    </View>}>
-
-                </FlatList>
-
+                    </View>
+                </View>
             </View>
             <View >
                 <DrawerItems {...props} fontSize={12}>
