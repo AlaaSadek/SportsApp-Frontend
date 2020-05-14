@@ -9,16 +9,31 @@ const AnnouncementlItem = ({ item },props) => {
        "July", "August", "September", "October", "November", "December"
      ];
     const month_names_short= ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-    
-   //if(item.publishedDateTime.includes(monthNames))
+    function containsAny(str, substrings) {
+        for (var i = 0; i != substrings.length; i++) {
+           var substring = substrings[i];
+           if (str.indexOf(substring) != - 1) {
+             return substring;
+           }
+        }
+        return null; 
+    }
+    var month = containsAny(item.publishedDateTime, monthNames);
+    if(month=='')
+    {
+        month = containsAny(item.publishedDateTime,  month_names_short);
+    }
+    else month
+    //console.log("String was found in substring " + month);
    
+
 
     return (
 
         <View style={containerStyle}>
             <TouchableOpacity>
             <ImageBackground style={styles.image}  imageStyle={{ opacity: 0.59 }} source={{ uri: item.imageLocation }} >
-                <Text style={styles.date}> {item.publishedDateTime}</Text>
+                <Text style={styles.date}> {month}</Text>
                 <Text style={styles.offer}>{item.title}</Text>
           </ImageBackground>
           </TouchableOpacity>
