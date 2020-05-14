@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import CancelClassModal from './CancelClassModal';
 
-const CancelClassButton = ({ classItem }) => {
+const CancelClassButton = ({ classItem, refresh }) => {
     const [modalVisibility, setModalVisibility] = useState(false);
 
     return (
         <View style={styles.container}>
             {
-                modalVisibility ? <CancelClassModal id={classItem._id} close={() => setModalVisibility(false)} /> : null
+                modalVisibility ? <CancelClassModal refresh={refresh} id={classItem._id} close={() => setModalVisibility(false)} /> : null
             }
             <TouchableOpacity onPress={() => {
                 console.log('will rate ' + classItem._id);
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     text: {
         color: '#E93354',
         fontFamily: "Montserrat_Bold",
-        fontSize:16
+        fontSize: 16
     }
 });
 

@@ -4,10 +4,9 @@ import ClassList from './ClassList';
 import DefaultClassButton from './SideComponents/DefaultClassButton';
 
 const DefaultClassList = (props) => {
-
     return (
         <ClassList {...props} >
-            <DefaultClassButton />
+            <DefaultClassButton refresh={props.refresh} />
         </ClassList>
     )
 }

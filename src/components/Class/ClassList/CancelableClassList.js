@@ -7,7 +7,7 @@ const CancelableClassList = (props) => {
 
     return (
         <ClassList {...props} >
-            <CancelClassButton />
+            <CancelClassButton refresh={props.refresh} />
         </ClassList>
     )
 }

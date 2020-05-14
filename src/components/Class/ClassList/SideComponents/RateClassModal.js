@@ -5,9 +5,10 @@ import Close from '../../../../../assets/images/svg/close.svg'
 import MainButton from '../../../global/MainButton'
 import LoadingModal from '../../../global/LoadingModal'
 import RatingComponent from '../../../global/RatingComponent';
-const RateClassModal = ({ id, close, }) => {
+const RateClassModal = ({ id, close, refresh }) => {
     const [loading, setLoading] = useState(false);
     const [rating, setRating] = useState(3);
+    const [feedbackMessage, setFeedbackMessage] = useState('');
     const onSubmit = () => {
         setLoading(true);
         setTimeout(() => {
@@ -32,7 +33,12 @@ const RateClassModal = ({ id, close, }) => {
                     <RatingComponent maxRating={5} setValue={setRating} value={rating} />
                 </View>
                 <View style={styles.textInputContainer}>
-                    <TextInput placeholder="Your feedback" multiline style={styles.textInput} />
+                    <TextInput
+                        value={feedbackMessage}
+                        onChangeText={(t) => { setFeedbackMessage(t) }}
+                        placeholder="Your feedback"
+                        multiline
+                        style={styles.textInput} />
                 </View>
                 <View style={styles.buttonContainer}>
 

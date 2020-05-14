@@ -4,14 +4,23 @@ import Modal from 'react-native-modal';
 import Close from '../../../../../assets/images/svg/close.svg'
 import MainButton from '../../../global/MainButton'
 import LoadingModal from '../../../global/LoadingModal'
-const CancelClassModal = ({ id, close, }) => {
+import { cancelClassReservation } from '../../../../utils/ClassUtils'
+const CancelClassModal = ({ id, close, refresh }) => {
     const [loading, setLoading] = useState(false);
-    const onSubmit = () => {
+    const [feedbackMessage, setFeedbackMessage] = useState('');
+    const onSubmit = async () => {
         setLoading(true);
-        setTimeout(() => {
-            setLoading(false)
-            close();
-        }, 5000);
+        const r = await cancelClassReservation(id, feedbackMessage);
+        if (r) {
+            refresh();
+            console.log('canceled')
+        }
+        else {
+            console.log('failed')
+        }
+        setLoading(false)
+        close();
+
     }
     return (
         <Modal style={{ margin: 5 }} isVisible={true} animationIn="fadeIn" animationInTiming={1000}>
@@ -27,7 +36,13 @@ const CancelClassModal = ({ id, close, }) => {
                     <Text style={styles.text}>Are you sure you want to cancel?</Text>
                 </View>
                 <View style={styles.textInputContainer}>
-                    <TextInput placeholder="Tell us the reason if it is related to us" multiline style={styles.textInput} />
+                    <TextInput
+                        placeholder="Tell us the reason if it is related to us"
+                        multiline
+                        style={styles.textInput}
+                        value={feedbackMessage}
+                        onChangeText={(t) => { setFeedbackMessage(t) }}
+                    />
                 </View>
                 <View style={styles.buttonContainer}>
 

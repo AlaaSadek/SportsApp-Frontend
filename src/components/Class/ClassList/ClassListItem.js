@@ -1,6 +1,9 @@
 import React from 'react';
 import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
-
+const getFormatedDate = (date) => {
+    let newDate = new Date(date);
+    return newDate.toUTCString()
+}
 const ClassListItem = ({ classItem, displayDetails, children }) => {
     return (
         <View style={styles.mainContainer}>
@@ -18,10 +21,10 @@ const ClassListItem = ({ classItem, displayDetails, children }) => {
                             {classItem.name}
                         </Text>
                         <Text style={styles.infoText}>
-                            {classItem.level} {displayDetails ? '-' + classItem.place : null}
+                            {classItem.level} {displayDetails ? '-' + classItem.branch : null}
                         </Text>
                         {
-                            displayDetails ? <Text style={styles.infoText}>{classItem.date}</Text> : null
+                            displayDetails ? <Text style={styles.infoText}>{getFormatedDate(classItem.date)}</Text> : null
                         }
                     </View>
                 </View>
@@ -44,6 +47,7 @@ const styles = StyleSheet.create({
     leftContainer: {
         display: 'flex',
         flexDirection: 'row',
+        maxWidth: '80%'
     },
     img: {
         width: 50,
@@ -64,7 +68,7 @@ const styles = StyleSheet.create({
         // borderWidth:2
     },
     sideComponentContainer: {
-        height: '100%',
+        height: '100%'
     }
 });
 export default ClassListItem;
