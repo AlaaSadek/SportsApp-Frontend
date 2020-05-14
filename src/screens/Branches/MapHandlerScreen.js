@@ -32,13 +32,21 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
         alignItems: 'center',
+        
     },
     mapContainer: {
         height: '100%',
         width: '100%'
     },
     switchContainer: {
-         flexDirection: 'row'
+         flexDirection: 'row',
+         position:'absolute',
+         zIndex:1,
+         backgroundColor:'rgba(255,255,255,0.1)',
+         borderRadius:10,
+         borderWidth:1,
+         padding:3,
+         margin:10
     }
 });
 export default MapHandlerScreen;
