@@ -3,20 +3,22 @@ import { StyleSheet, ImageBackground } from "react-native";
 
 import ClassDescription from "../../components/global/ClassDescription";
 import ClassReservation from "../../components/global/ClassReservation";
-import getClassDetails from "../../utils/ClassDescription";
+import { getClassDetails, reserveClass } from "../../utils/ClassDescription";
 
 const ClassDescriptionScreen = ({ navigation }) => {
   const [dataset, setDataset] = useState([]);
   const [reserve, setReserve] = useState("");
-
+// console.log(navigation.state.params);
   useEffect(() => {
-    getClassDetails("5ebc184208afa9275cd953b0").then((result) => {
+    // navigation.state.params.
+    getClassDetails("5ebc9f6a5609490025765ed9").then((result) => {
       setDataset(result);
     });
   }, []);
-  const click =()=>{
-    console.log(reserve)
-    setReserve("lol xd")
+  const onClickReserve = () => {
+    reserveClass("5ebc9f6a5609490025765ed9").then((result) => {
+      setReserve("Reserved");
+    })
   }
   return (
     <ImageBackground
@@ -25,18 +27,21 @@ const ClassDescriptionScreen = ({ navigation }) => {
       imageStyle={{ opacity: 0.59 }}
     >
       {reserve != "" ? (
-        <ClassReservation/>
-      ) : (
-        <ClassDescription
-          name={dataset.name}
-          type={dataset.type}
-          description={dataset.description}
-          place={dataset.place}
-          dateTime={dataset.date}
-          numberOfLikes={dataset.numberOfLikes}
-          onPress={ ()=> console.log('aaaaa')}
+        <ClassReservation 
+        onPress={() => navigation.navigate("MainScreen")}
         />
-      )}
+      ) : (
+          <ClassDescription
+            name={dataset.name}
+            type={dataset.type}
+            description={dataset.description}
+            place={dataset.place}
+            dateTime={dataset.date}
+            numberOfLikes={dataset.numberOfLikes}
+            onPress={() => onClickReserve()}
+          />
+        )}
+
     </ImageBackground>
   );
 };

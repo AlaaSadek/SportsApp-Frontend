@@ -18,8 +18,8 @@ const ClassDescription = (props) => {
       <View style={styles.TextContainer}>
         <View style={styles.header}>
           <View style={styles.title}>
-          <Text style={styles.type}>{props.type} - </Text>
-            <Text style={styles.name}>{props.name}</Text>  
+            <Text style={styles.type}>{props.type} - </Text>
+            <Text style={styles.name}>{props.name}</Text>
           </View>
           <View style={styles.likesContainer} >
             <Heart height={20} width={20} />
@@ -38,9 +38,7 @@ const ClassDescription = (props) => {
           firstGradient="#1D55C5"
           secondGradient="#E93354"
           style={styles.chooseClassButton}
-          onPress={() => 
-            props.onPress
-          }
+          onPress={props.onPress}
         >
           Reserve
         </MainButton>
