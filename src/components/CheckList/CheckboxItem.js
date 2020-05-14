@@ -4,34 +4,49 @@ import CheckboxOutline from '../../../assets/images/svg/CheckboxIcons/checkbox.s
 import CheckedComponent from '../../../assets/images/svg/CheckboxIcons/checkedComponents.svg'
 import CheckBox from 'react-native-check-box'
 
-const CheckboxItem = ({ title,id }) => {
+export default CheckboxItem = ({ title,id }) => {
      
     const [isChecked, setChecked] = useState(false);
     const [results,setResults] =useState([])
     //To send to result Screen
     
    
-    const resultsArray=(title)=>
+    const addItem=(title)=>
     {
         // setResults(title)
         setResults( [...results,{ 
             id:id,
             title }
         ]);
-        return results
        
     }
+
+    // const removeItem=(item)=>
+    // {
+    //     const item = getItem(results, item.id) 
+    //     const newlist = [].concat(results)
+    //     newlist.splice(item.index, 1);
+    //     setResults(newlist)
+        
+    // }
+    // const onSubmit=()=>
+    // {
+    //     console.log(results)
+    //     return results
+    // }
     console.log(results)
     return (
         <View style={styles.mainContainer}>
              
             <CheckBox
                 onClick={()=>{
-                 setChecked(!isChecked)
+                    isChecked ? setChecked(false) :  setChecked(true) 
+                    
                  if(isChecked==false)
                  {
-                    resultsArray(title);
+                    addItem(title);
                  }
+                //  else removeItem(title)
                  
                }}
                
@@ -41,9 +56,11 @@ const CheckboxItem = ({ title,id }) => {
             rightText={title}
             rightTextStyle={styles.rightTextStyle}
         />
+         
         </View>
 
     )
+    
 }
 const styles = StyleSheet.create({
     mainContainer: {
@@ -59,4 +76,3 @@ const styles = StyleSheet.create({
     }
    
 });
-export default CheckboxItem;

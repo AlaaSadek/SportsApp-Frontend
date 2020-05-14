@@ -38,17 +38,17 @@ export const ClassLevels=() =>
   useEffect(() => {
     getAllClassLevels() 
   }, []);
-  return [allLevel]
+  return [allLevel,getAllClassLevels]
 };
 
 export const AllBranches=() =>
 { 
   const [allBranches, setAllBranches] = useState([]);
     const getAllBranches = async()=>{
-    const response = await backendAxios.get("Class/AllBranches")
+    const response = await backendAxios.get("Branch/AllBranches")
     .then(response => {
       //return response.data.payload
-      setAllBranches(response.data.payload)
+      setAllBranches(response.data.payload.branches)
     })
     .catch(error => {
       return error;

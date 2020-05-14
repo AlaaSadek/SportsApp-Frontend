@@ -5,7 +5,7 @@ import SearchBar from '../components/Search/SearchBar';
 import DefaultClassList from '../components/Class/ClassList/DefaultClassList'
 import {ClassTypes} from '../services/getCategoriesLists';
 import {useResult} from '../services/search';
-import CategoriesList from '../components/Checkbox/CategoriesList';
+import CategoriesList from '../components/CheckList/CategoriesList';
 
 const SearchScreen = ({ navigation }) => {
 
@@ -31,12 +31,7 @@ const SearchScreen = ({ navigation }) => {
     // setId(res)
     getResult(res)
     console.log(results)
-    
-   
  }
-
-    
-    
     return (
       <View style={styles.mainContainer}>
          <SearchBar 
@@ -48,6 +43,11 @@ const SearchScreen = ({ navigation }) => {
          <ScreenHeaderText headerText={'Results'}/>
        <Text>{term}</Text>
        <Text>{results}</Text>
+       {/* <CategoriesList
+       Title={'Places'}
+       list={results}
+       //style={{height:height<600?'12%':'12%'}}
+     /> */}
        <DefaultClassList classes={results} header="Popular Classes" />
     </View>
   );

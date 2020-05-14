@@ -1,40 +1,17 @@
-import React,{useState,useEffect} from "react";
+import React from "react";
 import { Text, View,StyleSheet,Dimensions } from "react-native";
-import CategoriesList from '../components/Checkbox/CategoriesList';
+import CategoriesList from '../components/CheckList/CategoriesList';
 import ScreenHeaderText from '../components/global/ScreenHeaderText';
 import MainButton from '../components/global/MainButton';
-import {ClassLevels,ClassTypes} from '../services/getCategoriesLists';
-import resultsArray from '../components/Checkbox/CheckboxItem'
+import {ClassLevels,ClassTypes,AllBranches} from '../services/getCategoriesLists';
+
 const {height}=Dimensions.get('window')
 const CategoriesScreen = ({ navigation }) => {
   
   const [allClasses,getAllClassTypes]=ClassTypes()
   const [allLevel,getAllClassLevels]=ClassLevels()
-  //getLists
-  
+  const [getAllBranches,allBranches]=AllBranches()
 
-  const classestitlesList =
-  [ 
-    {title:'Yoga Classes',id: 0},
-    {title:'Toning Classes',id: 1},
-    {title:'Yoga',id: 2},
-    {title:'Toning Classes',id: 3},
-    {title:'Yoga',id: 4},
-  ]
-  const levelsList =
-  [ 
-    {title:'Beginners',id: 0, },
-    {title:'Intermediated',id: 1},
-    {title:'Advanced',id: 2},
-  ]
-  const placesList =
-  [ 
-    {name:'Fifth Settlement',_id: 0, },
-    {name:'Heliopolis',_id: 1},
-    {name:'Shourok',_id: 2},
-    {name:'Nasr City',_id: 3},
-  ]
-  
   return (
     <View style={styles.mainContainer}>
      
@@ -53,7 +30,7 @@ const CategoriesScreen = ({ navigation }) => {
      />
       <CategoriesList
        Title={'Places'}
-       list={placesList}
+       list={allBranches}
        style={{height:height<600?'12%':'12%'}}
      />
     <MainButton
