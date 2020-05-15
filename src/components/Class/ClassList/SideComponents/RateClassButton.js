@@ -4,7 +4,8 @@ import RateClassModal from './RateClassModal';
 
 const CancelClassButton = ({ classItem, refresh }) => {
     const [modalVisibility, setModalVisibility] = useState(false);
-
+    if (classItem.isRated)
+        return null
     return (
 
         <View style={styles.container}>
@@ -12,7 +13,6 @@ const CancelClassButton = ({ classItem, refresh }) => {
                 modalVisibility ? <RateClassModal refresh={refresh} id={classItem._id} close={() => setModalVisibility(false)} /> : null
             }
             <TouchableOpacity onPress={() => {
-                console.log('will rate ' + classItem._id)
                 setModalVisibility(true);
             }}>
 

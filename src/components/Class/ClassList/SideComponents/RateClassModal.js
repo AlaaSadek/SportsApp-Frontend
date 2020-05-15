@@ -5,16 +5,23 @@ import Close from '../../../../../assets/images/svg/close.svg'
 import MainButton from '../../../global/MainButton'
 import LoadingModal from '../../../global/LoadingModal'
 import RatingComponent from '../../../global/RatingComponent';
+
+import { rateClass } from '../../../../utils/ClassUtils'
+
 const RateClassModal = ({ id, close, refresh }) => {
     const [loading, setLoading] = useState(false);
     const [rating, setRating] = useState(3);
     const [feedbackMessage, setFeedbackMessage] = useState('');
     const onSubmit = () => {
         setLoading(true);
-        setTimeout(() => {
-            setLoading(false)
-            close();
-        }, 5000);
+        rateClass(id, feedbackMessage, rating).then(
+            () => {
+
+                setLoading(false)
+                refresh();
+                close();
+            }
+        )
     }
     return (
         <Modal style={{ margin: 5 }} isVisible={true} animationIn="fadeIn" animationInTiming={1000}>

@@ -14,6 +14,8 @@ const ClassListTestScreen = ({ navigation }) => {
       .then(res => { setClasses(res.data.payload) })
     await BackendAxios.get('/class/reservedclasses')
       .then(res => { setReservedClasses(res.data.payload) })
+    await BackendAxios.get('/class/history')
+      .then(res => { setHistoryClasses(res.data.payload) })
 
   }
   useEffect(
@@ -26,7 +28,7 @@ const ClassListTestScreen = ({ navigation }) => {
     <View style={{ flex: 1 }}>
       <View style={{ flex: 1 }}>
         <Text>With header :</Text>
-        <DefaultClassList refresh={refresh} displayDetails={false} classes={classes} header="Popular Classes" />
+        <DefaultClassList refresh={refresh} displayDetails={true} classes={classes} header="Popular Classes" />
       </View>
       <View style={{ width: '100%', borderWidth: 3, marginVertical: 5 }}></View>
       <View style={{ flex: 1 }}>
@@ -36,7 +38,7 @@ const ClassListTestScreen = ({ navigation }) => {
       <View style={{ width: '100%', borderWidth: 3, marginVertical: 5 }}></View>
       <View style={{ flex: 1 }}>
         <Text>Without header :</Text>
-        <RateableClassList refresh={refresh} classes={classes} />
+        <RateableClassList refresh={refresh} classes={historyClasses} />
       </View>
     </View>
   );

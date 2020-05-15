@@ -13,10 +13,6 @@ const CancelClassModal = ({ id, close, refresh }) => {
         const r = await cancelClassReservation(id, feedbackMessage);
         if (r) {
             refresh();
-            console.log('canceled')
-        }
-        else {
-            console.log('failed')
         }
         setLoading(false)
         close();

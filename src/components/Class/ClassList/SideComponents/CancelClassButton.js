@@ -11,7 +11,6 @@ const CancelClassButton = ({ classItem, refresh }) => {
                 modalVisibility ? <CancelClassModal refresh={refresh} id={classItem._id} close={() => setModalVisibility(false)} /> : null
             }
             <TouchableOpacity onPress={() => {
-                console.log('will rate ' + classItem._id);
                 setModalVisibility(true);
             }}>
 
