@@ -4,7 +4,6 @@ import { clearToken } from "../utils/LocalStorage";
 import MainButton from "../components/global/MainButton";
 
 const MainScreen = ({ navigation }) => {
-  // console.log(navigation.state.params.itemID);
   return (
     <View>
       <Text>Main Screen</Text>
@@ -24,6 +23,23 @@ const MainScreen = ({ navigation }) => {
         }}
       >
         Announcement Cards
+
+      </MainButton>
+      <MainButton
+        onPress={() => {
+          console.log('hena');
+          navigation.navigate("AboutUs");
+        }}
+      >
+        AboutUs
+
+      </MainButton>
+      <MainButton
+        onPress={() => {
+          navigation.navigate("BranchesScreen");
+        }}
+      >
+        Branches
       </MainButton>
     </View>
   );
