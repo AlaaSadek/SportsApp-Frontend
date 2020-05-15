@@ -57,7 +57,7 @@ const AccountSettingsScreen = ({ navigation }) => {
     </View>
     <View style={styles.centercontainer}>
    <Image 
-   source={{uri:profileData.profilePicture}}
+   source={{uri:profilePic.uri?profilePic.uri:profileData.profilePicture}}
    style={styles.profilePic}
    />
     </View>
@@ -66,7 +66,7 @@ const AccountSettingsScreen = ({ navigation }) => {
    </View>
    <PhotoPicker 
                     value={profilePic}
-                    onChangeText={(text) => setProfilePic(text)}
+                    setValue={setProfilePic}
                 />
    <View >
     <TextInput 

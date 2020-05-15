@@ -21,7 +21,7 @@ const UpdateModal= (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "black",
     borderRadius:30,
     width: "100%",
     height: 250,

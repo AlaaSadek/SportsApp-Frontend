@@ -33,7 +33,7 @@ const PhotoPicker = (props) => {
             props.setValue(new PhotoInfo(result.uri, imageName, result.base64));
         }
     };
-
+console.log(image)
     return (
         <View style={{ ...styles.container, ...props.style }}>
                 <TouchableOpacity
