@@ -16,6 +16,15 @@ const MainScreen = ({ navigation }) => {
       >
         LogOut
       </MainButton>
+
+      <MainButton
+        onPress={() => {
+          navigation.navigate("AllAnnouncements");
+        }}
+      >
+        Announcement Cards
+
+      </MainButton>
       <MainButton
         onPress={() => {
           console.log('hena');
@@ -23,6 +32,8 @@ const MainScreen = ({ navigation }) => {
         }}
       >
         AboutUs
+
+      </MainButton>
       <MainButton
         onPress={() => {
           navigation.navigate("BranchesScreen");
