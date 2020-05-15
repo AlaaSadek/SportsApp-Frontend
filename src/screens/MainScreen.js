@@ -20,6 +20,15 @@ const MainScreen = ({ navigation }) => {
         LogOut
       </MainButton>
 
+      <View style={{ width: '100%', margin: 4 }}></View>
+      <MainButton
+        onPress={() => {
+          navigation.navigate("ClassListTestScreen");
+        }}
+      >
+        Test Classes List
+        </MainButton>
+
       <MainButton
         onPress={() => {
           navigation.navigate("ClassDescriptionScreen");
