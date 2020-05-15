@@ -45,7 +45,7 @@ const AboutUs = ({ navigation }) => {
 };
 const styles = StyleSheet.create({
   header: {
-    marginTop: "8%",
+    marginTop: "5%",
     marginLeft: "5%",
   },
   contentContainer: {
