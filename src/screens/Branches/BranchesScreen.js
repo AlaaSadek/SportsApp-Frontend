@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, Text, FlatList, TouchableOpacity } from 'react-native';
 import ScreenHeaderText from '../../components/global/ScreenHeaderText'
-import Mark from '../../../assets/images/svg/mapMark'
+// import Mark from '../../../assets/images/svg/mapMark'
 import { getAllBranches } from '../../utils/BranchesUtils';
 
 const BranchesScreen = ({ navigation }) => {
@@ -40,7 +40,7 @@ const BranchesScreen = ({ navigation }) => {
                             >
                                 <View style={styles.svgContainer}>
 
-                                    <Mark height={styles.svg.height} width={styles.svg.width} />
+                                    {/* <Mark height={styles.svg.height} width={styles.svg.width} /> */}
                                 </View>
                                 <Text style={styles.text}>{item.place}</Text>
                             </TouchableOpacity>

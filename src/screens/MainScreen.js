@@ -23,6 +23,13 @@ const MainScreen = ({ navigation }) => {
       >
         Branches
       </MainButton>
+      <MainButton
+        onPress={() => {
+          navigation.navigate("AccountSettingsScreen");
+        }}
+      >
+         AccountSettingsScreen
+      </MainButton>
     </View>
   );
 };
