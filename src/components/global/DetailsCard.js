@@ -6,6 +6,7 @@ const DetailsCard = (props) => {
     let containerStyle = styles.container
     if (props.description && props.description.length < 105)
     containerStyle=styles.containerSM;
+   
     return (
 
         
@@ -75,9 +76,9 @@ const styles = StyleSheet.create({
     },
     Description: {
         color: '#AAAAAA',
-        fontSize: Dimensions.get('window').height>600? 14:12,
+        fontSize: Dimensions.get('window').height>600? 14:11,
         fontFamily: 'Montserrat',
-        marginTop: Dimensions.get('window').height * 0.03,
+        marginTop: Dimensions.get('window').height * 0.02,
         marginBottom: Dimensions.get("window").height > 667
         ? Dimensions.get("window").height * 0.02
         : Dimensions.get("window").height * 0.02,
@@ -93,7 +94,7 @@ const styles = StyleSheet.create({
         fontSize: Dimensions.get('window').height>600? 12:10,
         fontFamily: 'Montserrat_SemiBold',
         color: 'black',
-        marginTop:Dimensions.get('window').height>740? Dimensions.get('window').height * 0.18:Dimensions.get('window').height * 0.23,
+        marginTop:Dimensions.get('window').height>740? Dimensions.get('window').height * 0.18:Dimensions.get('window').height * 0.22,
         position:'absolute',
         flex:1
     },
