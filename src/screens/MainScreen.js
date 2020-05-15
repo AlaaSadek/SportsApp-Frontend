@@ -16,7 +16,6 @@ const MainScreen = ({ navigation }) => {
       >
         LogOut
       </MainButton>
-
       <MainButton
         onPress={() => {
           console.log('hena');
@@ -24,6 +23,12 @@ const MainScreen = ({ navigation }) => {
         }}
       >
         AboutUs
+      <MainButton
+        onPress={() => {
+          navigation.navigate("BranchesScreen");
+        }}
+      >
+        Branches
       </MainButton>
     </View>
   );
