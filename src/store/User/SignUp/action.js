@@ -9,7 +9,6 @@ export const Clear_Sign_Up_State = 'Clear_Sign_UP_State';
 export const signUpAction = (user = new SignUp()) => {
 
     return (dispatch) => {
-        console.log(user)
         dispatch({ type: Start_Sign_Up })
         backendAxios .post('/Account/Register',
             {

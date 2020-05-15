@@ -12,7 +12,6 @@ const Announcements = () => {
         getAllAnnouncements().then((result) => {
           // Object.entries(result);
           setAnnouncements(result);
-          console.log(announcements)
         });
       }, []);
   

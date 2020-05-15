@@ -34,7 +34,6 @@ export const getClassType = async (typeID) => {
       return res.data.payload.name;
     })
     .catch((error) => {
-      console.log('type')
       return error;
     });
   return res;
@@ -46,7 +45,6 @@ export const getClassBranch = async (branchID) => {
       return res.data.payload.place;
     })
     .catch((error) => {
-      console.log('branch')
       return error;
     });
   return res;
