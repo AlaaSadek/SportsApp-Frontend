@@ -2,12 +2,14 @@
 import React from "react";
 import { View, StyleSheet, FlatList, Text, Dimensions ,ImageBackground} from "react-native";
 import MainButton from "./MainButton";
-const DetailsCard = ( props ) => {
-    
+const DetailsCard = (props) => {
+    let containerStyle = styles.container
+    if (props.description && props.description.length < 105)
+    containerStyle=styles.containerSM;
     return (
 
         
-            <View style={styles.container}>
+            <View style={containerStyle}>
                 <View style={styles.TextContainer}>
                     
                             <Text style={styles.Title}>{props.title}</Text>
@@ -46,7 +48,16 @@ const styles = StyleSheet.create({
         marginTop: Dimensions.get('window').height>740?Dimensions.get('window').height*0.60:Dimensions.get('window').height*0.55
 
     },
-  
+    containerSM: {
+        position: 'absolute',
+        bottom: 0,
+        backgroundColor: "#FFFFFF",
+        width: "100%",
+        height:
+          Dimensions.get("window").height < 520 ? Dimensions.get("window").height * 0.5:Dimensions.get("window").height * 0.41 ,
+        borderTopLeftRadius: 45,
+        borderTopRightRadius: 45,
+      },
     
     TextContainer: {
         position: "absolute",
@@ -70,7 +81,6 @@ const styles = StyleSheet.create({
         marginBottom: Dimensions.get("window").height > 667
         ? Dimensions.get("window").height * 0.02
         : Dimensions.get("window").height * 0.02,
-
     },
     duedate: {
         fontSize:Dimensions.get('window').height>600? 12:10,
@@ -83,12 +93,12 @@ const styles = StyleSheet.create({
         fontSize: Dimensions.get('window').height>600? 12:10,
         fontFamily: 'Montserrat_SemiBold',
         color: 'black',
-        marginTop:Dimensions.get('window').height>740? Dimensions.get('window').height * 0.19:Dimensions.get('window').height * 0.25,
+        marginTop:Dimensions.get('window').height>740? Dimensions.get('window').height * 0.18:Dimensions.get('window').height * 0.23,
         position:'absolute',
         flex:1
     },
     chooseClassButton: {
-        marginTop: Dimensions.get('window').height>740?Dimensions.get('window').height*0.3:Dimensions.get('screen').height*0.35,
+        marginTop: Dimensions.get('window').height>740?Dimensions.get('window').height*0.27:Dimensions.get('screen').height*0.32,
         paddingHorizontal: "6%",
 
     }
