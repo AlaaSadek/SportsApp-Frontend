@@ -1,13 +1,14 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Text, View,StyleSheet,TouchableOpacity } from "react-native";
 import { clearToken } from "../utils/LocalStorage";
 import MainButton from "../components/global/MainButton";
 
 const MainScreen = ({ navigation }) => {
-  return (
-    <View>
-      <Text>Main Screen</Text>
 
+  return (
+    <View style={styles.container}>
+      <Text>Main Screen</Text>
+       
       <MainButton
         onPress={() => {
           clearToken();
@@ -17,6 +18,13 @@ const MainScreen = ({ navigation }) => {
         LogOut
       </MainButton>
 
+ <MainButton 
+        onPress={() => {
+          navigation.navigate("AnnouncementDetail");
+        }}
+      >
+        Announcement Detail
+      </MainButton>
       <MainButton
         onPress={() => {
           navigation.navigate("AllAnnouncements");
@@ -44,5 +52,8 @@ const MainScreen = ({ navigation }) => {
     </View>
   );
 };
+const styles = StyleSheet.create({
+    
+})
 
 export default MainScreen;
