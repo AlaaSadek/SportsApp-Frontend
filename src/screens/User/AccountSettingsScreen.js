@@ -10,6 +10,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import backendAxios from '../../services/backendAxios'
 import DatePicker from 'react-native-datepicker'
 import PhotoPicker from '../../components/global/PhotoPicker'
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 const AccountSettingsScreen = ({ navigation }) => {
   const [fullName, setFullName] = useState('');
   const [emailAddress, setEmailAddress] = useState('');
@@ -18,7 +19,7 @@ const AccountSettingsScreen = ({ navigation }) => {
   const [profilePic,setProfilePic]=useState('')
   const [gender, setGender] = useState('');
   const [update,setUpdate] =useState(false);
-
+  const [modalVisible, setModalVisible] = useState(false);
   // const [profileData,getAccountData]=AccountData()
   const updateProfile =async () => 
   {  let response = await backendAxios.patch('Account', {
@@ -47,8 +48,10 @@ const AccountSettingsScreen = ({ navigation }) => {
         });
     }, []);  
   return (
+
       <View style={styles.container}>
-        {update==true? <UpdateModal />:console.log('No')}
+        <KeyboardAwareScrollView>
+        {modalVisible==true? <UpdateModal isVisible={modalVisible}/>:console.log('No')}
      <View style={styles.centercontainer}>
      <ScreenHeaderText headerText={'Account Settings'}/>
     </View>
@@ -128,13 +131,17 @@ const AccountSettingsScreen = ({ navigation }) => {
     <View style={{marginTop:'8%'}}>
    
     <MainButton
-        onPress={() => {updateProfile() }}
+        onPress={() => {updateProfile() 
+          setModalVisible(true)
+        }}
         firstGradient="#1D55C5"
         secondGradient="#E93354"
       >
+        
         Update profile
       </MainButton>
       </View>
+      </KeyboardAwareScrollView>
     </View>
 
   );

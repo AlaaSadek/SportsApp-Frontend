@@ -1,18 +1,21 @@
-import React from "react";
-import { Text,View, TouchableOpacity,StyleSheet, Dimensions } from "react-native";
-//import Updated from "../../../assets/images/svg/update.svg";
+import React,{useState} from "react";
+import { Text,View, TouchableOpacity,StyleSheet, Dimensions,Modal } from "react-native";
+import Updated from "../../../assets/images/svg/updated.svg";
 
 const UpdateModal= (props) => {
-  const [modalVisibility, setModalVisibility] = useState(false);
+  const [modalVisible, setModalVisible] = useState(props.modalVisible);
+  
   return (
+    <Modal visible={modalVisible}>
     <View style={styles.container}>
       <View style={styles.centerContainer}>
         <Text style={styles.successtext}>Updated Successfully!</Text>
-        <TouchableOpacity onPress={()=>setModalVisibility(true)}>
-          {/* <Updated height={50} width={50}/> */}
+        <TouchableOpacity onPress={()=>setModalVisible(false)}>
+          <Updated  />
         </TouchableOpacity>
       </View>
     </View>
+    </Modal>
   );
 };
 
@@ -21,15 +24,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     borderRadius:30,
     width: "100%",
-    height: 200,
-    display:'flex',
-    flex:1,
+    height: 250,
     position:'absolute',
     marginTop:'50%'
    
   },
   centerContainer: {
-    marginTop: "25%",
+    marginTop: "20%",
     alignItems: "center",
    
   },
