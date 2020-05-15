@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from "react";
-import { Text, View,StyleSheet,Image,TextInput } from "react-native";
+import { Text, View,StyleSheet,Image,TextInput,Dimensions } from "react-native";
 import MainButton from "../../components/global/MainButton";
 import ScreenHeaderText from '../../components/global/ScreenHeaderText'
  import getProfileData from '../../services/profileData'
@@ -9,7 +9,7 @@ import UpdateModal from '../../components/global/updateModal'
 import Icon from 'react-native-vector-icons/Ionicons';
 import backendAxios from '../../services/backendAxios'
 import DatePicker from 'react-native-datepicker'
-
+import PhotoPicker from '../../components/global/PhotoPicker'
 const AccountSettingsScreen = ({ navigation }) => {
   const [fullName, setFullName] = useState('');
   const [emailAddress, setEmailAddress] = useState('');
@@ -20,19 +20,22 @@ const AccountSettingsScreen = ({ navigation }) => {
   const [update,setUpdate] =useState(false);
 
   // const [profileData,getAccountData]=AccountData()
-  const updateProfile=()=>
-  {
-    backendAxios.patch('Account', {
-      'fullName': fullName,
-      'mobile': phoneNumber,
-      'email': emailAddress,
-      'gender':gender,
-      'birtgDate':dateofBirth,
-      'profilePicture':profilePic
+  const updateProfile =async () => 
+  {  let response = await backendAxios.patch('Account', {
+      fullName: fullName,
+      mobile: phoneNumber,
+      email: emailAddress,
+      gender:gender,
+      birthDate:dateofBirth,
+      profilePicture:profilePic
   })
   .then((response) => {
          console.log(response);
-  });
+  }) .catch((error) => {
+    console.log(error)
+
+  })
+
     setUpdate(true)
     console.log(fullName,phoneNumber,emailAddress,gender,dateofBirth,profilePic)
   }
@@ -56,8 +59,12 @@ const AccountSettingsScreen = ({ navigation }) => {
    />
     </View>
     <View style={styles.centercontainer}>
-   <Text style={styles.updateProfileText}>Update Picture</Text>
+   <Text style={styles.updateProfileText}></Text>
    </View>
+   <PhotoPicker 
+                    value={profilePic}
+                    onChangeText={(text) => setProfilePic(text)}
+                />
    <View >
     <TextInput 
     placeholder={profileData.fullName?profileData.fullName:'Full Name'}
@@ -66,6 +73,7 @@ const AccountSettingsScreen = ({ navigation }) => {
     style={styles.input}
     onChangeText={(text) => setFullName(text)}
     />
+    
     <TextInput 
     placeholder={profileData.mobile}
     value={phoneNumber}
@@ -80,7 +88,7 @@ const AccountSettingsScreen = ({ navigation }) => {
     style={styles.input}
     onChangeText={(text) => setEmailAddress(text)}
     />
-    <DatePicker 
+    {/* <DatePicker 
     style={{width:'80%',marginLeft:'10%',borderBottomWidth:0,fontSize:16,
           fontFamily:'Montserrat_Medium',marginTop:'4%'}}
     mode='date'
@@ -89,8 +97,8 @@ const AccountSettingsScreen = ({ navigation }) => {
     minDate="1990-05-01"
     date={dateofBirth}
     onDateChange={(text) => setDateofBirth(text)}
-    />
-    {/* <TextInput 
+    /> */}
+    <TextInput 
     placeholder='Date of birth (Optional)'
     placeholderTextColor='#7C8695'
     value={dateofBirth}
@@ -98,7 +106,7 @@ const AccountSettingsScreen = ({ navigation }) => {
     type={Date}
     confirmBtnText={'Date'}
     onChangeText={(text) => setDateofBirth(text)}
-    /> */}
+    />
     <View style={styles.input}>
             <RNPickerSelect
              placeholder={{ label: 'Gender' , value: gender }}
@@ -167,7 +175,8 @@ const styles = StyleSheet.create({
           paddingVertical:10,
           marginLeft:'10%',
           marginRight:'10%',
-          marginTop:'6%'
+          marginTop:Dimensions.get("window").height > 800?'12%':'6%',
+
     }
 })
 export default AccountSettingsScreen;
