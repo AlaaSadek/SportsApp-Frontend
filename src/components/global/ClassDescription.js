@@ -9,18 +9,24 @@ import MainButton from "./MainButton";
 import Heart from "../../../assets/images/svg/heart.svg";
 
 const ClassDescription = (props) => {
+  
+  let containerStyle = styles.container
+  if (props.description && props.description.length < 100)
+    containerStyle = styles.containerSM;
 
-  let isodate = new Date(props.dateTime);
+let isodate = new Date(props.dateTime);
   let dateTime = "- " + isodate.toDateString();
   dateTime = dateTime.substring(0, dateTime.length - 5) + ", " + isodate.getHours() + ":" + isodate.getMinutes();
-  return (
-    <View style={styles.container}>
+return (
+
+  <View style={containerStyle}>
       <View style={styles.TextContainer}>
         <View style={styles.header}>
           <View style={styles.title}>
             <Text style={styles.type}>{props.type} - </Text>
             <Text style={styles.name}>{props.name}</Text>
           </View>
+
           <View style={styles.likesContainer} >
             <Heart height={20} width={20} />
             <Text style={styles.numberOfLikes}>{props.numberOfLikes}</Text>
@@ -44,6 +50,7 @@ const ClassDescription = (props) => {
         </MainButton>
       </View>
     </View>
+
   );
 };
 
@@ -54,9 +61,21 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     width: "100%",
     height:
-      Dimensions.get("window").height > 740
-        ? Dimensions.get("window").height * 0.4
+      Dimensions.get("window").height < 667
+        ? Dimensions.get("window").height * 0.5
         : Dimensions.get("window").height * 0.45,
+    borderTopLeftRadius: 45,
+    borderTopRightRadius: 45,
+  },
+  containerSM: {
+    position: 'absolute',
+    bottom: 0,
+    backgroundColor: "#FFFFFF",
+    width: "100%",
+    height:
+      Dimensions.get("window").height < 667
+        ? Dimensions.get("window").height * 0.5
+        : Dimensions.get("window").height * 0.35,
     borderTopLeftRadius: 45,
     borderTopRightRadius: 45,
   },
