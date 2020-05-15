@@ -83,6 +83,13 @@ const MainScreen = ({ navigation }) => {
       >
         Branches
       </MainButton>
+      <MainButton
+        onPress={() => {
+          navigation.navigate("CategoriesFilterScreen");
+        }}
+      >
+        Categories Filter
+      </MainButton>
     </View>
   );
 };

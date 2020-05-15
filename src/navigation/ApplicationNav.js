@@ -7,8 +7,8 @@ import AllAnnouncements from "../screens/Announcements/AllAnnouncements";
 import AboutUs from "../screens/AboutUs";
 import BranchesScreen from "../screens/Branches/BranchesScreen";
 import MapHandlerScreen from "../screens/Branches/MapHandlerScreen";
-
-
+import CategoriesFilterScreen from '../screens/Search/CategoriesFilterScreen';
+import ResultScreen from '../screens//Search/ResultScreen'
 export default ApplicationNav = createStackNavigator(
   {
     MainScreen,
@@ -19,7 +19,9 @@ export default ApplicationNav = createStackNavigator(
     AllAnnouncements,
     AboutUs,
     BranchesScreen,
-    MapHandlerScreen
+    MapHandlerScreen,
+    CategoriesFilterScreen,
+    ResultScreen
   },
 
   {
