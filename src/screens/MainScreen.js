@@ -4,7 +4,7 @@ import { clearToken } from "../utils/LocalStorage";
 import MainButton from "../components/global/MainButton";
 
 const MainScreen = ({ navigation }) => {
-  console.log(navigation.state.params.itemID);
+  // console.log(navigation.state.params.itemID);
   return (
     <View>
       <Text>Main Screen</Text>

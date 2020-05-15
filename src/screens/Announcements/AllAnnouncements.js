@@ -3,13 +3,16 @@ import { View, StyleSheet, FlatList, Text } from "react-native";
 import AnnouncementCard from "../../components/global/AnnouncementCard";
 import getAnnouncements from "../../utils/Announcements";
 import ScreenHeaderText from "../../components/global/ScreenHeaderText";
+import LoadingModal from "../../components/global/LoadingModal";
 
 const AllAnouncmenets = ({ navigation }) => {
   const [dataset, setDataset] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getAnnouncements().then((result) => {
       setDataset(result);
+      setLoading(false);
     });
   }, []);
 
@@ -19,11 +22,14 @@ const AllAnouncmenets = ({ navigation }) => {
         <ScreenHeaderText headerText={"Announcements"}>
           Announcements
         </ScreenHeaderText>
+
       </View>
+
 
       <FlatList
         data={dataset}
         keyExtractor={(item, index) => index.toString()}
+        showsVerticalScrollIndicator={false}
         renderItem={({ item }) => (
           <AnnouncementCard
             onPress={() => {
@@ -32,9 +38,12 @@ const AllAnouncmenets = ({ navigation }) => {
             dateTime={item.publishedDateTime}
             image={{ uri: item.imageLocation }}
             sentence={item.title}
-          ></AnnouncementCard>
+          >
+            
+          </AnnouncementCard>
         )}
       />
+              <LoadingModal modalVisible={loading} />
     </View>
   );
 };
