@@ -12,8 +12,7 @@ import ResultScreen from '../screens//Search/ResultScreen'
 export default ApplicationNav = createStackNavigator(
   {
     MainScreen,
-    ClassListTestScreen
-
+    ClassListTestScreen,
     ClassDescriptionScreen,
     AnnouncementDetail,
     AllAnnouncements,
