@@ -1,5 +1,6 @@
 import { createStackNavigator } from "react-navigation-stack";
 import MainScreen from "../screens/MainScreen";
+import ClassDescriptionScreen from '../screens/description/ClassDescriptionScreen'
 import AnnouncementDetail from "../screens/Announcements/AnnouncementDetail";
 import AllAnnouncements from "../screens/Announcements/AllAnnouncements";
 import AboutUs from "../screens/AboutUs";
@@ -10,6 +11,7 @@ import MapHandlerScreen from "../screens/Branches/MapHandlerScreen";
 export default ApplicationNav = createStackNavigator(
   {
     MainScreen,
+    ClassDescriptionScreen,
     AnnouncementDetail,
     AllAnnouncements,
     AboutUs,

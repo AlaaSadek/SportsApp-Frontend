@@ -19,6 +19,15 @@ const MainScreen = ({ navigation }) => {
       >
         LogOut
       </MainButton>
+
+      <MainButton
+        onPress={() => {
+          navigation.navigate("ClassDescriptionScreen");
+        }}
+      >
+        Class Description
+
+      </MainButton>
   
     <View >
       
