@@ -12,10 +12,12 @@ const DetailsCard = ( props ) => {
                     
                             <Text style={styles.Title}>{props.title}</Text>
                             <Text style={styles.Description} >{props.description}</Text>
-                            <Text style={styles.duedate}>{props.dueDate}</Text>
+                            {/* <Text style={styles.duedate}>{props.dueDate}</Text> */}
                             <Text style={styles.termsAndCondition}>{props.termsConditions}</Text>
 
-                            <MainButton
+                           
+                        </View>
+                        <MainButton
                                 firstGradient="#1D55C5"
                                 secondGradient="#E93354"
                                 style={styles.chooseClassButton}
@@ -24,7 +26,6 @@ const DetailsCard = ( props ) => {
                             >
                                 Choose your class
                             </MainButton>
-                        </View>
                     
             </View>
      
@@ -66,8 +67,9 @@ const styles = StyleSheet.create({
         fontSize: Dimensions.get('window').height>600? 14:12,
         fontFamily: 'Montserrat',
         marginTop: Dimensions.get('window').height * 0.03,
-        marginBottom:Dimensions.get('window').height>740? Dimensions.get('window').height * 0.07:Dimensions.get('window').height * 0.09,
-
+        marginBottom: Dimensions.get("window").height > 667
+        ? Dimensions.get("window").height * 0.02
+        : Dimensions.get("window").height * 0.02,
 
     },
     duedate: {
@@ -81,11 +83,12 @@ const styles = StyleSheet.create({
         fontSize: Dimensions.get('window').height>600? 12:10,
         fontFamily: 'Montserrat_SemiBold',
         color: 'black',
-        marginTop:Dimensions.get('window').height>740? Dimensions.get('window').height * 0.16:Dimensions.get('window').height * 0.21,
-        position:'absolute'
+        marginTop:Dimensions.get('window').height>740? Dimensions.get('window').height * 0.19:Dimensions.get('window').height * 0.25,
+        position:'absolute',
+        flex:1
     },
     chooseClassButton: {
-        marginTop: Dimensions.get('window').height>740?Dimensions.get('window').height*0.06:Dimensions.get('screen').height*0.04,
+        marginTop: Dimensions.get('window').height>740?Dimensions.get('window').height*0.3:Dimensions.get('screen').height*0.35,
         paddingHorizontal: "6%",
 
     }

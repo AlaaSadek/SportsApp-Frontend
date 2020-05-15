@@ -8,7 +8,7 @@ const AnnouncementDetail = ({ navigation }) => {
     const [dataset, setDataset] = useState([]);
 
     useEffect(() => {
-        getAnnouncementDetail('5eb9fc97765dde0025832a70').then((result) => {
+        getAnnouncementDetail('5ebc0736accf190025771d1e').then((result) => {
             setDataset(result);
         });
     }, []);
