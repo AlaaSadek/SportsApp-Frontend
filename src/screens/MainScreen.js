@@ -17,16 +17,39 @@ const MainScreen = ({ navigation }) => {
       >
         LogOut
       </MainButton>
-      <MainButton 
+
+ <MainButton 
         onPress={() => {
           navigation.navigate("AnnouncementDetail");
         }}
       >
         Announcement Detail
       </MainButton>
-  
-</View>
+      <MainButton
+        onPress={() => {
+          navigation.navigate("AllAnnouncements");
+        }}
+      >
+        Announcement Cards
 
+      </MainButton>
+      <MainButton
+        onPress={() => {
+          console.log('hena');
+          navigation.navigate("AboutUs");
+        }}
+      >
+        AboutUs
+
+      </MainButton>
+      <MainButton
+        onPress={() => {
+          navigation.navigate("BranchesScreen");
+        }}
+      >
+        Branches
+      </MainButton>
+    </View>
   );
 };
 const styles = StyleSheet.create({

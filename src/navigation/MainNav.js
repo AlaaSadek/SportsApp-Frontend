@@ -13,6 +13,6 @@ export default MainNavigator = createSwitchNavigator(
     AnnouncementDetail
   },
   {
-    initialRouteName: "AuthentcationNav",
+    initialRouteName: "SplashScreen",
   }
 );
