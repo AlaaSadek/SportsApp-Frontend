@@ -18,12 +18,64 @@ const AnnouncementlItem = ({ item },props) => {
         }
         return null; 
     }
-    var month = containsAny(item.publishedDateTime, monthNames);
-    if(month=='')
+    var month ;
+    if(containsAny(item.publishedDateTime, monthNames))
     {
-        month = containsAny(item.publishedDateTime,  month_names_short);
+        month = containsAny(item.publishedDateTime, monthNames);
+       
     }
-    else month
+    else if(containsAny(item.publishedDateTime,  month_names_short))
+        month = containsAny(item.publishedDateTime,  month_names_short);
+    else {
+        if(item.publishedDateTime.includes('01'))
+        {
+            month='January'
+        }
+        else  if(item.publishedDateTime.includes('02'))
+        {
+            month='February'
+        }
+        else  if(item.publishedDateTime.includes('03'))
+        {
+            month='March'
+        }
+        else  if(item.publishedDateTime.includes('04'))
+        {
+            month='April'
+        }
+        else  if(item.publishedDateTime.includes('05'))
+        {
+            month='May'
+        }
+        else  if(item.publishedDateTime.includes('06'))
+        {
+            month='June'
+        }
+        else  if(item.publishedDateTime.includes('07'))
+        {
+            month='July'
+        }
+        else  if(item.publishedDateTime.includes('08'))
+        {
+            month="August"
+        }
+        else  if(item.publishedDateTime.includes('09'))
+        {
+            month="September"
+        }
+        else  if(item.publishedDateTime.includes('10'))
+        {
+            month='October'
+        }
+        else  if(item.publishedDateTime.includes('11'))
+        {
+            month='November'
+        }
+        else  if(item.publishedDateTime.includes('12'))
+        {
+            month='December'
+        }
+    }
     //console.log("String was found in substring " + month);
    
 
