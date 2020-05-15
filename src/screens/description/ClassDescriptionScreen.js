@@ -3,6 +3,7 @@ import { StyleSheet, ImageBackground } from "react-native";
 
 import ClassDescription from "../../components/global/ClassDescription";
 import ClassReservation from "../../components/global/ClassReservation";
+import LoadingModal from "../../components/global/LoadingModal";
 import { getClassDetails, reserveClass, getClassType, getClassBranch } from "../../utils/ClassDescription";
 
 const ClassDescriptionScreen = ({ navigation }) => {
@@ -10,12 +11,14 @@ const ClassDescriptionScreen = ({ navigation }) => {
   const [reserve, setReserve] = useState("");
   const [type, setType] = useState("");
   const [branch, setBranch] = useState("");
+  const [loading, setLoading] = useState(1);
+
 
   // console.log(navigation.state.params);
 
   useEffect(() => {
     // navigation.state.params.
-    getClassDetails("5ebccaf7ad92da0025ee0ea4").then((result) => {
+    getClassDetails("5ebdc49e041be53050737fc8").then((result) => {
       setDataset(result);
 
       getClassType(result.type).then((result) => {
@@ -24,22 +27,27 @@ const ClassDescriptionScreen = ({ navigation }) => {
 
       getClassBranch(result.branch).then((result) => {
         setBranch(result);
+        setLoading(0);
+
       });
 
     })
 
   }, []);
   const onClickReserve = () => {
-    reserveClass("5ebccaf7ad92da0025ee0ea4").then((result) => {
+    reserveClass("5ebdc49e041be53050737fc8").then((result) => {
       setReserve("Reserved");
     })
   }
   return (
+
     <ImageBackground
       source={{ uri: dataset.imageURL }}
       style={styles.Background}
       imageStyle={{ opacity: 0.59 }}
     >
+          <LoadingModal modalVisible={loading} />
+
       {reserve != "" ? (
         <ClassReservation
           onPress={() => navigation.navigate("MainScreen")}
@@ -55,8 +63,8 @@ const ClassDescriptionScreen = ({ navigation }) => {
             onPress={() => onClickReserve()}
           />
         )}
-
-    </ImageBackground>
+           
+          </ImageBackground>
   );
 };
 
