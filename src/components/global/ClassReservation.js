@@ -41,9 +41,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     width: "100%",
     height:
-      Dimensions.get("window").height < 667
-        ? Dimensions.get("window").height * 0.5
-        : Dimensions.get("window").height * 0.35,
+    Dimensions.get("window").height < 520
+    ? Dimensions.get("window").height * 0.5
+    : Dimensions.get("window").height * 0.35,
     borderTopLeftRadius: 45,
     borderTopRightRadius: 45,
   },

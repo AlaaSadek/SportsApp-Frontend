@@ -1,25 +1,23 @@
 import React from "react";
-import {
-  View,
-  StyleSheet,
-  Text,
-  Dimensions,
-} from "react-native";
+import { View, StyleSheet, Text, Dimensions } from "react-native";
 import MainButton from "./MainButton";
 import Heart from "../../../assets/images/svg/heart.svg";
 
 const ClassDescription = (props) => {
-  
-  let containerStyle = styles.container
-  if (props.description && props.description.length < 100)
-    containerStyle = styles.containerSM;
+  let containerStyle = styles.container;
+  if (props.description && props.description.length < 100)
+    containerStyle = styles.containerSM;
 
-let isodate = new Date(props.dateTime);
+  let isodate = new Date(props.dateTime);
   let dateTime = "- " + isodate.toDateString();
-  dateTime = dateTime.substring(0, dateTime.length - 5) + ", " + isodate.getHours() + ":" + isodate.getMinutes();
-return (
-
-  <View style={containerStyle}>
+  dateTime =
+    dateTime.substring(0, dateTime.length - 5) +
+    ", " +
+    isodate.getHours() +
+    ":" +
+    isodate.getMinutes();
+  return (
+    <View style={containerStyle}>
       <View style={styles.TextContainer}>
         <View style={styles.header}>
           <View style={styles.title}>
@@ -27,7 +25,7 @@ return (
             <Text style={styles.name}>{props.name}</Text>
           </View>
 
-          <View style={styles.likesContainer} >
+          <View style={styles.likesContainer}>
             <Heart height={20} width={20} />
             <Text style={styles.numberOfLikes}>{props.numberOfLikes}</Text>
           </View>
@@ -50,13 +48,12 @@ return (
         </MainButton>
       </View>
     </View>
-
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 0,
     backgroundColor: "#FFFFFF",
     width: "100%",
@@ -68,14 +65,14 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 45,
   },
   containerSM: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 0,
     backgroundColor: "#FFFFFF",
     width: "100%",
     height:
-      Dimensions.get("window").height < 667
-        ? Dimensions.get("window").height * 0.5
-        : Dimensions.get("window").height * 0.35,
+      Dimensions.get("window").height < 520
+      ? Dimensions.get("window").height * 0.5
+      : Dimensions.get("window").height * 0.35,
     borderTopLeftRadius: 45,
     borderTopRightRadius: 45,
   },
@@ -89,9 +86,8 @@ const styles = StyleSheet.create({
   },
   header: {
     flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
 
   type: {
@@ -106,7 +102,7 @@ const styles = StyleSheet.create({
     marginTop: "2%",
   },
   description: {
-    marginTop: '2%',
+    marginTop: "2%",
     color: "#AAAAAA",
     fontSize: Dimensions.get("window").height > 600 ? 14 : 12,
     fontFamily: "Montserrat",
@@ -117,9 +113,8 @@ const styles = StyleSheet.create({
         : Dimensions.get("window").height * 0.03,
   },
   placeTime: {
-
     flex: 1,
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   placeTimeText: {
     fontSize: Dimensions.get("window").height > 600 ? 12 : 10,
@@ -135,20 +130,18 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    flexDirection: 'row',
-
+    flexDirection: "row",
   },
   likesContainer: {
-
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    marginRight: '5%'
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    marginRight: "5%",
   },
 
   numberOfLikes: {
-    marginLeft: '3%',
+    marginLeft: "3%",
     fontFamily: "Montserrat",
-    color: '#9f6ad1'
-  }
+    color: "#9f6ad1",
+  },
 });
 export default ClassDescription;
