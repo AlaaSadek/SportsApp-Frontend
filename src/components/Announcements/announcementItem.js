@@ -76,7 +76,6 @@ const AnnouncementlItem = ({ item },props) => {
             month='December'
         }
     }
-    //console.log("String was found in substring " + month);
    
 
 

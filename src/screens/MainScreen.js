@@ -69,7 +69,6 @@ const MainScreen = ({ navigation }) => {
       </MainButton>
       <MainButton
         onPress={() => {
-          console.log('hena');
           navigation.navigate("AboutUs");
         }}
       >

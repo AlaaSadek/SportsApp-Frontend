@@ -18,7 +18,6 @@ const ClassDescriptionScreen = ({ navigation }) => {
   const [branch, setBranch] = useState("");
   const [loading, setLoading] = useState(true);
 
-  // console.log(navigation.state.params);
 
   useEffect(() => {
     // navigation.state.params.
