@@ -3,21 +3,29 @@ import { AsyncStorage, Vibration } from 'react-native';
 import * as Permissions from 'expo-permissions'
 import backendAxios from '../services/backendAxios'
 export const registerPushNotification = async () => {
-    let previousToken = await AsyncStorage.getItem('pushtoken');
-    console.log('prev', previousToken)
-    if (previousToken) {
-        return;
+    let token = await AsyncStorage.getItem('pushtoken');
+    //console.log('prev', token)
+    if (token) {
+        //return;
     }
-    let { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
-    if (status !== 'granted') {
-        return;
+    else {
+
+        let { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
+        if (status !== 'granted') {
+            return;
+        }
+        token = await Notifications.getExpoPushTokenAsync();
+        //console.log('new', token)
     }
-    console.log('passed')
-    let token = await Notifications.getExpoPushTokenAsync();
-    console.log('new', token)
-    await AsyncStorage.setItem('pushtoken', token);
-    const state = await backendAxios.post('account/addpushtoken', { token: token })
-    console.log(state)
+    await backendAxios.post('Account/addPushToken', { token: token }).then(
+        async () => {
+            await AsyncStorage.setItem('pushtoken', token);
+        }
+    )
+        .catch(
+            (err) => {
+            }
+        )
 }
 
 
@@ -25,7 +33,7 @@ export const listenForNotifications = async (navigation) => {
 
     Notifications.addListener((notification) => {
         Vibration.vibrate();
-        navigation.navigate('ClassDescriptionScreen',{id:notification.data.id})
-        
+        navigation.navigate('ClassDescriptionScreen', { id: notification.data.id })
+
     })
 }
