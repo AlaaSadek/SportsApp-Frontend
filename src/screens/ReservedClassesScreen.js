@@ -19,10 +19,11 @@ const ReservedClassesScreen = () => {
     }, []
   )
   return (
-    <View style={{ margin: 30, marginTop: 50 }}>
+    <View style={{ margin: '5%', marginTop: 50 }}>
+      <View style={{marginBottom:'5%',marginLeft:'5%'}}>
       <ScreenHeaderText headerText={"Reserved Classes"}></ScreenHeaderText>
+      </View>
       <View style={{height:'100%'}}>
-
       <CancelableClassList refresh={refresh} classes={reservedClasses} />
       </View>
     </View>

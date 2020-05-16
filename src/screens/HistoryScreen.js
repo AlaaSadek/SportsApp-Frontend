@@ -21,7 +21,9 @@ const HistoryScreen = () => {
   )
   return (
     <View style={{ margin: 30, marginTop: 60 }}>
+      <View style={{marginBottom:'5%'}}>
       <ScreenHeaderText headerText={"History"}></ScreenHeaderText>
+      </View>
       <View style={{ height: '100%' }}>
 
         <RateableClassList refresh={refresh} classes={historyClasses} />

@@ -53,7 +53,7 @@ const ClassDescriptionScreen = ({ navigation }) => {
       {reserve != "" ? (
         <ClassReservation
           description={dataset.description}
-          onPress={() => navigation.navigate("MainScreen")}
+          onPress={() => navigation.navigate("Main")}
         />
       ) : (
           <ClassDescription

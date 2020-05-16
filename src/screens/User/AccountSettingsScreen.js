@@ -17,7 +17,8 @@ import Icon from "react-native-vector-icons/Ionicons";
 import DatePicker from "react-native-datepicker";
 import PhotoPicker from "../../components/global/PhotoPicker";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-
+import { HeaderButtons, Item } from 'react-navigation-header-buttons';
+import HeaderButton from '../../components/global/HeaderButton';
 const AccountSettingsScreen = ({ navigation }) => {
 
     const [fullName, setFullName] = useState("");
@@ -45,10 +46,11 @@ const AccountSettingsScreen = ({ navigation }) => {
     }, []);
     console.disableYellowBox = true;
     return (
+        <View style={styles.container}>
         <KeyboardAwareScrollView>
+              
             <LoadingModal modalVisible={loading} />
             <UpdateModal modalVisible={modalVisible} />
-            <View style={styles.container}>
                 <View style={styles.header}>
                     <ScreenHeaderText headerText={"Account Settings"} />
                 </View>
@@ -146,13 +148,31 @@ const AccountSettingsScreen = ({ navigation }) => {
                         Update profile
           </MainButton>
                 </View>
-            </View>
+            
         </KeyboardAwareScrollView>
+        </View>
     );
 };
+AccountSettingsScreen.navigationOptions=(props)=>{
+    return {
+        title: '',
+        headerTransparent: true,
+        headerLeft: () => {
+          return (
+            <HeaderButtons HeaderButtonComponent={HeaderButton}>
+            <Item style={styles.backIcon} title="back" iconName='arrow-back' onPress={() => { props.navigation.goBack() }} />
+        </HeaderButtons>
+          )
+        },
+       
+        headertransparent:true,
+      
+      }
+}
 const styles = StyleSheet.create({
     header: {
-        marginLeft: "6%",
+        marginLeft: "10%",
+        marginTop:'10%'
     },
     centercontainer: {
         alignSelf: "center",
@@ -168,7 +188,7 @@ const styles = StyleSheet.create({
         width: 100,
         height: 100,
         borderRadius: 200 / 2,
-        marginTop: "4%",
+        marginTop: "8%",
     },
     updateProfileText: {
         color: "#D8365D",

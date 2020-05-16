@@ -34,8 +34,8 @@ const Main = ({ navigation }) => {
         <Announcements onPress={() => navigation.navigate("AnnouncementDetail")} />
 
       </View>
-      <View style={{ flex: 1, marginTop: 10 }}>
-        <DefaultClassList refresh={refresh} displayDetails={false} classes={classes} header="Classes :" />
+      <View style={{ flex: 1, marginTop: '5%' }}>
+        <DefaultClassList refresh={refresh} displayDetails={false} classes={classes} header="Popular Classes" />
       </View>
     </View>
 
@@ -82,13 +82,14 @@ Main.navigationOptions = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    padding: '5%',
+    //padding: '5%',
     paddingBottom: 0,
     flex: 1,
     backgroundColor: 'white'
   },
   headerText: {
     marginLeft: '5%',
+    marginBottom:'3%'
   },
   announcement_viewallcontainer: {
     flexDirection: 'row',

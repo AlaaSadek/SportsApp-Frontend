@@ -21,7 +21,9 @@ const BranchesScreen = ({ navigation }) => {
         , []
     )
     return <View style={styles.container}>
+        <View style={{marginBottom:'5%'}}>
         <ScreenHeaderText headerText="Our Branches" />
+        </View>
         <FlatList
             data={branches}
             keyExtractor={(item, index) => { return item._id.toString() }}
