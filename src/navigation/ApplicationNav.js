@@ -6,6 +6,7 @@ import AnnouncementDetail from "../screens/Announcements/AnnouncementDetail";
 import AllAnnouncements from "../screens/Announcements/AllAnnouncements";
 import AboutUs from "../screens/AboutUs";
 import BranchesScreen from "../screens/Branches/BranchesScreen";
+import AccountSettingsScreen from '../screens/User/AccountSettingsScreen'
 import MapHandlerScreen from "../screens/Branches/MapHandlerScreen";
 import CategoriesFilterScreen from '../screens/Search/CategoriesFilterScreen';
 import ResultScreen from '../screens//Search/ResultScreen'
@@ -18,6 +19,7 @@ export default ApplicationNav = createStackNavigator(
     AllAnnouncements,
     AboutUs,
     BranchesScreen,
+    AccountSettingsScreen,
     MapHandlerScreen,
     CategoriesFilterScreen,
     ResultScreen
