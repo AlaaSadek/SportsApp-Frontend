@@ -40,3 +40,11 @@ export const rateClass = async (id, feedback, rate) => {
             }
         )
 }
+
+export const getAllClasses = async () => {
+    return await BackendAxios.get('/class/allclasses')
+        .then(
+            res => res.data.payload
+        )
+
+}

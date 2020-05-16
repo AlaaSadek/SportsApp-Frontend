@@ -11,7 +11,10 @@ const ScreenHeaderText = ({ headerText }) => {
 };
 const styles = StyleSheet.create({
     container: {
-        width: '100%'
+        width: '100%',
+        // height:'12%' , 
+        // marginTop:'15%'
+        marginTop:'3.5%'
     },
     text: {
         color: '#494EAD',

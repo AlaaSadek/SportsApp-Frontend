@@ -24,7 +24,7 @@ const DetailsCard = (props) => {
                                 firstGradient="#1D55C5"
                                 secondGradient="#E93354"
                                 style={styles.chooseClassButton}
-                                onPress={()=>{console.log('Choose class')}}
+                                onPress={props.onPress}
                                 
                             >
                                 Choose your class
@@ -94,12 +94,12 @@ const styles = StyleSheet.create({
         fontSize: Dimensions.get('window').height>600? 12:10,
         fontFamily: 'Montserrat_SemiBold',
         color: 'black',
-        marginTop:Dimensions.get('window').height>740? Dimensions.get('window').height * 0.18:Dimensions.get('window').height * 0.22,
+        marginTop:Dimensions.get('window').height>740? Dimensions.get('window').height * 0.18:Dimensions.get('window').height * 0.23,
         position:'absolute',
         flex:1
     },
     chooseClassButton: {
-        marginTop: Dimensions.get('window').height>740?Dimensions.get('window').height*0.27:Dimensions.get('screen').height*0.32,
+        marginTop: Dimensions.get('window').height>740?Dimensions.get('window').height*0.27:Dimensions.get('screen').height*0.33,
         paddingHorizontal: "6%",
 
     }

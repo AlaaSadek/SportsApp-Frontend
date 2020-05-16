@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { View, StyleSheet, Switch,Text } from 'react-native';
 import InteractiveMapScreen from './InteractiveMapScreen';
 import StaticMapScreen from './StaticMapScreen';
+import { HeaderButtons, Item } from 'react-navigation-header-buttons';
+import HeaderButton from '../../components/global/HeaderButton';
 
 const MapHandlerScreen = ({ navigation }) => {
     const [interactive, setInterActive] = useState(true);
@@ -27,6 +29,23 @@ const MapHandlerScreen = ({ navigation }) => {
         </View>
     )
 }
+MapHandlerScreen.navigationOptions = (props) => {
+    return {
+      title: '',
+      headerTransparent: true,
+      headerLeft: () => {
+        return (
+          <HeaderButtons HeaderButtonComponent={HeaderButton}>
+          <Item style={styles.backIcon} title="back" iconName='arrow-back' onPress={() => { props.navigation.goBack() }} />
+      </HeaderButtons>
+        )
+      },
+     
+      headertransparent:true,
+    
+    }
+  }
+  
 const styles = StyleSheet.create({
     container: {
         width: '100%',
@@ -46,7 +65,7 @@ const styles = StyleSheet.create({
          borderRadius:10,
          borderWidth:1,
          padding:3,
-         margin:10
+         margin:60
     }
 });
 export default MapHandlerScreen;

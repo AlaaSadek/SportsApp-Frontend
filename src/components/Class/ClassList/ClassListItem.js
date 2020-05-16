@@ -1,13 +1,20 @@
 import React from 'react';
 import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
+import { useNavigation } from 'react-navigation-hooks'
+
 const getFormatedDate = (date) => {
+
     let newDate = new Date(date);
     return newDate.toUTCString()
 }
 const ClassListItem = ({ classItem, displayDetails, children }) => {
+    const { navigate } = useNavigation();
+    const nav = () => {
+        navigate('ClassDescriptionScreen', { id: classItem._id });
+    }
     return (
         <View style={styles.mainContainer}>
-            <TouchableOpacity onPress={() => { console.log(`navigate to this ${classItem.name}`) }} >
+            <TouchableOpacity onPress={() => { nav(); }} >
 
                 <View style={styles.leftContainer}>
                     <View style={styles.imgContainer}>

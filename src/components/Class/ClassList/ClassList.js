@@ -9,12 +9,13 @@ const ClassList = ({ classes, header, displayDetails, children, refresh }) => {
             <View style={styles.listContainer}>
 
                 <FlatList
-
+                    showsVerticalScrollIndicator={false}
                     data={classes}
+                    ListEmptyComponent={() => <Text style={styles.noClassText}>No class found</Text>}
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={({ item }) => {
                         return (
-                            <ClassListItem displayDetails={displayDetails}  classItem={item} >
+                            <ClassListItem displayDetails={displayDetails} classItem={item} >
                                 {children}
                             </ClassListItem>
                         );
@@ -30,11 +31,17 @@ const styles = StyleSheet.create({
     },
     listContainer: {
         paddingVertical: 10,
-        flex: 1,
+        flex: 1
     },
     header: {
         marginLeft: 20,
         fontFamily: 'Montserrat_Bold', fontSize: 15
+    },
+    noClassText: {
+        textAlign: 'center',
+        textAlignVertical: 'center',
+        fontFamily: 'Montserrat_Bold',
+        fontSize: 15
     }
 });
 export default ClassList;

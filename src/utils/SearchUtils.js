@@ -41,7 +41,7 @@ export const getClassesByFilter = async (filters) => {
 }
 
 export const getAllClassesByName = async (searchValue) => {
-    const ret = await Backendaxios.get(`/Class/allclassesbyName/${searchValue}`);
-    
+    const ret = await Backendaxios.post(`/Class/allclassesbyName`, { name: searchValue });
+
     return ret.data.payload
 }
