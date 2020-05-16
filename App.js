@@ -5,7 +5,6 @@ import * as Font from "expo-font";
 import MainNav from "./src/navigation/MainNav";
 import { Provider } from 'react-redux';
 import store from './src/store/index';
-
 const App = createAppContainer(MainNav);
 
 const fetchFonts = () => {

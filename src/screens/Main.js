@@ -7,11 +7,14 @@ import Announcements from "../components/Announcements/Announcements";
 import DefaultClassList from "../components/Class/ClassList/DefaultClassList";
 import { getAllClasses } from '../utils/ClassUtils';
 
+import registerForNotifications from '../utils/push_notification'
+
 const Main = ({ navigation }) => {
   const [classes, setClasses] = useState([])
   const refresh = async () => {
     await getAllClasses().then(res => { setClasses(res) })
   }
+  registerForNotifications();
   useEffect(
     () => {
 
