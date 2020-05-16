@@ -16,7 +16,7 @@ const AboutUs = ({ navigation }) => {
       showsVerticalScrollIndicat
       or={false}
     >
-      <View>
+      <View style={styles.mainContainer} >
         <View style={styles.header}>
           <ScreenHeaderText headerText={"About Us"}></ScreenHeaderText>
         </View>
@@ -66,13 +66,16 @@ AboutUs.navigationOptions = (props) => {
 
 
 const styles = StyleSheet.create({
+  mainContainer:{
+    marginTop:'12%',
+},
   header: {
-    marginTop: "13%",
-    marginLeft: "5%",
+    marginTop: "4%",
+    marginLeft: "8%",
   },
   contentContainer: {
     marginTop: "2%",
-    marginLeft: "7%",
+    marginLeft: "9%",
   },
   subheader: {
     fontSize: 22,

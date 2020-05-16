@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
     alignItems: "center",
-    marginTop:'5%'
+    marginTop:'12%'
   },
   loader: {
     width: "100%",
@@ -77,8 +77,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   header: {
-    marginRight: "18%",
-    marginTop: "12%",
+    marginRight: "17%",
+   marginTop: "4%",
   },
 });
 export default AllAnouncmenets;

@@ -21,7 +21,7 @@ const BranchesScreen = ({ navigation }) => {
         , []
     )
     return <View style={styles.container}>
-        <View style={{marginBottom:'5%'}}>
+        <View style={{marginBottom: "5%", marginLeft: "5%", }}>
         <ScreenHeaderText headerText="Our Branches" />
         </View>
         <FlatList

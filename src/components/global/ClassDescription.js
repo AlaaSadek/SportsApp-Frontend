@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     color: "#333333",
     fontSize: 15,
     fontFamily: "Montserrat",
-    marginTop: "2%",
+    marginTop: "1%",
   },
   description: {
     marginTop: "2%",
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     marginTop:
       Dimensions.get("window").height > 740
         ? Dimensions.get("window").height * 0.06
-        : Dimensions.get("screen").height * 0.04,
+        : Dimensions.get("screen").height * 0.022,
     paddingHorizontal: "6%",
   },
 

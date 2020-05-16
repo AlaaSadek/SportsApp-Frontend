@@ -21,7 +21,7 @@ const HistoryScreen = () => {
   )
   return (
     <View style={{ margin: 30, marginTop: 60 }}>
-      <View style={{marginBottom:'5%'}}>
+      <View style={{marginBottom: "5%", marginLeft: "5%" }}>
       <ScreenHeaderText headerText={"History"}></ScreenHeaderText>
       </View>
       <View style={{ height: '100%' }}>

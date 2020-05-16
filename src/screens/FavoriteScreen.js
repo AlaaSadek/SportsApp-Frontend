@@ -22,7 +22,7 @@ const FavoriteScreen = () => {
   return (
 
     <View style={{ margin: '3%', marginTop: 50, width: '100%' }}>
-        <View style={{marginBottom:'5%'}}>
+        <View style={{marginBottom: "5%", marginLeft: "5%",}}>
       <ScreenHeaderText headerText="Favorites" />
       </View>
       <View style={{ height: '100%', width: '100%' }}>
