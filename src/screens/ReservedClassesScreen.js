@@ -13,7 +13,6 @@ const ReservedClassesScreen = () => {
     await BackendAxios.get('/class/reservedclasses')
       .then(res => { setReservedClasses(res.data.payload) })
   }
-  console.log(reservedClasses)
   useEffect(
     () => {
       refresh();

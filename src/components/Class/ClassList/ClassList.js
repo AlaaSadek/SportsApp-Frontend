@@ -11,6 +11,7 @@ const ClassList = ({ classes, header, displayDetails, children, refresh }) => {
                 <FlatList
                     showsVerticalScrollIndicator={false}
                     data={classes}
+                    ListEmptyComponent={() => <Text style={styles.noClassText}>No class found</Text>}
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={({ item }) => {
                         return (
@@ -30,11 +31,17 @@ const styles = StyleSheet.create({
     },
     listContainer: {
         paddingVertical: 10,
-        flex: 1,
+        flex: 1
     },
     header: {
         marginLeft: 20,
         fontFamily: 'Montserrat_Bold', fontSize: 15
+    },
+    noClassText: {
+        textAlign: 'center',
+        textAlignVertical: 'center',
+        fontFamily: 'Montserrat_Bold',
+        fontSize: 15
     }
 });
 export default ClassList;

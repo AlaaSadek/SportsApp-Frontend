@@ -18,10 +18,7 @@ const ResultScreen = ({ navigation }) => {
     useEffect(
         () => {
             const x = async () => {
-
-                setLoading(true);
                 await refresh()
-                setLoading(false);
             }
             x();
         }
@@ -29,9 +26,8 @@ const ResultScreen = ({ navigation }) => {
     )
 
     const refresh = async () => {
-        console.log('a',searchValue)
-        if (!searchValue) {
-            console.log('f',filters)
+        setLoading(true);
+        if (!searchValue && filters) {
             await getClassesByFilter(filters).then(
                 (res) => {
                     setResult(res);
@@ -41,17 +37,15 @@ const ResultScreen = ({ navigation }) => {
         else {
             await onSearch();
         }
+        setLoading(false);
     }
     const onSearch = async () => {
-        setLoading(true);
         let res = await getAllClassesByName(searchValue);
         setResult(res);
-        setLoading(false)
     }
     return <View style={styles.container}>
         <LoadingModal modalVisible={loading} />
-        <View style={{ width: '50%', alignSelf: 'flex-end' }} >
-
+        <View style={styles.searchContainer} >
             <SearchInput
                 searchValue={searchValue}
                 setSearchValue={setSearchValue}
@@ -66,6 +60,7 @@ const ResultScreen = ({ navigation }) => {
 
 
 ResultScreen.navigationOptions = (props) => {
+    console.log(props)
     return {
 
         title: '',
@@ -74,11 +69,6 @@ ResultScreen.navigationOptions = (props) => {
                 <HeaderButtons HeaderButtonComponent={HeaderButton}>
                     <Item style={styles.backIcon} title="back" iconName='arrow-back' onPress={() => { props.navigation.goBack() }} />
                 </HeaderButtons>
-            )
-        },
-        headerRight: () => {
-            return (
-                <SearchInput />
             )
         },
         headerStyle: {
@@ -92,8 +82,16 @@ ResultScreen.navigationOptions = (props) => {
 const styles = StyleSheet.create({
     container: {
         padding: '5%',
+        paddingTop:'0%',
         flex: 1,
         backgroundColor: 'white'
     },
+    searchContainer: {
+        width: '100%',
+        alignSelf: 'flex-end',
+        borderWidth: 1,
+        padding: 5,
+        borderRadius: 10
+    }
 });
 export default ResultScreen;

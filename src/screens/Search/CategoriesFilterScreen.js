@@ -13,7 +13,6 @@ import HeaderButton from '../../components/global/HeaderButton';
 const CategoriesFilterScreen = ({ navigation }) => {
     const [loading, setLoading] = useState(false);
     const [filters, setFilters] = useState(null);
-    const [toBeSentFilters, setToBeSentFilters] = useState(null);
     useEffect(
         () => {
             const x = async () => {
@@ -31,19 +30,9 @@ const CategoriesFilterScreen = ({ navigation }) => {
     )
     const toggleItemState = (filterArrayName, filterItem) => {
         const copy = {};
-        Object.assign(copy, toBeSentFilters);
-        if (copy[filterArrayName] && copy[filterArrayName].find(o => o == filterItem))
-        {
-            
-            copy[filterArrayName].find(o => o == filterItem).state = !copy[filterArrayName].find(o => o == filterItem).state
-        }
-        else {
-            if (!copy[filterArrayName])
-                copy[filterArrayName] = []
-            copy[filterArrayName].push({ ...filterItem, state: true })
-
-        }
-        setToBeSentFilters(copy)
+        Object.assign(copy, filters);
+        copy[filterArrayName].find(o => o == filterItem).state = !copy[filterArrayName].find(o => o == filterItem).state
+        setFilters(copy)
     }
     const getSections = () => {
         return Object.keys(filters)
@@ -51,8 +40,22 @@ const CategoriesFilterScreen = ({ navigation }) => {
                 return <FilterOptionsList toggleItemState={toggleItemState} key={key} filterArray={filters[key]} filterName={key} />
             })
     }
+    const formatFilters = (f) => {
+        let ret = {};
+
+        Object.keys(f)
+            .map(key => {
+                ret[key] = [];
+                f[key].forEach(element => {
+                    if (element.state) {
+                        ret[key].push(element);
+                    }
+                });
+            })
+        return ret;
+    }
     const onSubmit = () => {
-        navigation.navigate('ResultScreen', { filters: setToBeSentFilters })
+        navigation.navigate('ResultScreen', { filters: formatFilters(filters) })
     }
     return <View style={styles.container}>
         <View style={styles.headerTextContainer}>
