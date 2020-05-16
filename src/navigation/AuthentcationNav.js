@@ -8,7 +8,7 @@ export default AuthentcationNav = createSwitchNavigator({
   HomeScreen,
   SignInScreen,
   ApplicationNav,
-  SignUp
+  SignUp,
 },
   {
     initialRouteName: "HomeScreen",
