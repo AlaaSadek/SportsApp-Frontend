@@ -6,6 +6,7 @@ import HeaderButton from '../components/global/HeaderButton';
 import Announcements from "../components/Announcements/Announcements";
 import DefaultClassList from "../components/Class/ClassList/DefaultClassList";
 import { getAllClasses } from '../utils/ClassUtils';
+import { registerPushNotification, listenForNotifications } from '../utils/push_notification'
 
 
 const Main = ({ navigation }) => {
@@ -13,6 +14,12 @@ const Main = ({ navigation }) => {
   const refresh = async () => {
     await getAllClasses().then(res => { setClasses(res) })
   }
+
+  const handleNotification = () => {
+    registerPushNotification();
+    listenForNotifications(navigation);
+  }
+  handleNotification();
   useEffect(
     () => {
 

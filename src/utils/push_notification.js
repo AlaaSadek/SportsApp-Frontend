@@ -21,11 +21,11 @@ export const registerPushNotification = async () => {
 }
 
 
-export const listenForNotifications = async () => {
+export const listenForNotifications = async (navigation) => {
 
     Notifications.addListener((notification) => {
         Vibration.vibrate();
-        console.log(notification)
-        console.log(notification.data)
+        navigation.navigate('ClassDescriptionScreen',{id:notification.data.id})
+        
     })
 }
