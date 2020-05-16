@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     },
     logoutButton: {
         marginLeft: '7%',
-        marginTop: Dimensions.get("window").height * 0.1
+         marginTop: Dimensions.get("window").height>664? Dimensions.get("window").height * 0.1: Dimensions.get("window").height*0.0
     },
     logoutIcon: {
         color: '#494EAD',

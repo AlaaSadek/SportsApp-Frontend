@@ -97,9 +97,9 @@ CategoriesFilterScreen.navigationOptions = (props) => {
         },
         headerRight: () => {
             return (
-                <TouchableOpacity style={{ flexDirection: 'row-reverse', color: '#020202' }} >
+                <TouchableOpacity  onPress={() => { props.navigation.navigate('ResultScreen')}} style={{ flexDirection: 'row-reverse', color: '#020202' } } >
                     <HeaderButtons HeaderButtonComponent={HeaderButton}>
-                        <Item title="menu" iconName='search' onPress={() => { }} />
+                        <Item title="menu" iconName='search' />
                     </HeaderButtons>
                     <Text style={styles.searchText}>Search</Text>
                 </TouchableOpacity>)
