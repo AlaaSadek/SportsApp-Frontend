@@ -5,6 +5,8 @@ import * as Font from "expo-font";
 import MainNav from "./src/navigation/MainNav";
 import { Provider } from 'react-redux';
 import store from './src/store/index';
+import { registerPushNotification, listenForNotifications } from './src/utils/push_notification'
+
 const App = createAppContainer(MainNav);
 
 const fetchFonts = () => {
@@ -15,8 +17,13 @@ const fetchFonts = () => {
     Montserrat_Bold: require("./assets/fonts/Montserrat-Bold.ttf"),
   });
 };
+const handleNotification = () => {
+  registerPushNotification();
+  listenForNotifications();
+}
 export default () => {
   const [dataLoaded, setDataLoaded] = useState(false);
+  handleNotification();
   if (!dataLoaded) {
     return (
       <AppLoading
