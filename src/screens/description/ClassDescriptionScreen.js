@@ -20,11 +20,10 @@ const ClassDescriptionScreen = ({ navigation }) => {
   const [type, setType] = useState("");
   const [branch, setBranch] = useState("");
   const [loading, setLoading] = useState(true);
-
-
+  const classID = navigation.getParam('id')
   useEffect(() => {
     // navigation.state.params.
-    getClassDetails("5ebdff1f99901608a09e97c4").then((result) => {
+    getClassDetails(classID).then((result) => {
       setDataset(result);
 
       getClassType(result.type).then((result) => {
@@ -38,7 +37,7 @@ const ClassDescriptionScreen = ({ navigation }) => {
     });
   }, []);
   const onClickReserve = () => {
-    reserveClass("5ebdff1f99901608a09e97c4").then((result) => {
+    reserveClass(classID).then((result) => {
       setReserve("Reserved");
     });
   };
@@ -58,12 +57,13 @@ const ClassDescriptionScreen = ({ navigation }) => {
         />
       ) : (
           <ClassDescription
-            name={dataset.name}
             type={type}
+            classItem={dataset}
+            name={dataset.name}
             description={dataset.description}
-            place={branch}
-            dateTime={dataset.date}
             numberOfLikes={dataset.numberOfLikes}
+            dateTime={dataset.date}
+            place={branch}
             onPress={() => onClickReserve()}
           />
         )}

@@ -35,7 +35,7 @@ const AllAnouncmenets = ({ navigation }) => {
         renderItem={({ item }) => (
           <AnnouncementCard
             onPress={() => {
-              navigation.navigate("AnnouncementDetail",{itemID: item._id});
+              navigation.navigate("AnnouncementDetail",{id : item._id});
             }}
             dateTime={item.publishedDateTime}
             image={{ uri: item.imageLocation }}

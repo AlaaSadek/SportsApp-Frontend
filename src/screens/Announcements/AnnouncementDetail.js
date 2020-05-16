@@ -8,7 +8,7 @@ import HeaderButton from '../../components/global/HeaderButton';
 const AnnouncementDetail = ({ navigation }) => {
   const [dataset, setDataset] = useState([]);
   useEffect(() => {
-    getAnnouncementDetail(navigation.state.params.itemID).then((result) => {
+    getAnnouncementDetail(navigation.state.params.id).then((result) => {
       setDataset(result);
     });
   }, []);

@@ -6,32 +6,47 @@ import SearchInput from '../../components/Search/SearchInput';
 import LoadingModal from '../../components/global/LoadingModal'
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import HeaderButton from '../../components/global/HeaderButton';
+import DefaultClassList from '../../components/Class/ClassList/DefaultClassList';
+import { getClassesByFilter } from '../../utils/SearchUtils'
 
 const ResultScreen = ({ navigation }) => {
     const [loading, setLoading] = useState(false);
     const [result, setResult] = useState([]);
     const [searchValue, setSearchValue] = useState('');
+    const filters = navigation.getParam('filters');
+
     useEffect(
         () => {
             const x = async () => {
 
-                let res = navigation.getParam('result')
-                if (!res) {
-                    setLoading(true);
-                    res = await getAllClassesByName('%20');
-                    setLoading(false);
-                }
-                setResult(res);
+                setLoading(true);
+                await refresh()
+                setLoading(false);
             }
             x();
         }
         , []
     )
+
+    const refresh = async () => {
+        console.log('a',searchValue)
+        if (!searchValue) {
+            console.log('f',filters)
+            await getClassesByFilter(filters).then(
+                (res) => {
+                    setResult(res);
+                }
+            )
+        }
+        else {
+            await onSearch();
+        }
+    }
     const onSearch = async () => {
         setLoading(true);
         let res = await getAllClassesByName(searchValue);
-        setLoading(false)
         setResult(res);
+        setLoading(false)
     }
     return <View style={styles.container}>
         <LoadingModal modalVisible={loading} />
@@ -44,15 +59,8 @@ const ResultScreen = ({ navigation }) => {
             />
         </View>
         <ScreenHeaderText headerText="Result" />
-        <FlatList
-            data={result}
-            keyExtractor={(item) => item._id}
-            renderItem={
-                ({ item }) => {
-                    return <Text>{item.name}</Text>
-                }
-            }
-        />
+
+        <DefaultClassList refresh={refresh} displayDetails={true} classes={result} />
     </View>
 }
 

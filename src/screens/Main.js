@@ -1,26 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Text, FlatList, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import ScreenHeaderText from '../components/global/ScreenHeaderText';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import HeaderButton from '../components/global/HeaderButton';
 import Announcements from "../components/Announcements/Announcements";
 import DefaultClassList from "../components/Class/ClassList/DefaultClassList";
-import BackendAxios from '../services/backendAxios'
-const Main = ({ navigation }) => {
+import { getAllClasses } from '../utils/ClassUtils';
 
+const Main = ({ navigation }) => {
   const [classes, setClasses] = useState([])
   const refresh = async () => {
-    await BackendAxios.get('/class/allclasses')
-      .then(res => { setClasses(res.data.payload) })
-
-
+    await getAllClasses().then(res => { setClasses(res) })
   }
   useEffect(
     () => {
 
       refresh();
     }, []
-  )
+  );
   return (
     <View style={styles.container}>
 
@@ -38,7 +35,7 @@ const Main = ({ navigation }) => {
 
       </View>
       <View style={{ flex: 1, marginTop: 10 }}>
-        <DefaultClassList refresh={refresh} displayDetails={true} classes={classes} header="Popular Classes" />
+        <DefaultClassList refresh={refresh} displayDetails={false} classes={classes} header="Classes :" />
       </View>
     </View>
 
@@ -86,22 +83,20 @@ Main.navigationOptions = (props) => {
 const styles = StyleSheet.create({
   container: {
     padding: '5%',
+    paddingBottom: 0,
     flex: 1,
     backgroundColor: 'white'
   },
-  headerText:
-  {
-
+  headerText: {
     marginLeft: '5%',
-
   },
   announcement_viewallcontainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '90%',
     alignSelf: 'center',
-
-  }, announcementText: {
+  },
+  announcementText: {
     fontSize: 15,
     fontFamily: 'Montserrat_Bold',
     color: '#030303',

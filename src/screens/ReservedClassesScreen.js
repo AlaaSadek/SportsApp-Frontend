@@ -7,24 +7,25 @@ import BackendAxios from '../services/backendAxios'
 import ScreenHeaderText from "../components/global/ScreenHeaderText";
 
 
-const ReservedClassesScreen = ({ navigation }) => {
+const ReservedClassesScreen = () => {
   const [reservedClasses, setReservedClasses] = useState([])
   const refresh = async () => {
-
     await BackendAxios.get('/class/reservedclasses')
       .then(res => { setReservedClasses(res.data.payload) })
-
   }
+  console.log(reservedClasses)
   useEffect(
     () => {
-
       refresh();
     }, []
   )
   return (
-    <View  style={{margin:30,marginTop:50}}>
+    <View style={{ margin: 30, marginTop: 50 }}>
       <ScreenHeaderText headerText={"Reserved Classes"}></ScreenHeaderText>
-        <CancelableClassList refresh={refresh} classes={reservedClasses} />
+      <View style={{height:'100%'}}>
+
+      <CancelableClassList refresh={refresh} classes={reservedClasses} />
+      </View>
     </View>
   );
 };

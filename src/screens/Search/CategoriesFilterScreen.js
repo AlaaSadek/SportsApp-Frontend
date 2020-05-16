@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, ScrollView, TouchableOpacity, Text } from 'react-native';
-import { getFiltersFromBackend, getClassesByFilter } from '../../utils/SearchUtils'
+import { getFiltersFromBackend } from '../../utils/SearchUtils'
 import ScreenHeaderText from '../../components/global/ScreenHeaderText'
 import FilterOptionsList from '../../components/Search/FilterOptionsList';
 import MainButton from '../../components/global/MainButton'
@@ -13,6 +13,7 @@ import HeaderButton from '../../components/global/HeaderButton';
 const CategoriesFilterScreen = ({ navigation }) => {
     const [loading, setLoading] = useState(false);
     const [filters, setFilters] = useState(null);
+    const [toBeSentFilters, setToBeSentFilters] = useState(null);
     useEffect(
         () => {
             const x = async () => {
@@ -30,10 +31,19 @@ const CategoriesFilterScreen = ({ navigation }) => {
     )
     const toggleItemState = (filterArrayName, filterItem) => {
         const copy = {};
-        Object.assign(copy, filters);
-        copy[filterArrayName].find(o => o == filterItem).state = !copy[filterArrayName].find(o => o == filterItem).state
+        Object.assign(copy, toBeSentFilters);
+        if (copy[filterArrayName] && copy[filterArrayName].find(o => o == filterItem))
+        {
+            
+            copy[filterArrayName].find(o => o == filterItem).state = !copy[filterArrayName].find(o => o == filterItem).state
+        }
+        else {
+            if (!copy[filterArrayName])
+                copy[filterArrayName] = []
+            copy[filterArrayName].push({ ...filterItem, state: true })
 
-        setFilters(copy)
+        }
+        setToBeSentFilters(copy)
     }
     const getSections = () => {
         return Object.keys(filters)
@@ -42,15 +52,7 @@ const CategoriesFilterScreen = ({ navigation }) => {
             })
     }
     const onSubmit = () => {
-        setLoading(true);
-        getClassesByFilter(filters).then(
-            (res) => {
-                setLoading(false);
-
-                navigation.navigate('ResultScreen', { result: res })
-            }
-        )
-
+        navigation.navigate('ResultScreen', { filters: setToBeSentFilters })
     }
     return <View style={styles.container}>
         <View style={styles.headerTextContainer}>
