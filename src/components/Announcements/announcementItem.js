@@ -72,7 +72,7 @@ const AnnouncementlItem = ({ item }, props) => {
     }
     return (
 
-        <View style={containerStyle}>
+        <View style={styles.container}>
             <TouchableOpacity onPress={() => nav()}>
                 <ImageBackground style={styles.image} imageStyle={{ opacity: 0.59 }} source={{ uri: item.imageLocation }} >
                     <Text style={styles.date}> {month}</Text>
@@ -86,9 +86,10 @@ const AnnouncementlItem = ({ item }, props) => {
 const styles = StyleSheet.create({
     container: {
         height: 172,
-        width: Dimensions.get('window').width * 0.73,
+        width: Dimensions.get('window').width * 0.70,
         marginLeft: Dimensions.get('window').width * 0.04,
         borderRadius: 10,
+        //borderWidth:5,
         backgroundColor: '#050000',
         flexGrow: 1
     },
