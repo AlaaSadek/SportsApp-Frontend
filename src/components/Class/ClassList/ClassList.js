@@ -9,12 +9,12 @@ const ClassList = ({ classes, header, displayDetails, children, refresh }) => {
             <View style={styles.listContainer}>
 
                 <FlatList
-
+                    showsVerticalScrollIndicator={false}
                     data={classes}
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={({ item }) => {
                         return (
-                            <ClassListItem displayDetails={displayDetails}  classItem={item} >
+                            <ClassListItem displayDetails={displayDetails} classItem={item} >
                                 {children}
                             </ClassListItem>
                         );

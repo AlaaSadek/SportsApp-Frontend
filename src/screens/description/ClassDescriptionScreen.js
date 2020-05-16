@@ -10,6 +10,9 @@ import {
   getClassType,
   getClassBranch,
 } from "../../utils/ClassDescription";
+import { HeaderButtons, Item } from 'react-navigation-header-buttons';
+import HeaderButton from '../../components/global/HeaderButton';
+
 
 const ClassDescriptionScreen = ({ navigation }) => {
   const [dataset, setDataset] = useState([]);
@@ -39,6 +42,7 @@ const ClassDescriptionScreen = ({ navigation }) => {
       setReserve("Reserved");
     });
   };
+
   return (
     <ImageBackground
       source={{ uri: dataset.imageURL }}
@@ -53,20 +57,36 @@ const ClassDescriptionScreen = ({ navigation }) => {
           onPress={() => navigation.navigate("MainScreen")}
         />
       ) : (
-        <ClassDescription
-          name={dataset.name}
-          type={type}
-          description={dataset.description}
-          place={branch}
-          dateTime={dataset.date}
-          numberOfLikes={dataset.numberOfLikes}
-          onPress={() => onClickReserve()}
-        />
-      )}
+          <ClassDescription
+            name={dataset.name}
+            type={type}
+            description={dataset.description}
+            place={branch}
+            dateTime={dataset.date}
+            numberOfLikes={dataset.numberOfLikes}
+            onPress={() => onClickReserve()}
+          />
+        )}
     </ImageBackground>
   );
 };
 
+ClassDescriptionScreen.navigationOptions = (props) => {
+  return {
+    title: '',
+    headerTransparent: true,
+    headerLeft: () => {
+      return (
+        <HeaderButtons HeaderButtonComponent={HeaderButton}>
+          <Item style={styles.backIcon} title="back" iconName='arrow-back' onPress={() => { props.navigation.goBack() }} />
+        </HeaderButtons>
+      )
+    },
+
+    headertransparent: true,
+
+  }
+}
 const styles = StyleSheet.create({
   Background: {
     resizeMode: "stretch",

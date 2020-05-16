@@ -1,12 +1,15 @@
 
-
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, ScrollView } from 'react-native';
+import { View, StyleSheet, ScrollView, TouchableOpacity, Text } from 'react-native';
 import { getFiltersFromBackend, getClassesByFilter } from '../../utils/SearchUtils'
 import ScreenHeaderText from '../../components/global/ScreenHeaderText'
 import FilterOptionsList from '../../components/Search/FilterOptionsList';
 import MainButton from '../../components/global/MainButton'
-import LoadingModal from '../../components/global/LoadingModal'
+import LoadingModal from '../../components/global/LoadingModal';
+import { HeaderButtons, Item } from 'react-navigation-header-buttons';
+import HeaderButton from '../../components/global/HeaderButton';
+
+
 const CategoriesFilterScreen = ({ navigation }) => {
     const [loading, setLoading] = useState(false);
     const [filters, setFilters] = useState(null);
@@ -43,7 +46,7 @@ const CategoriesFilterScreen = ({ navigation }) => {
         getClassesByFilter(filters).then(
             (res) => {
                 setLoading(false);
-                
+
                 navigation.navigate('ResultScreen', { result: res })
             }
         )
@@ -76,7 +79,34 @@ const CategoriesFilterScreen = ({ navigation }) => {
         <LoadingModal modalVisible={loading} />
     </View>
 }
+CategoriesFilterScreen.navigationOptions = (props) => {
+    return {
 
+        title: '',
+        headerLeft: () => {
+            return (
+                <HeaderButtons HeaderButtonComponent={HeaderButton}>
+                    <Item style={styles.backIcon} title="back" iconName='arrow-back' onPress={() => { props.navigation.goBack() }} />
+                </HeaderButtons>
+            )
+        },
+        headerRight: () => {
+            return (
+                <TouchableOpacity style={{ flexDirection: 'row-reverse', color: '#020202' }} >
+                    <HeaderButtons HeaderButtonComponent={HeaderButton}>
+                        <Item title="menu" iconName='search' onPress={() => { }} />
+                    </HeaderButtons>
+                    <Text style={styles.searchText}>Search</Text>
+                </TouchableOpacity>)
+        },
+        headerStyle: {
+            shadowColor: 'transparent',
+            elevation: 0
+
+        },
+
+    }
+}
 const styles = StyleSheet.create({
     container: {
         padding: '5%',
@@ -92,7 +122,7 @@ const styles = StyleSheet.create({
         flex: 1
     },
     headerTextContainer: {
-        flex: 1
+        flex: 1,
     }
 
 });
