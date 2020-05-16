@@ -24,14 +24,11 @@ const PhotoPicker = (props) => {
             quality: 0.5
         });
         if (result.cancelled)
-            return
-            
+            return;
         const imageName = getNameFromUri(result.uri)
         if (!result.cancelled) {
-            // console.log('result')
-            // console.log(result)
-            setImage({ uri: result.uri, name: imageName, })
-            props.setValue(new PhotoInfo(result.uri, imageName));
+            setImage({ uri: result.uri, name: imageName})
+            props.setValue(new PhotoInfo(result.uri, imageName,result.type));
         }
     };
     return (

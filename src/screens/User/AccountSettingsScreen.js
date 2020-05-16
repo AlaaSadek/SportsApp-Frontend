@@ -12,6 +12,7 @@ import ScreenHeaderText from "../../components/global/ScreenHeaderText";
 import { getProfileData, updateProfileData } from "../../utils/profileData";
 import RNPickerSelect from "react-native-picker-select";
 import UpdateModal from "../../components/global/UpdateModal";
+import LoadingModal from "../../components/global/LoadingModal";
 import Icon from "react-native-vector-icons/Ionicons";
 import DatePicker from "react-native-datepicker";
 import PhotoPicker from "../../components/global/PhotoPicker";
@@ -25,23 +26,16 @@ const AccountSettingsScreen = ({ navigation }) => {
   const [dateofBirth, setDateofBirth] = useState("");
   const [profilePic, setProfilePic] = useState("");
   const [gender, setGender] = useState("");
-  const [update, setUpdate] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [profileData, setProfileData] = useState([]);
   const updateProfile = () => {
-
-    updateProfileData(fullName, emailAddress, phoneNumber, dateofBirth, profilePic.uri, gender).then((result) => {
-      console.log(result);
-    });
-
-    console.log(
-      fullName,
-      phoneNumber,
-      emailAddress,
-      gender,
-      dateofBirth,
-      profilePic
-    );
+    setLoading(true);
+    updateProfileData(fullName, phoneNumber, emailAddress, gender, dateofBirth, profilePic)
+      .then((result) => {
+        setLoading(false);
+        setModalVisible(true);
+      });
   };
 
   useEffect(() => {
@@ -52,6 +46,7 @@ const AccountSettingsScreen = ({ navigation }) => {
   console.disableYellowBox = true;
   return (
     <KeyboardAwareScrollView>
+      <LoadingModal modalVisible={loading} />
       <UpdateModal modalVisible={modalVisible} />
       <View style={styles.container}>
         <View style={styles.header}>
@@ -102,39 +97,17 @@ const AccountSettingsScreen = ({ navigation }) => {
               marginLeft: "10%",
               marginTop: "6%",
             }}
-            customStyles={{
-              dateInput: {
-                borderLeftWidth: 0,
-                borderRightWidth: 0,
-                borderTopWidth: 0,
-                borderBottomWidth: 0.8,
-                borderBottomColor: "#DDDDDD",
-                alignItems: "flex-start",
-
-              },
-              placeholderText: {
-                fontSize: 16,
-                color: "#7A8494",
-                fontFamily: "Montserrat_Medium",
-              },
-              dateText: {
-                color: 'black',
-                fontFamily: "Montserrat_Medium",
-                fontSize: 16,
-
-              }
-            }}
+            customStyles={dateTimePickerStyles}
             iconComponent={
               <Icon name="ios-calendar" color="#494EAD" size={30} />
             }
             mode="date"
-            placeholder="Date of birth (Optional)"
+            placeholder={profileData.birthDate ? profileData.birthDate : "Date of birth (Optional)"}
             format="YYYY-MM-DD"
             minDate="1990-05-01"
             date={dateofBirth}
             onDateChange={(date) => {
               setDateofBirth(date);
-
             }}
           />
 
@@ -166,7 +139,6 @@ const AccountSettingsScreen = ({ navigation }) => {
           <MainButton
             onPress={() => {
               updateProfile();
-              setModalVisible(true);
             }}
             firstGradient="#1D55C5"
             secondGradient="#E93354"
@@ -227,4 +199,26 @@ const pickerSelectStyles = StyleSheet.create({
     fontFamily: "Montserrat_Medium",
   },
 });
+const dateTimePickerStyles = StyleSheet.create({
+  dateInput: {
+    borderLeftWidth: 0,
+    borderRightWidth: 0,
+    borderTopWidth: 0,
+    borderBottomWidth: 0.8,
+    borderBottomColor: "#DDDDDD",
+    alignItems: "flex-start",
+
+  },
+  placeholderText: {
+    fontSize: 16,
+    color: "#7A8494",
+    fontFamily: "Montserrat_Medium",
+  },
+  dateText: {
+    color: 'black',
+    fontFamily: "Montserrat_Medium",
+    fontSize: 16,
+
+  }
+})
 export default AccountSettingsScreen;

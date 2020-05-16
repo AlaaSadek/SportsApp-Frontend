@@ -16,26 +16,32 @@ export const getProfileData = async () => {
 };
 
 export const updateProfileData = async (fullName, phoneNumber, emailAddress, gender, dateofBirth, profilePic) => {
-  const config = {
-    headers: {
-      'content-type': 'multipart/form-data'
-    }
-  }
-  let res = await backendAxios
-    .patch("Account", {
-      fullName: fullName,
-      mobile: phoneNumber,
-      email: emailAddress,
-      gender: gender,
-      birthDate: dateofBirth,
-      profilePicture: profilePic,
 
-    }, config)
+  let formData = new FormData();
+  formData.append('fullName', fullName)
+  formData.append('mobile', phoneNumber)
+  formData.append('email', emailAddress)
+  formData.append('birthDate', dateofBirth)
+  let photo = {
+    uri: profilePic.uri,
+    type: 'image/jpeg',
+    name: profilePic.name,
+  }
+  if(profilePic.uri)
+  formData.append('profilePicture', photo)
+  formData.append('gender', gender)
+  console.log(formData)
+  let res = await backendAxios
+    .patch("Account",
+      formData
+    ,)
     .then((res) => {
+      console.log('success')
       return res.data.messege;
     })
     .catch((error) => {
-      return error;
+      console.log('err')
+      return error.response;
     });
   return res;
 };
