@@ -104,7 +104,7 @@ const AccountSettingsScreen = ({ navigation }) => {
               style={{
                 width: "81.3%",
                 marginLeft: "10%",
-                marginTop: "6%",
+                marginTop: Dimensions.get("window").height > 800 ? "8%" : "6%",
               }}
               customStyles={dateTimePickerStyles}
               iconComponent={
@@ -158,7 +158,7 @@ const AccountSettingsScreen = ({ navigation }) => {
               />
             </View>
           </View>
-          <View style={{ marginTop: "8%" }}>
+          <View style={{ marginTop: "9%" }}>
             <MainButton
               onPress={() => {
                 updateProfile();
@@ -234,7 +234,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     marginLeft: "10%",
     marginRight: "10%",
-    marginTop: Dimensions.get("window").height > 800 ? "12%" : "6%",
+    marginTop: Dimensions.get("window").height > 800 ? "8%" : "6%",
   },
 });
 const pickerSelectStyles = StyleSheet.create({
