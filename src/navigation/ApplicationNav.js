@@ -17,30 +17,34 @@ import React from 'react';
 import { createAppContainer } from "react-navigation";
 import ReservedClassesScreen from '../screens/ReservedClassesScreen';
 import HistoryScreen from '../screens/HistoryScreen';
-import FavoriteScreen  from '../screens/FavoriteScreen';
-import AccountSettingsScreen from '../screens/AccountSettingsScreen';
+import FavoriteScreen from '../screens/FavoriteScreen';
+import AccountSettingsScreen from '../screens/User/AccountSettingsScreen'
 const ApplicationNav = createStackNavigator(
   {
     Main: {
       screen: Main
     },
-    ReservedClassesScreen:{
-      screen:ReservedClassesScreen
+    ReservedClassesScreen: {
+      screen: ReservedClassesScreen
     },
-    BranchesScreen:{
-      screen:BranchesScreen
+    BranchesScreen: {
+      screen: BranchesScreen
     },
-    HistoryScreen:{
-      screen:HistoryScreen
+    HistoryScreen: {
+      screen: HistoryScreen
     },
-    FavoriteScreen:{
-      screen:FavoriteScreen
+    FavoriteScreen: {
+      screen: FavoriteScreen
     },
-    AccountSettingsScreen:{
-      screen:AccountSettingsScreen
+    AccountSettingsScreen: {
+      screen: AccountSettingsScreen
     },
-    AboutUs:{
-      screen:AboutUs
+    AboutUs: {
+      screen: AboutUs
+    },
+
+    AccountSettingsScreen: {
+      screen: AccountSettingsScreen
     },
     MainScreen,
     ClassListTestScreen,
@@ -48,11 +52,11 @@ const ApplicationNav = createStackNavigator(
     AnnouncementDetail,
     AllAnnouncements,
     AboutUs,
-    
+
     MapHandlerScreen,
     CategoriesFilterScreen,
     ResultScreen,
-   
+    AccountSettingsScreen
 
   },
 );
@@ -64,53 +68,53 @@ const MainNav = createDrawerNavigator(
         drawerLabel: 'Home',
         drawerIcon: <Feather name="home" size={20} style={{ color: '#494EAD' }}></Feather>,
       }
-      },
-      ReservedClassesScreen: {
-        screen: ApplicationNav,
-        navigationOptions: {
-          drawerLabel:'Reserved Classes',
-          drawerIcon: <AntDesign name="calendar" size={20} style={{ color: '#494EAD' }}></AntDesign>
+    },
+    ReservedClassesScreen: {
+      screen: ApplicationNav,
+      navigationOptions: {
+        drawerLabel: 'Reserved Classes',
+        drawerIcon: <AntDesign name="calendar" size={20} style={{ color: '#494EAD' }}></AntDesign>
 
-        }
-      },
-      BranchesScreen:{
-        screen:ApplicationNav,
-        navigationOptions:{
-          drawerLabel:'Our Branches',
-          drawerIcon: <EvilIcons name="location" size={25} style={{ color: '#494EAD' }}></EvilIcons>
-        }
-      },
-      HistoryScreen:{
-        screen:ApplicationNav,
-        navigationOptions:{
-          drawerLabel:'History',
-          drawerIcon: <AntDesign name="filetext1" size={20} style={{ color: '#494EAD' }}></AntDesign>
-        }
-      },
-      FavoriteScreen:{
-        screen:ApplicationNav,
-        navigationOptions:{
-          drawerLabel:'Favorites',
-          drawerIcon: <AntDesign name="hearto" size={20} style={{ color: '#494EAD' }}></AntDesign>
-        }
-      },
-      AccountSettingsScreen:{
-        screen :ApplicationNav,
-        navigationOptions:{
-          drawerLabel:'Account Settings',
-          drawerIcon: <MaterialCommunityIcons name="account-circle-outline" size={20} style={{ color: '#494EAD' }}></MaterialCommunityIcons>
-
-        }
-      },
-      AboutUs:{
-        screen:ApplicationNav,
-        navigationOptions:{
-          drawerLabel:'About Us',
-          drawerIcon: <Octicons name="info" size={20} style={{ color: '#494EAD' }}></Octicons>
-        }
       }
+    },
+    BranchesScreen: {
+      screen: ApplicationNav,
+      navigationOptions: {
+        drawerLabel: 'Our Branches',
+        drawerIcon: <EvilIcons name="location" size={25} style={{ color: '#494EAD' }}></EvilIcons>
+      }
+    },
+    HistoryScreen: {
+      screen: ApplicationNav,
+      navigationOptions: {
+        drawerLabel: 'History',
+        drawerIcon: <AntDesign name="filetext1" size={20} style={{ color: '#494EAD' }}></AntDesign>
+      }
+    },
+    FavoriteScreen: {
+      screen: ApplicationNav,
+      navigationOptions: {
+        drawerLabel: 'Favorites',
+        drawerIcon: <AntDesign name="hearto" size={20} style={{ color: '#494EAD' }}></AntDesign>
+      }
+    },
+    AccountSettingsScreen: {
+      screen: ApplicationNav,
+      navigationOptions: {
+        drawerLabel: 'Account Settings',
+        drawerIcon: <MaterialCommunityIcons name="account-circle-outline" size={20} style={{ color: '#494EAD' }}></MaterialCommunityIcons>
 
-    
+      }
+    },
+    AboutUs: {
+      screen: ApplicationNav,
+      navigationOptions: {
+        drawerLabel: 'About Us',
+        drawerIcon: <Octicons name="info" size={20} style={{ color: '#494EAD' }}></Octicons>
+      }
+    }
+
+
 
   },
   {

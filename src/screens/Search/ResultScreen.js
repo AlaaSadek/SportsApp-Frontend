@@ -60,7 +60,6 @@ const ResultScreen = ({ navigation }) => {
 
 
 ResultScreen.navigationOptions = (props) => {
-    console.log(props)
     return {
 
         title: '',

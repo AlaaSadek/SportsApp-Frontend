@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity, Dimensions } from 'react-native'
 import { DrawerItems } from 'react-navigation-drawer'
 import { Ionicons } from '@expo/vector-icons';
-import getProfileData from '../../utils/ProfileData';
+import {getProfileData} from '../../utils/ProfileData';
 import { clearToken } from "../../utils/LocalStorage";
 
 
