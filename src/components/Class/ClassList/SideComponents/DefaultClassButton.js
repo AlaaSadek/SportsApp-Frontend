@@ -4,8 +4,15 @@ import Heart from '../../../../../assets/images/svg/heart.svg'
 import Hearto from '../../../../../assets/images/svg/hearto.svg'
 import Plus from '../../../../../assets/images/svg/plus.svg'
 import LoadingModal from '../../../global/LoadingModal'
-import { toggleLikeState } from '../../../../utils/ClassUtils'
+import { toggleLikeState } from '../../../../utils/ClassUtils';
+import { useNavigation } from 'react-navigation-hooks';
 const DefaultClassButton = ({ classItem, refresh }) => {
+
+    const { navigate } = useNavigation();
+    const nav = () => {
+        navigate('ClassDescriptionScreen', { id: classItem._id });
+    }
+
     const [loading, setLoading] = useState(false);
     const handleLikePressed = async () => {
         setLoading(true);
@@ -19,7 +26,7 @@ const DefaultClassButton = ({ classItem, refresh }) => {
     return (
         <View style={styles.svgContainer}>
             <LoadingModal modalVisible={loading} />
-            <TouchableOpacity onPress={() => { console.log(`navigate to this ${classItem.name}`) }}>
+            <TouchableOpacity onPress={() => { nav() }}>
 
                 <Plus height={styles.svg.height} width={styles.svg.width} />
             </TouchableOpacity>

@@ -3,6 +3,8 @@ import { View, StyleSheet, Text, FlatList, TouchableOpacity } from 'react-native
 import ScreenHeaderText from '../../components/global/ScreenHeaderText'
 // import Mark from '../../../assets/images/svg/mapMark'
 import { getAllBranches } from '../../utils/BranchesUtils';
+import { HeaderButtons, Item } from 'react-navigation-header-buttons';
+import HeaderButton from '../../components/global/HeaderButton';
 
 const BranchesScreen = ({ navigation }) => {
 
@@ -53,12 +55,29 @@ const BranchesScreen = ({ navigation }) => {
 
     </View>
 };
+BranchesScreen.navigationOptions=(props)=>{
+    return {
+        title: '',
+        headerTransparent: true,
+        headerLeft: () => {
+          return (
+            <HeaderButtons HeaderButtonComponent={HeaderButton}>
+            <Item style={styles.backIcon} title="back" iconName='arrow-back' onPress={() => { props.navigation.goBack() }} />
+        </HeaderButtons>
+          )
+        },
+       
+        headertransparent:true,
+      
+      }
+}
 
 const styles = StyleSheet.create({
     container: {
         width: '100%',
         margin: '5%',
-        height: '100%'
+        marginTop:'15%',
+         height: '100%'
     },
     itemContainer: {
         marginTop: '5%',
