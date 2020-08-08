@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import ScreenHeaderText from '../components/global/ScreenHeaderText';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
@@ -6,16 +6,24 @@ import HeaderButton from '../components/global/HeaderButton';
 import Announcements from "../components/Announcements/Announcements";
 import DefaultClassList from "../components/Class/ClassList/DefaultClassList";
 import { getAllClasses } from '../utils/ClassUtils';
+import { registerPushNotification, listenForNotifications } from '../utils/push_notification'
 
 const Main = ({ navigation }) => {
+  const mount = useRef(true);
   const [classes, setClasses] = useState([])
   const refresh = async () => {
-    await getAllClasses().then(res => { setClasses(res) })
+    await getAllClasses().then(res => { if (mount.current) setClasses(res) })
   }
+  const handleNotification = () => {
+    registerPushNotification();
+    listenForNotifications(navigation);
+  }
+  handleNotification();
   useEffect(
     () => {
-
+      mount.current = true;
       refresh();
+      return () => { mount.current = false }
     }, []
   );
   return (
@@ -89,7 +97,7 @@ const styles = StyleSheet.create({
   },
   headerText: {
     marginLeft: '5%',
-    marginBottom:'3%'
+    marginBottom: '3%'
   },
   announcement_viewallcontainer: {
     flexDirection: 'row',

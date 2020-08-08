@@ -1,8 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View, FlatList, StyleSheet, Text } from 'react-native'
 import ClassListItem from './ClassListItem'
 
 const ClassList = ({ classes, header, displayDetails, children, refresh }) => {
+    const [refBool, setRefBool] = useState(false);
+    const handleRefresh = () => {
+        setRefBool(true);
+        refresh().then(
+            () => {
+                setRefBool(false);
+            }
+        )
+    }
     return (
         <View style={styles.container}>
             {header ? <Text style={styles.header}>{header}</Text> : null}
@@ -11,6 +20,8 @@ const ClassList = ({ classes, header, displayDetails, children, refresh }) => {
                 <FlatList
                     showsVerticalScrollIndicator={false}
                     data={classes}
+                    refreshing={refBool}
+                    onRefresh={refresh}
                     ListEmptyComponent={() => <Text style={styles.noClassText}>No class found</Text>}
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={({ item }) => {
